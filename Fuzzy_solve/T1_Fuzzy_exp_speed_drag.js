@@ -417,11 +417,11 @@ function onStart() {
 
 
     let selectedData_x_slow = x0;
-    let selectedData_y0_slow = org_y0_slow.toFixed(1);
+    let selectedData_y0_slow = org_y0_slow.toFixed(2);
     let selectedData_x_okay = x0;
-    let selectedData_y0_okay = org_y0_okay.toFixed(1);
+    let selectedData_y0_okay = org_y0_okay.toFixed(2);
     let selectedData_x_fast = x0;
-    let selectedData_y0_fast = org_y0_fast.toFixed(1);
+    let selectedData_y0_fast = org_y0_fast.toFixed(2);
 
     circle1.attr("cx", x(org_x0)).attr("cy", y(org_y0_slow));
     circle2.attr("cx", x(org_x0)).attr("cy", y(org_y0_okay));
@@ -578,11 +578,11 @@ function onDrag() {
 
 
     let selectedData_x_slow = x0;
-    let selectedData_y0_slow = org_y0_slow.toFixed(1);
+    let selectedData_y0_slow = org_y0_slow.toFixed(2);
     let selectedData_x_okay = x0;
-    let selectedData_y0_okay = org_y0_okay.toFixed(1);
+    let selectedData_y0_okay = org_y0_okay.toFixed(2);
     let selectedData_x_fast = x0;
-    let selectedData_y0_fast = org_y0_fast.toFixed(1);
+    let selectedData_y0_fast = org_y0_fast.toFixed(2);
 
     circle1.attr("cx", x(org_x0)).attr("cy", y(org_y0_slow)).style("visibility", vis_label1);
     circle2.attr("cx", x(org_x0)).attr("cy", y(org_y0_okay)).style("visibility", vis_label2);
@@ -745,11 +745,11 @@ function onEnd() {
 
 
     let selectedData_x_slow = x0;
-    let selectedData_y0_slow = org_y0_slow.toFixed(1);
+    let selectedData_y0_slow = org_y0_slow.toFixed(2);
     let selectedData_x_okay = x0;
-    let selectedData_y0_okay = org_y0_okay.toFixed(1);
+    let selectedData_y0_okay = org_y0_okay.toFixed(2);
     let selectedData_x_fast = x0;
-    let selectedData_y0_fast = org_y0_fast.toFixed(1);
+    let selectedData_y0_fast = org_y0_fast.toFixed(2);
 
     circle1.attr("cx", x(org_x0)).attr("cy", y(org_y0_slow)).style("visibility", vis_label1);
     circle2.attr("cx", x(org_x0)).attr("cy", y(org_y0_okay)).style("visibility", vis_label2);
@@ -818,26 +818,26 @@ function onEnd() {
 
     result =
         (
-            y1 * (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-            y2 * (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-            y3 * (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-            y4 * (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-            y5 * (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-            y6 * (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-            y7 * (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-            y8 * (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-            y9 * (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1)))
+            y1 * (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+            y2 * (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+            y3 * (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+            y4 * (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+            y5 * (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+            y6 * (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+            y7 * (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+            y8 * (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+            y9 * (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2)))
         )/
         (
-            (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-            (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-            (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-            (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-            (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-            (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-            (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-            (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-            (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1)))
+            (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+            (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+            (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+            (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+            (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+            (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+            (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+            (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+            (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2)))
         );
     document.getElementById("acceleration").innerHTML =result.toFixed(2);
     document.getElementById("spd_x1").innerHTML = x0;
@@ -847,55 +847,55 @@ function onEnd() {
     document.getElementById("spd_slow_x1").innerHTML = x0;
     document.getElementById("spd_slow_x2").innerHTML = x0;
     document.getElementById("spd_slow_x3").innerHTML = x0;
-    document.getElementById("spd_okay_y").innerHTML = y0_okay.toFixed(1);
-    document.getElementById("spd_slow_y").innerHTML = y0_slow.toFixed(1);
-    document.getElementById("spd_fst_y").innerHTML = y0_fast.toFixed(1);
+    document.getElementById("spd_okay_y").innerHTML = y0_okay.toFixed(2);
+    document.getElementById("spd_slow_y").innerHTML = y0_slow.toFixed(2);
+    document.getElementById("spd_fst_y").innerHTML = y0_fast.toFixed(2);
 
     document.getElementById("spd_slow_x1_a").innerHTML = x0;
     document.getElementById("spd_slow_x2_a").innerHTML = x0;
-    document.getElementById("spd_slow_y_a").innerHTML = y0_slow.toFixed(1);
+    document.getElementById("spd_slow_y_a").innerHTML = y0_slow.toFixed(2);
 
     document.getElementById("spd_okay_x1_b").innerHTML = x0;
     document.getElementById("spd_okay_x2_b").innerHTML = x0;
-    document.getElementById("spd_okay_y_b").innerHTML = y0_okay.toFixed(1);
+    document.getElementById("spd_okay_y_b").innerHTML = y0_okay.toFixed(2);
 
     document.getElementById("spd_fst_x1_c").innerHTML = x0;
     document.getElementById("spd_fst_x2_c").innerHTML = x0;
-    document.getElementById("spd_fst_y_c").innerHTML = y0_fast.toFixed(1);
+    document.getElementById("spd_fst_y_c").innerHTML = y0_fast.toFixed(2);
 
     document.getElementById("spd_slow_x1_d").innerHTML = x0;
     document.getElementById("spd_slow_x2_d").innerHTML = x0;
-    document.getElementById("spd_slow_y_d").innerHTML = y0_slow.toFixed(1);
+    document.getElementById("spd_slow_y_d").innerHTML = y0_slow.toFixed(2);
 
     document.getElementById("spd_okay_x1_e").innerHTML = x0;
     document.getElementById("spd_okay_x2_e").innerHTML = x0;
-    document.getElementById("spd_okay_y_e").innerHTML = y0_okay.toFixed(1);
+    document.getElementById("spd_okay_y_e").innerHTML = y0_okay.toFixed(2);
 
     document.getElementById("spd_fst_x1_f").innerHTML = x0;
     document.getElementById("spd_fst_x2_f").innerHTML = x0;
-    document.getElementById("spd_fst_y_f").innerHTML = y0_fast.toFixed(1);
+    document.getElementById("spd_fst_y_f").innerHTML = y0_fast.toFixed(2);
 
     document.getElementById("spd_slow_x1_g").innerHTML = x0;
     document.getElementById("spd_slow_x2_g").innerHTML = x0;
-    document.getElementById("spd_slow_y_g").innerHTML = y0_slow.toFixed(1);
+    document.getElementById("spd_slow_y_g").innerHTML = y0_slow.toFixed(2);
 
     document.getElementById("spd_okay_x1_h").innerHTML = x0;
     document.getElementById("spd_okay_x2_h").innerHTML = x0;
-    document.getElementById("spd_okay_y_h").innerHTML = y0_okay.toFixed(1);
+    document.getElementById("spd_okay_y_h").innerHTML = y0_okay.toFixed(2);
 
     document.getElementById("spd_fst_x1_i").innerHTML = x0;
     document.getElementById("spd_fst_x2_i").innerHTML = x0;
-    document.getElementById("spd_fst_y_i").innerHTML = y0_fast.toFixed(1);
+    document.getElementById("spd_fst_y_i").innerHTML = y0_fast.toFixed(2);
 
-    document.getElementById("eqr1").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("eqr2").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("eqr3").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-    document.getElementById("eqr4").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("eqr5").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("eqr6").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-    document.getElementById("eqr7").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("eqr8").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("eqr9").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
+    document.getElementById("eqr1").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("eqr2").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("eqr3").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+    document.getElementById("eqr4").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("eqr5").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("eqr6").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+    document.getElementById("eqr7").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("eqr8").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("eqr9").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
 
     document.getElementById("eqd1").innerHTML = y1;
     document.getElementById("eqd2").innerHTML = y2;
@@ -907,25 +907,25 @@ function onEnd() {
     document.getElementById("eqd8").innerHTML = y8;
     document.getElementById("eqd9").innerHTML = y9;
 
-    document.getElementById("eqs1").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("eqs2").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("eqs3").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-    document.getElementById("eqs4").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("eqs5").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("eqs6").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-    document.getElementById("eqs7").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("eqs8").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("eqs9").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
+    document.getElementById("eqs1").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("eqs2").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("eqs3").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+    document.getElementById("eqs4").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("eqs5").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("eqs6").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+    document.getElementById("eqs7").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("eqs8").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("eqs9").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
 
-    document.getElementById("result_1").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("result_2").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("result_3").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-    document.getElementById("result_4").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("result_5").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("result_6").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-    document.getElementById("result_7").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-    document.getElementById("result_8").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-    document.getElementById("result_9").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
+    document.getElementById("result_1").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("result_2").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("result_3").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+    document.getElementById("result_4").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("result_5").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("result_6").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+    document.getElementById("result_7").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+    document.getElementById("result_8").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+    document.getElementById("result_9").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
 
 }
 import { y0_close } from './T1_Fuzzy_exp_dist_drag.js';
@@ -935,46 +935,46 @@ import { y0_far } from './T1_Fuzzy_exp_dist_drag.js';
 document.getElementById("spd_slow_x1").innerHTML = x0;
 document.getElementById("spd_slow_x2").innerHTML = x0;
 document.getElementById("spd_slow_x3").innerHTML = x0;
-document.getElementById("spd_okay_y").innerHTML = y0_okay.toFixed(1);
-document.getElementById("spd_slow_y").innerHTML = y0_slow.toFixed(1);
-document.getElementById("spd_fst_y").innerHTML = y0_fast.toFixed(1);
+document.getElementById("spd_okay_y").innerHTML = y0_okay.toFixed(2);
+document.getElementById("spd_slow_y").innerHTML = y0_slow.toFixed(2);
+document.getElementById("spd_fst_y").innerHTML = y0_fast.toFixed(2);
 
 
 document.getElementById("spd_slow_x1_a").innerHTML = x0;
 document.getElementById("spd_slow_x2_a").innerHTML = x0;
-document.getElementById("spd_slow_y_a").innerHTML = y0_slow.toFixed(1);
+document.getElementById("spd_slow_y_a").innerHTML = y0_slow.toFixed(2);
 
 document.getElementById("spd_okay_x1_b").innerHTML = x0;
 document.getElementById("spd_okay_x2_b").innerHTML = x0;
-document.getElementById("spd_okay_y_b").innerHTML = y0_okay.toFixed(1);
+document.getElementById("spd_okay_y_b").innerHTML = y0_okay.toFixed(2);
 
 document.getElementById("spd_fst_x1_c").innerHTML = x0;
 document.getElementById("spd_fst_x2_c").innerHTML = x0;
-document.getElementById("spd_fst_y_c").innerHTML = y0_fast.toFixed(1);
+document.getElementById("spd_fst_y_c").innerHTML = y0_fast.toFixed(2);
 
 document.getElementById("spd_slow_x1_d").innerHTML = x0;
 document.getElementById("spd_slow_x2_d").innerHTML = x0;
-document.getElementById("spd_slow_y_d").innerHTML = y0_slow.toFixed(1);
+document.getElementById("spd_slow_y_d").innerHTML = y0_slow.toFixed(2);
 
 document.getElementById("spd_okay_x1_e").innerHTML = x0;
 document.getElementById("spd_okay_x2_e").innerHTML = x0;
-document.getElementById("spd_okay_y_e").innerHTML = y0_okay.toFixed(1);
+document.getElementById("spd_okay_y_e").innerHTML = y0_okay.toFixed(2);
 
 document.getElementById("spd_fst_x1_f").innerHTML = x0;
 document.getElementById("spd_fst_x2_f").innerHTML = x0;
-document.getElementById("spd_fst_y_f").innerHTML = y0_fast.toFixed(1);
+document.getElementById("spd_fst_y_f").innerHTML = y0_fast.toFixed(2);
 
 document.getElementById("spd_slow_x1_g").innerHTML = x0;
 document.getElementById("spd_slow_x2_g").innerHTML = x0;
-document.getElementById("spd_slow_y_g").innerHTML = y0_slow.toFixed(1);
+document.getElementById("spd_slow_y_g").innerHTML = y0_slow.toFixed(2);
 
 document.getElementById("spd_okay_x1_h").innerHTML = x0;
 document.getElementById("spd_okay_x2_h").innerHTML = x0;
-document.getElementById("spd_okay_y_h").innerHTML = y0_okay.toFixed(1);
+document.getElementById("spd_okay_y_h").innerHTML = y0_okay.toFixed(2);
 
 document.getElementById("spd_fst_x1_i").innerHTML = x0;
 document.getElementById("spd_fst_x2_i").innerHTML = x0;
-document.getElementById("spd_fst_y_i").innerHTML = y0_fast.toFixed(1);
+document.getElementById("spd_fst_y_i").innerHTML = y0_fast.toFixed(2);
 
 
 document.getElementById("spd_x1").innerHTML = x0;
@@ -990,15 +990,15 @@ let y6 = -3;
 let y7 = 10;
 let y8 = 5;
 let y9 = 0;
-document.getElementById("eqr1").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("eqr2").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("eqr3").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-document.getElementById("eqr4").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("eqr5").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("eqr6").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-document.getElementById("eqr7").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("eqr8").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("eqr9").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
+document.getElementById("eqr1").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("eqr2").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("eqr3").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+document.getElementById("eqr4").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("eqr5").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("eqr6").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+document.getElementById("eqr7").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("eqr8").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("eqr9").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
 
 document.getElementById("eqd1").innerHTML = y1;
 document.getElementById("eqd2").innerHTML = y2;
@@ -1010,54 +1010,54 @@ document.getElementById("eqd7").innerHTML = y7;
 document.getElementById("eqd8").innerHTML = y8;
 document.getElementById("eqd9").innerHTML = y9;
 
-document.getElementById("eqs1").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("eqs2").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("eqs3").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-document.getElementById("eqs4").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("eqs5").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("eqs6").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-document.getElementById("eqs7").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("eqs8").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("eqs9").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
+document.getElementById("eqs1").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("eqs2").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("eqs3").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+document.getElementById("eqs4").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("eqs5").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("eqs6").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+document.getElementById("eqs7").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("eqs8").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("eqs9").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
 
 
 
 let result =
     (
-        y1 * (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-        y2 * (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-        y3 * (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-        y4 * (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-        y5 * (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-        y6 * (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-        y7 * (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-        y8 * (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-        y9 * (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1)))
+        y1 * (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+        y2 * (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+        y3 * (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+        y4 * (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+        y5 * (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+        y6 * (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+        y7 * (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+        y8 * (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+        y9 * (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2)))
     )/
     (
-    (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-    (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-    (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-    (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-    (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-    (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1)))+
-    (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1)))+
-    (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1)))+
-    (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1)))
+    (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+    (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+    (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+    (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+    (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+    (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2)))+
+    (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2)))+
+    (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2)))+
+    (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2)))
     );
 document.getElementById("acceleration").innerHTML =result.toFixed(2)
 
 
 
-document.getElementById("result_1").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("result_2").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("result_3").innerHTML = (Number(y0_close.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-document.getElementById("result_4").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("result_5").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("result_6").innerHTML = (Number(y0_oky.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
-document.getElementById("result_7").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_slow.toFixed(1))).toFixed(2);
-document.getElementById("result_8").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_okay.toFixed(1))).toFixed(2);
-document.getElementById("result_9").innerHTML = (Number(y0_far.toFixed(1)) * Number(y0_fast.toFixed(1))).toFixed(2);
+document.getElementById("result_1").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("result_2").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("result_3").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+document.getElementById("result_4").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("result_5").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("result_6").innerHTML = (Number(y0_oky.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
+document.getElementById("result_7").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
+document.getElementById("result_8").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
+document.getElementById("result_9").innerHTML = (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2))).toFixed(2);
 
 export { y0_slow };
 export { y0_okay };
