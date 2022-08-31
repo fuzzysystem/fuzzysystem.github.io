@@ -1,0 +1,1904 @@
+<!--
+  Copyright 2018 The Distill Template Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!doctype html>
+
+<head xmlns="">
+    <script src="dist/template.v2.js"></script>
+<!--    <script src="dist/template.v2_1.js"></script>-->
+    <link rel="stylesheet" href="dist/ieeexplore-immersive-article.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf8">
+<!--    <script src="https://d3js.org/d3.v4.js"></script>-->
+    <script type="text/javascript" src="d3.v4.js"></script>
+    <link rel="stylesheet" href="Fuzzy_solve/fuzzy_design.css">
+    <script type="text/javascript" src="jquery-3.5.1.js"></script>
+
+<!--    <script src='https://cdn.plot.ly/plotly-2.14.0.min.js'></script>-->
+    <script type="text/javascript" src='plotly-2.14.0.min.js'></script>
+
+    <script type="text/javascript" src="Fuzzy_solve/T1_Fuzzy_demo.js"></script>
+    <script type="text/javascript" src="Fuzzy_solve/IT2_Fuzzy_demo.js"></script>
+    <script type="text/javascript" src="Fuzzy_solve/Inputlistener.js"></script>
+
+    <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_speed_drag.js"></script>
+    <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_dist_drag.js"></script>
+    <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_speed_drag.js"></script>
+    <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_dist_drag.js"></script>
+
+    <!--    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">-->
+<!--    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>-->
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+    <script type="text/javascript"
+            src="MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <title>Type-1 and Interval Type-2 Fuzzy Systems</title>
+</head>
+
+<body>
+<button id="backToTopButton" class="backToTopButton">
+    <i class="icon--min icon-back-to-top-arrow"></i>
+</button>
+
+<distill-header></distill-header>
+<d-front-matter>
+    <script id='distill-front-matter' type="text/json">{
+    "title": "Type-1 and Interval Type-2 Fuzzy Systems",
+    "description": "The basic concepts of T1 and IT2 fuzzy sets and systems.",
+    "published": "Aug 30, 2022",
+    "authors": [
+      {
+        "author":"Dongrui Wu",
+        "authorURL":"https://adockhorn.github.io/",
+        "affiliations": [{"name": "Huazhong University of Science and Technology Wuhan"}]
+      },
+      {
+        "author":"Ruimin Peng",
+        "authorURL":"https://github.com/SimonLucas/",
+        "affiliations": [{"name": "Huazhong University of Science and Technology Wuhan"}]
+      },
+      {
+        "author":"Jerry M. Mendel",
+        "authorURL":"https://sipi.usc.edu/~mendel/",
+        "affiliations": [{"name": "University of Southern California Los Angeles"}]
+      }
+    ],
+    "katex": {
+      "delimiters": [
+        {"left": "$$", "right": "$$", "display": false}
+      ]
+    },
+    "toc":true
+  }</script>
+</d-front-matter>
+<d-title>
+    <p>The basic concepts of T1 and IT2 fuzzy sets and systems.</p>
+</d-title>
+<d-byline></d-byline>
+
+
+
+<d-article>
+    <script type="module">
+        // https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
+        //Get the button:
+        let mybutton = document.getElementById("backToTopButton");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "flex";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.onclick = function(event) {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+
+    <d-contents id="toc" class="toc" style="background-color: #e8e8e8;
+                                padding: 0.3cm 0.3cm 0.3cm 0.3cm;">
+        <nav id="nav">
+            <h3 style="font-size: 12pt; font-weight: bold; color: #333300; font-family: Arial, Helvetica, sans-serif; margin: 0;">Contents</h3>
+        </nav>
+    </d-contents>
+
+    <script type="module">
+
+        function romanize (num) {
+            //Credits to Steven Levithan and his blog: http://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter
+            if (isNaN(num))
+                return NaN;
+            var digits = String(+num).split(""),
+                key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+                    "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+                    "","I","II","III","IV","V","VI","VII","VIII","IX"],
+                roman = "",
+                i = 3;
+            while (i--)
+                roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+            return Array(+digits.join("") + 1).join("M") + roman;
+        }
+
+
+        $("distill-header")[0].style.display = "none";
+        $("distill-footer")[0].style.display = "none";
+        window.addEventListener('load', function() {
+            var toc = document.getElementById("nav");
+
+            // get headers and markers
+            let elements = [];
+            let tocItems = document.getElementsByTagName("H2");
+            //console.log(tocItems);
+            let linkItems = document.getElementsByClassName("marker");
+            let article = document.getElementById("root");
+            //console.log(linkItems);
+
+            for (let i=0, max=tocItems.length; i < max; i++) {
+                // Do something with the element here
+                tocItems[i].textContent = romanize(i+1) + ". " + tocItems[i].textContent;
+                elements[i] = {"element": tocItems[i], "index": Array.prototype.indexOf.call(article.children, tocItems[i])};
+            }
+            for (let i=0, max=linkItems.length; i < max; i++) {
+                // Do something with the element here
+                elements[tocItems.length+i] = {"element": linkItems[i], "index": Array.prototype.indexOf.call(article.children, linkItems[i])};
+            }
+
+            //sort them in order of appearance
+            elements.sort((a, b) => a["index"] - b["index"]);
+            //console.log(elements);
+
+            //console.log("nToCEntries: " + tocItems.length);
+            let i;
+            let previous_header = toc;
+            for (i = 0; i < elements.length; i++) {
+                let item = elements[i]["element"];
+                if (item.tagName === "H2") {
+                    //console.log("h2");
+                    //item.style.backgroundColor = "#EEEEEE";
+                    if (i > 0){
+                        let gap = document.createElement("span");
+                        gap.innerText = " | ";
+                        toc.appendChild(gap);
+                    }
+                    let entry = document.createElement("span");
+                    let link = document.createElement("a");
+                    // console.log(item.innerHTML);
+                    //console.log(item.innerText);
+                    link.innerText = item.innerText;
+                    link.href = "#" + item.innerText;
+                    item.id = item.innerText;
+                    entry.appendChild(link);
+                    previous_header = entry;
+                    toc.appendChild(entry);
+                }
+                /*
+                else {
+                  //console.log("marker");
+                  let list = document.createElement("ul");
+                  list.style.marginBottom = "unset";
+                  let entry = document.createElement("li");
+                  let link = document.createElement("a");
+                  // console.log(item.innerHTML);
+                  //console.log(item.innerText);
+                  link.innerText = item.innerText;
+                  link.href = "#" + item.innerText;
+                  item.id = item.innerText;
+                  entry.appendChild(link);
+                  list.appendChild(entry);
+                  previous_header.appendChild(list);
+                }*/
+
+            }
+        })
+    </script>
+    <div id="root">
+        <h2>Introduction</h2>
+        <a class="marker" href="#QuestionIntro"><span>Introduction</span></a>
+        <div id="QuestionIntro">
+            <p>Imagine you and your friend are driving on a highway in two separate cars, and you want to follow your friend's car at about 50 meters behind.
+                You can observe your distance to your friend's car (e.g., far, close, or okay), and your relative speed to it (e.g., fast, slow, or okay).
+                Then, how would you adjust your acceleration (gas pedal), so that the distance is kept at roughly 50 meters?</p>
+
+            <p>Some intuitive rules would apply, e.g.,</p>
+            <p>
+                $\mbox{ IF the distance is far AND your relative speed is slow, THEN your acceleration should be positive};$
+            </p>
+            <p>
+                $\mbox{IF the distance is close AND your relative speed is fast, THEN your acceleration should be negative};$
+            </p>
+            <p>
+                $\mbox{IF the distance is okay AND your relative speed is okay, THEN your acceleration should be about zero};$
+            </p>
+            <p>and so on. A human driver can adjust the acceleration intuitively, without using any mathematics.</p>
+            <p>Then, how about designing a car following controller for this task?
+                How would you transform the above knowledge (rules) into mathematical formulas, so that the controller
+                can calculate the appropriate acceleration based on the distance and speed?
+            </p>
+            <p>Fuzzy systems are very suitable tools. Next, we will introduce how they can be used to solve this problem.</p>
+        </div>
+
+        <h2>Type-1 Fuzzy Sets and Fuzzy Systems</h2>
+        <a class="marker" href="#SeT1fuzzy"><span>Type-1 Fuzzy Sets and Fuzzy Systems</span></a>
+        <div id="SeT1fuzzy">
+            <h3>A. Type-1 Fuzzy Sets</h3>
+            <a class="marker" href="#T1fuzzy set"><span>Type-1 Fuzzy Sets</span></a>
+            <div id="T1fuzzy set">
+                <p>Type-1 (T1) fuzzy set was first introduced by Zadeh <d-cite bibtex-key="Zadeh1965"></d-cite> in 1965
+                    and has been successfully applied in a multitude of areas,
+                    including modeling and control <d-cite bibtex-key="Bezdek1993"></d-cite> <d-cite bibtex-key="Lin1996a"></d-cite> <d-cite bibtex-key="Wang1997"></d-cite>, data mining <d-cite bibtex-key="Yager1996"></d-cite> <d-cite bibtex-key="Hirota1999"></d-cite>,
+                    pattern recognition <d-cite bibtex-key="Ishibuchi1995"></d-cite> <d-cite bibtex-key="Bezdek1999"></d-cite>,
+                    decision making <d-cite bibtex-key="Tong1980"></d-cite> <d-cite bibtex-key="Dubois1985b"></d-cite> <d-cite bibtex-key="Herrera2000"></d-cite> <d-cite bibtex-key="Yager1997"></d-cite>,
+                    finance <d-cite bibtex-key="Bojadziev2007"></d-cite>, medicine <d-cite bibtex-key="Phuong2001"></d-cite>,
+                    energy <d-cite bibtex-key="Suganthi2015"></d-cite>, brain-computer interfaces <d-cite bibtex-key="drwuSF2018"></d-cite>,
+                    etc.</p>
+
+                <h4>Definition 1</h4>
+                <a class="marker" href="#define1"><span>Type-1 Fuzzy Sets Definition 1</span></a>
+                <div id="define1" >
+                    <p>
+                    <a class="marker" href="#eq1"><span>equation1</span></a>
+                    A <i>T1 fuzzy set</i> $X$ is comprised of a <i>domain</i> $D_X$ of real numbers
+                    (also called the <i>universe of discourse</i> of $X$) together with a
+                    <i>membership function</i> (MF) $\mu_{_X}(x):\ D_X \to [0,1]$, i.e.,</p>
+                    <p>
+                    <span id="eq1">
+                         $X=\int_{D_X}\mu_{_X}(x)/x .$
+                    </span>
+
+                    <span style= "float:right; text-align: right">
+                        $(1)$
+                    </span></p>
+                    <div>
+                        <p>
+                            <a href="#eq1">$(1)$</a> is a fuzzy set notation, introduced by Zadeh, as a shorthand
+                            in which $\int$ denotes the collection of all points $x\in D_X$
+                            with associated <i>membership grade</i> $\mu_{_X}(x)$. $\blacksquare$
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <p>A trapezoidal T1 fuzzy set is shown in <a href="#fig1">Fig. $1$</a>.</p>
+                    <a class="marker" href="#fig1"><span>Figure1</span></a>
+
+                    <div class="l-body" style="width: 100%">
+                        <img id="fig1" src="myimg/T1FS2.svg" alt="Alternative text in case the image cannot be loaded." style="margin: auto auto; width: 40%; display: block"/>
+                        <div class="caption"><b>Figure 1:</b><br> A trapezoidal T1 fuzzy set.</div>
+                    </div>
+                </div>
+                <div><br>
+                    <p>The membership grade of $x$ can be computed as:</p>
+
+                    <span>
+                        $\mu(x)=\left\{\begin{array}{cl}
+                        \frac{x-a}{b-a}, & x\in(a,b) \\
+                        1, & x\in[b,c] \\
+                        \frac{d-x}{d-c}, & x\in(c,d)\\
+                        0, & \mbox{otherwise}
+                        \end{array}\right .$
+                    </span>
+
+                    <span style= "float:right; text-align: right">
+                        <br><br>
+                            $(2)$
+                    </span>
+
+                    <br><br>
+                    <p>A triangular T1 fuzzy set is a special case of a trapezoidal T1 fuzzy set, when $b=c$.</p>
+                </div>
+                <div>
+                    <p>
+                        <a href="#fig2">Fig. $2$</a> shows a specific example of a T1 fuzzy set "Moderate".
+                        When only integer numbers are considered in the domain, the T1 fuzzy set can be
+                        represented as $\{0/1, 0.5/2, 1/3, 1/4, 0.5/5, 0/6\}$, where $0/1$ means
+                        that $x=1$ has a membership grade of 0 in Moderate, and $0.5/2$ means $x=2$ has a
+                        membership grade of $1$ in Moderate. <a href="#fig2">Fig. $2$</a> shows that there
+                        is complete agreement (certainty) for $x\in[0,1]\cup[3,4]\cup[6,+\infty)$,
+                        and partial agreement for $x\in(1,3)\cup(4,6)$. In contrast, for a crisp set,
+                        the membership grade of each element in it is either 0 or 1;
+                        there is no value (e.g., 0.3) in between, i.e., a crisp set cannot model partial agreement.
+                    </p>
+                    <a class="marker" href="#fig2"><span>Figure 2</span></a>
+                    <div class="l-interactive" style="margin-bottom: 20px">
+                        <table>
+                            <tr>
+                                <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
+                                <td><div class="interactiveopener"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="T1Fuzzy" style="width: 40%; margin: auto auto 10px;"></div>
+                        <div class="caption"><b>Figure 2:</b><br> Example of a T1 fuzzy set: Introducing the T1 Fuzzy set.</div>
+                    </div>
+                    <script id="fig2" type="module" src="Fuzzy_solve/T1_Fuzzy_demo_drag.js"></script>
+
+                </div>
+            </div>
+
+            <h3>B. T1 Fuzzy System</h3>
+            <a class="marker" href="#T1fuzzy sys"><span>Type-1 Fuzzy Systems</span></a>
+            <div id="T1fuzzy sys">
+                <div><p>
+                    <a href="#fig3">Fig. $3$</a> shows the diagram of a typical T1 fuzzy system,
+                    which consists of four components: fuzzifier, rulebase, inference engine,
+                    and defuzzifier. The fuzzifier transforms crisp inputs into T1 fuzzy sets.
+                    Utilizing the rulebase, the inference engine performs inference on the T1 fuzzy sets,
+                    to map them into a new T1 fuzzy set. The defuzzifier converts the mapped T1 fuzzy set
+                    into a crisp output.</p>
+                </div>
+                <a class="marker" href="#fig3"><span>Figure 3</span></a>
+                <div class="l-body" style="width: 100%">
+                    <img id="fig3" src="myimg/T1FLS.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 40%; display: block"/>
+                    <div class="caption"><b>Figure 3:</b><br> Diagram of a T1 fuzzy system.</div>
+                </div>
+
+                <div><br>
+                    <p>There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are words <d-cite bibtex-key="Chang1972"></d-cite>,
+                        and Takagi-Sugeno-Kang (TSK), in which rule consequents ar mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.
+                        The latter may be more poplar, due to their simplicity and flexibility. T1 TSK rules are:</p>
+                    <p>
+                        $R_k: \mbox{ IF } x_1 \mbox{ is } X_{k,1} \mbox{ AND } \cdots \mbox{ AND } x_d \mbox{ is } X_{k,d},
+                        \mbox{ THEN } y_k(\mathbf{x}) = \sum_{i=1}^d a_{k,i}x_i + b_k, \quad k=1,...,K$
+                    </p>
+                    <br>
+                    <p>where $d$ is the input dimensionality, $K$ is the number of rules, $X_{k,i}$ is the MF for input $x_i$ ($i=1,...,d$)
+                        in the $k^{\mathrm{th}}$ rule, and $a_{k,i}$ and $b_k$ ($k=1,...,K$) are adjustable regression coefficients.
+                        Many times all $a_{k,i}$ are set to 0.
+                    </p>
+                </div>
+                <div>
+                    <p>For a particular input $\mathbf{x}=(x_1,...,x_d)$, the operations in a TSK fuzzy system are:</p>
+                    <p>
+                    <a class="marker" href="#operations"><span>Units</span></a>
+                    <ol id="opeartions">
+                    <li> <p><i>Fuzzification</i>:</p>
+                        <p>
+                            Compute $\mu_{X_{k,i}}(x_i)$, the membership grade of
+                            $x_i$ on $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).
+                        </p>
+                    </li>
+                    <li>
+                        <p><i>Inference</i>:</p>
+                        <p>Compute the firing level of each rule:<br></p>
+                        <span>$f_k(\mathbf{x})=\mu_{X_{k,1}}(x_1)\times\cdots\times\mu_{X_{k,d}}(x_d),$
+                        </span>
+
+                        <p><br>Note that the minimum operation could also be used to replace the multiplication above.
+                            The inference engine output is:</p>
+                        <a class="marker" href="#eq3"><span>Units</span></a>
+                        <span id="eq3">
+                            $y(\mathbf{x})=\frac{\sum_{k=1}^K f_k(\mathbf{x})\cdot y_k(\mathbf{x})}{\sum_{k=1}^K f_k(\mathbf{x})}.$
+                        </span>
+                        <span style= "float:right; text-align: right">
+                            $(3)$
+                        </span></p>
+
+                    </li>
+                    <li> <p><i>Defuzzification</i>:</p>
+                        <p>Since the inference output is already a crisp number,
+                            no defuzzification is needed in a T1 TSK fuzzy system.
+                            The inference output $y(\mathbf{x})$ is the final output.</p></li>
+                    </ol>
+                    </p>
+                </div>
+                <div>
+                    <p><a href="#eq3">$(3)$</a> fuses the consequents of multiple rules to give an output. If we view each rule as an expert,
+                    then a TSK fuzzy system is functionally equivalent to a mixture of expert model <d-cite bibtex-key="Jacobs1991"></d-cite> <d-cite bibtex-key="drwuTSK2020"></d-cite>.
+                    Alternatively, if we view each rule as a base model,
+                        then a TSK fuzzy system may also be understood as an adaptive ensemble model <d-cite bibtex-key="drwuTSK2020"></d-cite>.</p>
+                </div>
+            </div>
+
+            <h3>C. Car Following Example</h3>
+            <a class="marker" href="#T1 example"><span>Type-1 Fuzzy example</span></a>
+            <div id="T1 example">
+                <div>
+                    <p>
+                        This subsection presents a simple example to illustrate the computations in a T1 TSK fuzzy system.
+                        Consider the car following example introduced at the beginning of this paper.
+                        Assume the distance has three MFs, Close, Okay and Far, as depicted in <a href="#fig4a">Fig. $4(a)$</a>,
+                        and the relative speed also has three MFs, Slow, Okay and Fast, as depicted in <a href="#fig4b">Fig. $4(b)$</a>.
+                        Note that the same word "Okay" for the distance and the relative speed could have different T1 FS definitions.
+                    </p>
+
+                    <a class="marker" href="#fig4a"><span>Figure4(a)</span></a>
+                    <a class="marker" href="#fig4b"><span>Figure4(b)</span></a>
+
+                    <div class="l-body" style="width: 100%">
+                        <img id="fig4a" src="myimg/Distance.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 30%; display: block"/>
+                        <div style="text-align: center"><b>(a)</b></div>
+
+                        <img id="fig4b" src="myimg/Speed.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:30%; display: block"/>
+                        <div style="text-align: center"><b>(b)</b></div>
+
+                        <div class="caption"><b>Figure 4:</b><br> T1 MFs for the distance and the relative speed, in the car following example.</div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <p><br>There are nine rules, whose consequents are crisp numbers:</p>
+                    <p style="text-align: center">
+                    <ul>
+                        <li style="list-style-type: none">
+                            <p>
+                                $R_1: \mbox{ IF distance is Close AND relative speed is Slow, THEN acceleration is } y_1=0$
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $ R_2: \mbox{ IF distance is Close AND relative speed is Okay, THEN acceleration is } y_2=-5 $
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $ R_3: \mbox{ IF distance is Close AND relative speed is Fast, THEN acceleration is } y_3=-10$
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $R_4: \mbox{ IF distance is Okay AND relative speed is Slow, THEN acceleration is } y_4=3$
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $R_5: \mbox{ IF distance is Okay AND relative speed is Okay, THEN acceleration is } y_5=0$
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $R_6: \mbox{ IF distance is Okay AND relative speed is Fast, THEN acceleration is } y_6=-3$
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $R_7: \mbox{ IF distance is Far AND relative speed is Slow, THEN acceleration is } y_7=10$
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $R_8: \mbox{ IF distance is Far AND relative speed is Okay, THEN acceleration is } y_8=5$
+                            </p>
+                        </li>
+                        <li style="list-style-type: none">
+                            <p>
+                                $R_9: \mbox{ IF distance is Far AND relative speed is Fast, THEN acceleration is } y_9=0$
+                            </p>
+                        </li>
+                    </ul></p>
+
+
+                    <p>Assume the current distance to the front car is 47 meters, and the relative speed is 4 KM/h.
+                        The membership grades of the corresponding T1 fuzzy sets are shown in <a href="#fig5">Fig. $5$</a>:</p>
+                    <p>
+                        <p style="text-align: center">
+                    <p style="text-align: center">
+                        $\quad \mu_{_{\mathrm{Close}}}($<d-math id="dst_close_x1"></d-math>$)=$<d-math id="dst_close_y"></d-math>
+                        $\quad \mu_{_{\mathrm{Okay}}}($<d-math id="dst_close_x2"></d-math>$)=$<d-math id="dst_oky_y"></d-math>
+                        $\quad \mu_{_{\mathrm{Far}}}($<d-math id="dst_close_x3"></d-math>$)=$<d-math id="dst_far_y"></d-math>
+                    </p>
+
+                        </p><br>
+                    <p style="text-align: center">
+                            $\quad \mu_{_{\mathrm{Slow}}}($<d-math id="spd_slow_x1"></d-math>$)=$<d-math id="spd_slow_y"></d-math>
+                        $\quad \mu_{_{\mathrm{Okay}}}($<d-math id="spd_slow_x2"></d-math>$)=$<d-math id="spd_okay_y"></d-math>
+                        $\quad\mu_{_{\mathrm{Fast}}}($<d-math id="spd_slow_x3"></d-math>$)=$<d-math id="spd_fst_y"></d-math>
+                        </p>
+                    </p>
+
+                    <a class="marker" href="#fig5"><span>Figure5</span></a>
+                    <div id="fig5" class="l-interactive" style="margin-bottom: 20px">
+                        <table>
+                            <tr>
+                                <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
+                                <td><div class="interactiveopener"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="T1FuzzyExp_a" style="width: 40%; margin: auto auto 10px;"></div>
+                        <div style="text-align: center"><b>(a)</b></div>
+                        <div id="T1FuzzyExp_b" style="width: 40%; margin: auto auto 10px;"></div>
+                        <div style="text-align: center"><b>(b)</b></div>
+                        <div class="caption">
+                            <b>Figure 5:</b> Membership grades on the T1 fuzzy sets. (a) Distance is 47 meters;
+                            (b) Relative speed is 4 KM/h.
+                        </div>
+                        <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_dist_drag.js"></script>
+                        <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_speed_drag.js"></script>
+
+                    </div>
+
+                    <div>
+                        <p>The firing levels of the nine rules are:<br></p>
+                        <p style="text-align: left">
+                            <ul>
+                                <li style="list-style-type: none">
+                                    $R_1: \quad f_1($
+                                    <d-math id="dst_close_x1_a"></d-math>
+                                    $, $
+                                    <d-math id="spd_slow_x1_a"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                    <d-math id="dst_close_x2_a"></d-math>
+                                    $) \quad\times \quad\mu_{_{\mathrm{Slow}}}($
+                                    <d-math id="spd_slow_x2_a"></d-math>
+                                    $)\quad= \quad$
+                                    <d-math id="dst_close_y_a"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_slow_y_a"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_1"></d-math>
+                                </li>
+                                <li style="list-style-type: none">
+                                    $R_2: \quad f_2($
+                                    <d-math id="dst_close_x1_b"></d-math>
+                                    $, $
+                                    <d-math id="spd_okay_x1_b"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                    <d-math id="dst_close_x2_b"></d-math>
+                                    $) \quad\times \quad\mu_{_{\mathrm{Okay}}}($
+                                    <d-math id="spd_okay_x2_b"></d-math>
+                                    $)\quad= \quad$
+                                    <d-math id="dst_close_y_b"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_okay_y_b"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_2"></d-math>
+                                </li>
+                                <li style="list-style-type: none">
+                                    $R_3: \quad f_3($
+                                    <d-math id="dst_close_x1_c"></d-math>
+                                    $, $
+                                    <d-math id="spd_fst_x1_c"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                    <d-math id="dst_close_x2_c"></d-math>
+                                    $) \quad\times\quad \mu_{_{\mathrm{Fast}}}($
+                                    <d-math id="spd_fst_x2_c"></d-math>
+                                    $)\quad= \quad$
+                                    <d-math id="dst_close_y_c"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_fst_y_c"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_3"></d-math>
+                                </li>
+                                <li style="list-style-type: none">
+                                    $R_4: \quad f_4($
+                                    <d-math id="dst_oky_x1_d"></d-math>
+                                    $, $
+                                    <d-math id="spd_slow_x1_d"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                    <d-math id="dst_oky_x2_d"></d-math>
+                                    $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
+                                    <d-math id="spd_slow_x2_d"></d-math>
+                                    $)\quad= \quad$
+                                    <d-math id="dst_oky_y_d"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_slow_y_d"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_4"></d-math>
+                                </li>
+                                <li style="list-style-type: none">
+                                    $R_5: \quad f_5($
+                                    <d-math id="dst_oky_x1_e"></d-math>
+                                    $, $
+                                    <d-math id="spd_okay_x1_e"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                    <d-math id="dst_oky_x2_e"></d-math>
+                                    $)\quad \times \quad\mu_{_{\mathrm{Okay}}}($
+                                    <d-math id="spd_okay_x2_e"></d-math>
+                                    $)\quad= \quad$
+                                    <d-math id="dst_oky_y_e"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_okay_y_e"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_5"></d-math>
+                                </li>
+                                <li style="list-style-type: none">
+                                    $R_6: \quad f_6($
+                                    <d-math id="dst_oky_x1_f"></d-math>
+                                    $, $
+                                    <d-math id="spd_fst_x1_f"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                    <d-math id="dst_oky_x2_f"></d-math>
+                                    $) \quad\times \quad\mu_{_{\mathrm{Fast}}}($
+                                    <d-math id="spd_fst_x2_f"></d-math>
+                                    $)\quad=\quad $
+                                    <d-math id="dst_oky_y_f"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_fst_y_f"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_6"></d-math>
+                                </li>
+                                <li style="list-style-type: none;text-align: left">
+                                    $R_7: \quad f_7($
+                                    <d-math id="dst_far_x1_g"></d-math>
+                                    $, $
+                                    <d-math id="spd_slow_x1_g"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                    <d-math id="dst_far_x2_g"></d-math>
+                                    $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
+                                    <d-math id="spd_slow_x2_g"></d-math>
+                                    $)\quad=\quad $
+                                    <d-math id="dst_far_y_g"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_slow_y_g"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_7"></d-math>
+                                </li>
+                                <li style="list-style-type: none">
+                                    $R_8: \quad f_8($
+                                    <d-math id="dst_far_x1_h"></d-math>
+                                    $, $
+                                    <d-math id="spd_okay_x1_h"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                    <d-math id="dst_far_x2_h"></d-math>
+                                    $)\quad \times\quad \mu_{_{\mathrm{Okay}}} ($
+                                    <d-math id="spd_okay_x2_h"></d-math>
+                                    $)\quad= \quad$
+                                    <d-math id="dst_far_y_h"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_okay_y_h"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_8"></d-math>
+                                </li>
+                                <li style="list-style-type: none">
+                                    $R_9: \quad f_9($
+                                    <d-math id="dst_far_x1_i"></d-math>
+                                    $, $
+                                    <d-math id="spd_fst_x1_i"></d-math>
+                                    $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                    <d-math id="dst_far_x2_i"></d-math>
+                                    $)\quad \times \quad \mu_{_{\mathrm{Fast}}}($
+                                    <d-math id="spd_fst_x2_i"></d-math>
+                                    $)\quad=\quad $
+                                    <d-math id="dst_far_y_i"></d-math>
+                                    $\quad\times\quad$
+                                    <d-math id="spd_fst_y_i"></d-math>
+                                    $\quad=\quad$
+                                    <d-math id="result_9"></d-math>
+                                </li>
+                            </ul>
+                        </p>
+
+                    </div>
+                    <a class="marker" href="#T1output"><span>T1 output</span></a>
+
+                    <div id="T1output">
+                        <p>The output acceleration is:</p>
+                        <a class="marker" href="#eq4"><span>equation1</span></a>
+
+                        <span id="eq4">
+                            $\quad($
+                            <d-math id="dst_x3"></d-math>
+                            $,$
+                            <d-math id="spd_x3"></d-math>
+                            $)\quad=\quad\sum_{k=1}^9 f_k($
+                            <d-math id="dst_x1"></d-math>
+                            $,$
+                            <d-math id="spd_x1"></d-math>
+                            $)\cdot  y_k \quad\div \quad\sum_{k=1}^9 f_k($
+                            <d-math id="dst_x2"></d-math>
+                            $,$
+                            <d-math id="spd_x2"></d-math>
+                            $)$
+                            <br><br>
+                            $\quad=\quad[$
+                            <d-math id="eqr1"></d-math> $\times$ <d-math id="eqd1"></d-math> $+$
+                            <d-math id="eqr2"></d-math> $\times($ <d-math id="eqd2"></d-math> $)+$
+                            <d-math id="eqr3"></d-math> $\times($ <d-math id="eqd3"></d-math> $)+$
+                            <d-math id="eqr4"></d-math> $\times$ <d-math id="eqd4"></d-math> $+$
+                            <d-math id="eqr5"></d-math> $\times$ <d-math id="eqd5"></d-math> $+$
+                            <d-math id="eqr6"></d-math> $\times($ <d-math id="eqd6"></d-math> $)+$
+                            <d-math id="eqr7"></d-math> $\times$ <d-math id="eqd7"></d-math> $+$
+                            <d-math id="eqr8"></d-math> $\times$ <d-math id="eqd8"></d-math> $+$
+                            <d-math id="eqr9"></d-math> $\times$ <d-math id="eqd9"></d-math>
+                            $] $
+                            <br><br>
+                            $\quad\quad\quad\div $
+                            $\quad [$
+                            <d-math id="eqs1"></d-math> $+$
+                            <d-math id="eqs2"></d-math> $+$
+                            <d-math id="eqs3"></d-math> $+$
+                            <d-math id="eqs4"></d-math> $+$
+                            <d-math id="eqs5"></d-math> $+$
+                            <d-math id="eqs6"></d-math> $+$
+                            <d-math id="eqs7"></d-math> $+$
+                            <d-math id="eqs8"></d-math> $+$
+                            <d-math id="eqs9"></d-math> $]$
+                            <br><br>
+                            $\quad=\quad$
+                            <d-math id="acceleration"></d-math>
+                        </span>
+
+                        <span style= "float:right; text-align: right">
+                            $(4)$
+                        </span>
+
+                        <p>
+                            <br>i.e., the car should have a fairly large deceleration to maintain the distance at 50 meters.
+                        This is intuitive, as the current distance is shorter than 50 meters, and the relative speed is fast.
+                        </p>
+                    </div>
+                    <div>
+                        <p>The above nine rules are summarized in <a href="tab1">Table $ 1$</a>.
+                        The corresponding input-output mapping is shown in <a href="fig_T1_acc">Fig. $6$</a>,
+                            which can be changed by modifying the rule consequents in <a href="tab1">Table $1$</a>.</p>
+                        <div>
+                            <a class="marker" href="#tab1"><span>rulebase</span></a>
+                            <div class="caption" id="tab1">
+                                <b>Table 1:</b><br> Rulebase of the T1 TSK fuzzy system in the car following example. The numbers are rule consequents, i.e., acceleration (KM/h$^2$).<br><br>
+                            </div>
+                            <table style="margin: auto auto">
+                                <tr>
+                                    <th style="width: 20%; border-bottom: 1px solid black;border-right: 1px solid black;border-top: 1px solid black;border-collapse: collapse;text-align: center">Distance$\setminus$Relative Speed</th>
+                                    <th style="width: 10%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">Slow</th>
+                                    <th style="width: 10%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">Okay</th>
+                                    <th style="width: 10%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center"> Fast </th>
+
+                                </tr>
+                                <tr>
+                                    <th style="width: 20%; border-right: 1px solid black;border-collapse: collapse;text-align: center">Close</th>
+                                    <th style="width: 10%; border-collapse: collapse; text-align: center">$y_1=$ <input id = 'F1_y1' style="text-align: center" type="number" name="y1" value="0"></th>
+                                    <th style="width: 10%; border-collapse: collapse; text-align: center">$y_2=$ <input id = 'F1_y2' style="text-align: center" type="number" name="y2" value="-5"></th>
+                                    <th style="width: 10%; border-collapse: collapse; text-align: center">$y_3=$ <input id = 'F1_y3' style="text-align: center" type="number" name="y3" value="-10"></th>
+
+                                </tr>
+                                <tr>
+                                    <th style="width: 20%; border-right: 1px solid black;border-collapse: collapse;text-align: center">Okay</th>
+                                    <th style="width: 10%; border-collapse: collapse; text-align: center">$y_4=$ <input id = 'F1_y4' style="text-align: center" type="number" name="y4" value="3"></th>
+                                    <th style="width: 10%; border-collapse: collapse; text-align: center">$y_5=$ <input id = 'F1_y5' style="text-align: center" type="number" name="y5" value="0"></th>
+                                    <th style="width: 10%; border-collapse: collapse; text-align: center">$y_6=$ <input id = 'F1_y6' style="text-align: center" type="number" name="y6" value="-3"></th>
+
+                                </tr>
+                                <tr>
+                                    <th style="width: 20%; border-bottom: 1px solid black;border-right: 1px solid black;border-collapse: collapse;text-align: center">Far</th>
+                                    <th style="width: 10%; border-bottom: 1px solid black;border-collapse: collapse; text-align: center">$y_7=$ <input id = 'F1_y7' style="text-align: center" type="number" name="y7" value="10"></th>
+                                    <th style="width: 10%; border-bottom: 1px solid black;border-collapse: collapse; text-align: center">$y_8=$ <input id = 'F1_y8' style="text-align: center" type="number" name="y8" value="5"></th>
+                                    <th style="width: 10%; border-bottom: 1px solid black;border-collapse: collapse; text-align: center">$y_9=$ <input id = 'F1_y9' style="text-align: center" type="number" name="y9" value="0"></th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                        <button id="F1_acceleration_table" style="float: right" onclick="getvalue()">   Update  </button>
+
+                    <br><br>
+                    <a class="marker" href="#fig_T1_acc"><span>Figure 6</span></a>
+                    <div id="fig_T1_acc" class="l-interactive" style="margin-bottom: 20px">
+                        <table>
+                            <tr>
+                                <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
+                                <td><div class="interactiveopener"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="fig6" style="margin-left: 25%"></div>
+<!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
+                        <div class="caption">
+                            <b>Figure 6:</b> Input-output mapping of the T1 fuzzy system.
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <h3>D. T1 Fuzzy System Optimization</h3>
+            <a class="marker" href="#T1 opt"><span>Type-1 Fuzzy optimization</span></a>
+            <div id="T1 opt">
+                <div>
+                    <p>A T1 fuzzy system should be optimized for each specific task.
+                        Generally, there are three different strategies <d-cite bibtex-key="drwuGD2020"></d-cite>:</p>
+                    <ol>
+                        <li>
+                            <p><i>Evolutionary computing</i> <d-cite bibtex-key="Ishibuchi1995"></d-cite>.</p>
+                            <p>The antecedent and consequent parameters are encoded as chromosomes in a population;
+                            genetic operators, e.g., selection, crossover, mutation, and reproduction,
+                            can then be used to generate the next (better) generation.
+                            The best chromosome in the final generation is selected as the best parameter set.</p>
+                        </li>
+
+                        <li>
+                            <p><i>Gradient descent</i>. For example, back-propagation <d-cite bibtex-key="Rumelhart1986"></d-cite></p>
+                            <p>can be used to iteratively find the optimal antecedent and consequent parameters.
+                            Recently, inspired by the equivalence/similarity between TSK fuzzy systems and
+                            neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective
+                            optimization techniques for the latter have been extended to fuzzy system
+                            optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>
+                        </li>
+
+                        <li>
+                            <p><i>Gradient descent and least squares estimation</i>. </p>
+                            <p>For example,
+                            in adaptive-network-based fuzzy inference system (ANFIS) <d-cite bibtex-key="Jang1993"></d-cite>,
+                            the antecedent parameters are optimized by gradient descent, and the consequent
+                            parameters by least squares estimation.</p>
+                        </li>
+                    </ol>
+
+                </div>
+
+            </div>
+        </div>
+
+        <h2>Interval Type-2 (IT2) Fuzzy Sets and Fuzzy Systems</h2>
+        <a class="marker" href="#IT2fuzzy set"><span>Interval Type-2 (IT2) Fuzzy Sets and Fuzzy Systems</span></a>
+        <div id="IT2fuzzy set">
+            <div>
+                <p>
+                    Despite having a name which carries the connotation of uncertainty,
+                    research has shown that there are limitations in the ability of T1 fuzzy sets to model
+                    and minimize the effect of uncertainties <d-cite bibtex-key="Mendel2017"></d-cite> <d-cite bibtex-key="Hagras2007"></d-cite>.
+                    This is because a T1 fuzzy set is certain in the sense that its membership grades are crisp values.
+                    Type-2 fuzzy sets <d-cite bibtex-key="Zadeh1975"></d-cite>, characterized by MFs that are themselves fuzzy,
+                    have been attracting interests.</p>
+            </div>
+            <h3>A. IT2 Fuzzy Sets</h3>
+            <a class="marker" href="#IT2FuzzySets"><span>IT2 Fuzzy Sets</span></a>
+            <div id="IT2FuzzySets">
+                <p>Interval type-2 (IT2) fuzzy sets <d-cite bibtex-key="Mendel2017"></d-cite>, a special case of type-2 fuzzy sets,
+                    are currently the most widely used type-2 fuzzy sets, for their reduced computational cost.</p>
+                <h4>Definition 2 <d-cite bibtex-key="Mendel2017"></d-cite></h4> <a class="marker" href="#define2"><span>IT2 fuzzy set Definition 2</span></a>
+                <div id="define2">
+                    <p>
+                    An IT2 fuzzy set $\tilde{X}$ is characterized by its MF $\mu_{\tilde{X}} (x,u)$, i.e.,</p>
+                    <a class="marker" href="#eq5"><span>equation1</span></a>
+
+                    <p></p><span id="eq5">
+                        $\widetilde{X}=\int\limits_{x\in D_{\tilde{X}}}\, \int\limits_{u\in [0,1]}\mu_{\tilde{X}} (x,u)/(x,u)
+                    =\int\limits_{x\in D_{\tilde{X}}}\,\int\limits_{u\in [0,1]}1/(x,u)
+                    =\int\limits_{x\in D_{\tilde{X}}}\left.\left[\int\limits_{u\in [0,1]}1/u\right]\right/x$
+                    </span>
+                    <span style="float: right">
+                        $(5)$
+                    </span></p>
+
+                    <p>where $x$, called the <i>primary variable</i>, has domain $D_{\tilde{X}}$;
+                    $u\in [0,1]$ is the <i>secondary variable</i>; and, the amplitude of $\mu_{\tilde{X}} (x,u)$,
+                        called a <i>secondary grade</i> of $\tilde{X}$, equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. $\blacksquare$</p>
+                </div>
+                <div>
+                    <p>
+                        An example of an IT2 fuzzy set $\tilde{X}$ is shown in <a herf="#fig7">Fig. $7$</a>.
+                        Observe that unlike a T1 fuzzy set, whose membership for each $x$ is a number,
+                        the membership of an IT2 fuzzy set is an interval. For example, the membership of $x=3$ is $[0.25, 1]$,
+                        and the membership of $x=5$ is $[0.75, 1]$. A membership interval $[0.25, 1]$ means that
+                        some people think the membership of $x=3$ is $0.25$, some think the membership is $1$,
+                        and others may think the membership is any value between $0.25$ and $1$, i.e.,
+                        an IT2 fuzzy set can model inter-personal uncertainties, whereas a T1 fuzzy set cannot.
+                    </p>
+                    <p>
+                        <a herf="#fig7">Fig. $7$</a> shows that an IT2 fuzzy set is bounded from the above and below by two T1 fuzzy sets,
+                        which are called <i>upper MF</i> (UMF) and <i>lower MF</i> (LMF), respectively.
+                        The area between the LMF and the UMF is the <i>footprint of uncertainty</i> (FOU).
+                    </p>
+                </div>
+                <div>
+                    <a class="marker" href="#fig7"><span>equation1</span></a>
+                    <div class="l-interactive" style="margin-bottom: 20px">
+                        <table>
+                            <tr>
+                                <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
+                                <td><div class="interactiveopener"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="IT2FuzzyExp" style="width: 40%; margin: auto auto 10px;"></div>
+                        <div class="caption"><b>Figure 7:</b><br> Example of an IT2 fuzzy set.</div>
+                    </div>
+                    <script id="fig7" type="module" src="Fuzzy_solve/IT2_Fuzzy_demo.js"></script>
+                </div>
+
+
+            </div>
+
+            <h3>B. IT2 Fuzzy System</h3>
+            <a class="marker" href="#IT2 sys"><span>IT2 Fuzzy System</span></a>
+            <div id="'IT2 sys">
+                <div>
+                    <p><a href="#fig8">Fig. $8$</a> shows the schematic diagram of an IT2 fuzzy system. It is similar to its T1 counterpart,
+                    the major difference being that at least one of the fuzzy sets in the rulebase is an IT2 fuzzy set.
+                    Hence, the outputs of the inference engine are IT2 fuzzy sets, and a type-reducer is usually needed
+                    (it can be bypassed <d-cite bibtex-key="Nie2008"></d-cite> <d-cite bibtex-key="Mendel2017"></d-cite>, too)
+                        to convert them into a T1 fuzzy set before defuzzification can be carried out.</p>
+                </div>
+                <div>
+                    <a class="marker" href="#fig8"><span>Figure1</span></a>
+
+                    <div class="l-body" style="width: 100%">
+                        <img id="fig8" src="myimg/IT2FLS.svg" alt="An IT2 fuzzy system" style="margin: auto auto; width: 50%; display: block"/>
+                        <div class="caption"><b>Figure 8:</b><br> An IT2 fuzzy system.</div>
+                    </div>
+                </div>
+                <div><br>
+                    <p>Consider the rulebase of an IT2 TSK fuzzy system consisting of $K$ rules, assuming the following form:</p>
+                    <p>
+                        $\tilde{R}_k: \mbox{ IF } x_1 \mbox{ is } \widetilde{X}_{k,1} \mbox{ AND } \cdots \mbox{ AND } x_d \mbox{ is } \widetilde{X}_{k,d}, \mbox{ THEN } Y_k(\mathbf{x}) = [\underline{y}_k,\ \overline{y}_k], \quad k=1,...,K
+                        $
+                    </p>
+                    <div><p>where $\widetilde{X}_{k,i}$ $(i=1,\ldots,d)$ are IT2 fuzzy sets,
+                        and $Y_k(\mathbf{x}) = [\underline{y}_k,\  \overline{y}_k]$ is an interval,
+                        which can be understood as the centroid <d-cite bibtex-key="Mendel2017"></d-cite> of a consequent
+                        IT2 fuzzy set<d-footnote>The rule consequents can be IT2 fuzzy sets;
+                        however, when the popular center-of-sets type-reducer <d-cite bibtex-key="Mendel2017"></d-cite> is used,
+                        these consequent IT2 fuzzy sets are replaced by their centroids in the computation;
+                        so, it is more convenient to represent the rule consequents as intervals directly.</d-footnote>.
+                        In many applications we use $\underline{y}_n=\overline{y}_n$, i.e., each rule consequent is a crisp number.</p>
+                    </div>
+
+                </div>
+                <div>
+                    <p>
+                    For a particular input $\mathbf{x}=(x_1,...,x_d)$, the output of the IT2 TSK fuzzy system is computed as:
+                        <a class="marker" href="#inference2"></a></p>
+                    <ol>
+                        <li>
+                            <p><i>Fuzzification</i>: </p>
+                            <p>Compute the membership interval
+                                $[\mu_{\underline{X}_{k,i}}(x_i),\mu_{\overline{X}_{k,i}}(x_i)]$ of $x_i$ on each $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).</p>
+                        </li>
+                        <li id="inference2">
+                            <p><i>Inference</i>:</p>
+                            <p>Compute the firing interval of the $k^{\mathrm{th}}$ rule, $F_k(\mathbf{x})$:</p>
+
+                            <a class="marker" href="#eq6"><span>equation1</span></a>
+                            <p>
+                                <span id="eq6">
+                                        $F_k (\mathbf{x}) = [\mu_{\underline{X}_{k,1}}(x_1)\times\cdots\times\mu_{\underline{X}_{k,d}}(x_d),
+                                \mu_{\overline{X}_{k,1}}(x_1)\times\cdots\times\mu_{\overline{X}_{k,d}}(x_d)] \equiv [\underline{f}_k,\,\overline{f}_k], \quad k=1,...,K$
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(6)$
+                                </span>
+                            </p>
+                            <p>
+                            Note that the minimum operation could also be used to replace the multiplication above. Inference is performed by:
+                            </p>
+                            <a class="marker" href="#eq7"></a>
+                            <p>
+                                <span id="eq7">
+                                    $Y(\mathbf{x}) = \bigcup\limits_{f_k \in F_k(\mathbf{x}) \atop y_k \in Y_k(\mathbf{x})} \frac{\sum\limits_{k=1}^K f_k y_k} {\sum\limits_{k=1}^K f_k}. $
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(7)$
+                                </span>
+                            </p>
+                            <p>
+                                <a href="#eq7">$(7)$</a>is a direct extension of <a href="#eq3">$(3)$</a>,
+                                when all $f_k(\mathbf{x})$ and $y_k(\mathbf{x})$ in <a href="#eq3">$(3)$</a> become intervals.
+                            </p>
+
+                        </li>
+                        <li>
+                            <p><i>Type-reduction</i>:</p>
+                            <p>Many different approaches <d-cite bibtex-key="Mendel2017"></d-cite> can be used to compute the <a href="#eq7">$(7)$</a>.
+                                When the popular center-of-sets type-reducer <d-cite bibtex-key="Mendel2017"></d-cite> is used, the type-reduced output is:</p>
+                            <a class="marker" href="#eq8"></a>
+                            <p>
+                                <span id="eq8">
+                                    $ Y(\mathbf{x}) =[y_l,\ y_r],$
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(8)$
+                                </span>
+                            </p>
+                            <p>where:</p>
+                            <a class="marker" href="#eq9"></a>
+                            <p>
+                                <span id="eq9">
+                                    $y_l=\min\limits_{l\in[1,K-1]}\frac{\sum_{k=1}^l\overline{f}_k\underline{y}_k+\sum_{k=l+1}^K
+                            \underline{f}_k\underline{y}_k}
+                            {\sum_{k=1}^l\overline{f}_k+\sum_{k=l+1}^K\underline{f}_k}\equiv \frac{\sum_{k=1}^L\overline{f}_k\underline{y}_k+\sum_{k=L+1}^K\underline{f}_k\underline{y}_k}
+                            {\sum_{k=1}^L\overline{f}_k+\sum_{k=L+1}^K\underline{f}_k},
+                            $
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(9)$
+                                </span>
+                            </p>
+                            <a class="marker" href="#eq10"></a>
+                            <p>
+                                <span id="eq10">
+                                    $
+                            y_r=\max\limits_{r\in[1,K-1]}\frac{\sum_{k=1}^r\underline{f}_k\overline{y}_k+\sum_{k=r+1}^K
+                            \overline{f}_k\overline{y}_k}
+                            {\sum_{k=1}^r\underline{f}_k+\sum_{k=r+1}^K\overline{f}_k}\equiv \frac{\sum_{k=1}^R\underline{f}_k\overline{y}_k+\sum_{k=R+1}^K\overline{f}_k\overline{y}_k}
+                            {\sum_{k=1}^R\underline{f}_k+\sum_{k=R+1}^K\overline{f}_k},
+                            $
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(10)$
+                                </span>
+                            </p>
+
+                            <p>in which the <i>switch points</i> $L$ and $R$ are determined by</p>
+                            <a class="marker" href="#eq11"></a>
+                            <p>
+                                <span id="eq11">
+                                    $ \underline{y}_L \le y_l\le \underline{y}_{L+1},$
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(11)$
+                                </span>
+                            </p>
+                            <a class="marker" href="#eq12"></a>
+                            <p>
+                                <span id="eq12">
+                                    $ \overline{y}_R \le y_r\le \overline{y}_{R+1},$
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(12)$
+                                </span>
+                            </p>
+
+
+                            <p>and $\{\underline{y}_k\}_{k=1}^K$ and $\{\overline{y}_k\}_{k=1}^K$ have been sorted in ascending order,
+                                respectively.</p>
+                            <p>
+                            $y_l$ and $y_r$ can be computed using the original Karnik-Mendel algorithms <d-cite bibtex-key="Mendel2017"></d-cite>,
+                            the enhanced Karnik-Mendel algorithms <d-cite bibtex-key="drwuEKM2009"></d-cite>, the iterative algorithm with stop condition (IASC),
+                            or the enhanced IASC (EIASC) <d-cite bibtex-key="drwuCCTFS2013"></d-cite>, all of which have been included in the official Matlab Fuzzy
+                            Logic Toolbox<d-footnote>https://www.mathworks.com/help/fuzzy/type-2-fuzzy-inference-systems.html</d-footnote>.
+                            See, also <d-cite bibtex-key="drwuDAND2021"></d-cite> for other algorithms.</p>
+                        </li>
+                        <li>
+                            <p><i>Defuzzification</i>:</p>
+                            <p> The defuzzified crisp output is:</p>
+                            <a class="marker" href="#eq13"></a>
+                            <p>
+                                <span id="eq13">
+                                    $ y = \frac{y_l+y_r} {2}.$
+                                </span>
+                                <span style= "float:right; text-align: right">
+                                    $(13)$
+                                </span>
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <h3>C. Type-Reduction Explained</h3>
+            <a class="marker" href="#Type-Reduction Explained"><span>Type-Reduction Explained</span></a>
+            <div id="Type-Reduction Explained">
+                <div>
+                    <p>One of the most efficient type-reduction algorithm, EIASC <d-cite bibtex-key="drwuCCTFS2013"></d-cite>,
+                        is shown in <a href="#tab2">Table $2$</a>.</p>
+                </div>
+
+                <div>
+                    <a class="marker" href="#tab2"><span>rulebase</span></a>
+                    <div class="caption" id="tab2">
+                        <b>Table 2:</b><br> The EIASC <d-cite bibtex-key="drwuCCTFS2013"></d-cite>. Note that $\{\underline{y}_k\}_{k=1}^K$ and
+                        $\{\overline{y}_k\}_{k=1}^K$ have been sorted in ascending order, respectively.<br><br>
+                    </div>
+                    <table style="margin: auto auto">
+                        <tr>
+                            <th style="width: 5%; border-bottom: 1px solid black;border-right: 1px solid black;border-top: 1px solid black;border-collapse: collapse;text-align: center">Step</th>
+                            <th style="width: 30%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">For computing $y_l$</th>
+                            <th style="width: 30%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">For computing $y_r$</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center">1</th>
+                            <th style="width: 30%; text-align: center">Initialize</th>
+                            <th style="width: 30%; text-align: center">Initialize</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center"></th>
+                            <th style="width: 30%; text-align: center">$a=\sum_{k=1}^K\underline{y}_k\underline{f}_k$ </th>
+                            <th style="width: 30%; text-align: center">$a=\sum_{k=1}^K\overline{y}_k\underline{f}_k$</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center"></th>
+                            <th style="width: 30%; text-align: center">$b=\sum_{k=1}^K\underline{f}_k$</th>
+                            <th style="width: 30%; text-align: center">$b=\sum_{k=1}^K\underline{f}_k$</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center"></th>
+                            <th style="width: 30%; text-align: center">$L=0$</th>
+                            <th style="width: 30%; text-align: center">$R=K$</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center">2</th>
+                            <th style="width: 30%; text-align: center">Compute</th>
+                            <th style="width: 30%; text-align: center">Compute</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center"></th>
+                            <th style="width: 30%; text-align: center">$L=L+1$</th>
+                            <th style="width: 30%; text-align: center">$a=a+\overline{y}_R(\overline{f}_R-\underline{f}_R)$</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center"></th>
+                            <th style="width: 30%; text-align: center">$a=a+\underline{y}_L(\overline{f}_L-\underline{f}_L)$</th>
+                            <th style="width: 30%; text-align: center">$b=b+\overline{f}_R-\underline{f}_R$</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center"></th>
+                            <th style="width: 30%; text-align: center">$b=b+\overline{f}_L-\underline{f}_L$</th>
+                            <th style="width: 30%; text-align: center">$y_r=a/b$</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center"></th>
+                            <th style="width: 30%; text-align: center">$y_l=a/b$</th>
+                            <th style="width: 30%; text-align: center">$R=R-1$</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-right: 1px solid black;text-align: center">3</th>
+                            <th style="width: 30%; text-align: center">If $y_l\le \underline{y}_{L+1}$, stop;</th>
+                            <th style="width: 30%; text-align: center">If $y_r\ge \overline{y}_R$, stop;</th>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 5%; border-bottom: 1px solid black;border-right: 1px solid black;border-collapse: collapse;text-align: center"></th>
+                            <th style="width: 30%; border-bottom: 1px solid black;border-collapse: collapse; text-align: center">otherwise, go to Step 2.</th>
+                            <th style="width: 30%; border-bottom: 1px solid black;border-collapse: collapse; text-align: center">otherwise, go to Step 2.</th>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <p><br>
+                        The main idea of EIASC is to find the switch points for $y_l$ and $y_r$. Take $y_l$ for example.
+                        $y_l$ is the minimum of <a href="#eq7"> $(7)$</a>.
+                        Since $\underline{y}_k$ increases from the left to the right along the horizontal axis of <a href="#fig9a">Fig. $9(a)$</a>,
+                        we should choose a large weight (upper membership grade) for $\underline{y}_k$ on the
+                        left and a small weight (lower membership grade) for $\underline{y}_k$ on the right. EIASC
+                        finds the switch point $L$. For $k\leq L$, the upper membership grades are used to
+                        calculate $y_l$; for $k>L$, the lower membership grades are used.
+                        This ensures $y_l$ is the minimum.</p>
+                    <a class="marker" href="#fig9a"><span>Figure9(a)</span></a>
+                    <a class="marker" href="#fig9b"><span>Figure9(b)</span></a>
+
+                    <div class="l-body" style="width: 100%">
+                        <img id="fig9a" src="myimg/Yl.svg" alt="Distance." style="margin: auto auto; width: 30%; display: block"/>
+                        <div style="text-align: center"><b>(a)</b></div>
+
+                        <img id="fig9b" src="myimg/Yr.svg" alt="Speed." style="margin: auto auto; width:30%; display: block"/>
+                        <div style="text-align: center"><b>(b)</b></div>
+
+                        <div class="caption"><b>Figure 9:</b><br> Illustration of the switch points $L$ and $R$ in computing $y_l$ and $y_r$, respectively.
+                            (a) Computing $y_l$: switch from the upper firing level to the lower firing level;
+                            (b) computing $y_r$: switch from the lower firing level to the upper firing level.</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <h3>D. Example of IT2 TSK Fuzzy System</h3>
+            <a class="marker" href="#IT2 sys"><span>Example of IT2 TSK Fuzzy System</span></a>
+            <div id="'T1fuzzy set">
+                <div>
+                    <p>
+                        This subsection uses the car following example again to illustrate the computations in an IT2 TSK fuzzy system.
+                    </p>
+                    <p>
+                        Assume the distance has three IT2 MFs, Close, Okay and Far, as depicted in <a href="#fig10a">Fig. $10(a)$</a>,
+                        and the relative speed also has three IT2 MFs, Slow, Okay and Fast, as depicted in <a href="#fig10b">Fig. $10(b)$</a>,.
+                        Note again that the word "Okay" for the distance and the relative speed has different IT2 fuzzy set representations.
+                    </p>
+                    <a class="marker" href="#fig10a"><span>Figure10(a)</span></a>
+                    <a class="marker" href="#fig10b"><span>Figure10(b)</span></a>
+
+                    <div class="l-body" style="width: 100%">
+                        <img id="fig10a" src="myimg/DistanceT2.svg" alt="Diagram of a IT2 fuzzy system." style="margin: auto auto; width: 30%; display: block"/>
+                        <div style="text-align: center"><b>(a)</b></div>
+
+                        <img id="fig10b" src="myimg/SpeedT2.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:30%; display: block"/>
+                        <div style="text-align: center"><b>(b)</b></div>
+
+                        <div class="caption"><b>Figure 10:</b><br> IT2 MFs for the distance and the relative speed, in the car following example.</div>
+                    </div>
+                </div>
+
+                <div>
+                    </br>
+                    <p>There are again nine rules, whose consequents are intervals:</p>
+                    <ul>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_1: \mbox{ IF distance is Close AND relative speed is Slow, THEN acceleration is } Y_1=[-1,1]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_2: \mbox{ IF distance is Close AND relative speed is Okay, THEN acceleration is } Y_2=[-6,-4]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_3: \mbox{ IF distance is Close AND relative speed is Fast, THEN acceleration is } Y_3=[-11,-9]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_4: \mbox{ IF distance is Okay AND relative speed is Slow, THEN acceleration is } Y_4=[2,4]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_5: \mbox{ IF distance is Okay AND relative speed is Okay, THEN acceleration is } Y_5=[-1,1]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_6: \mbox{ IF distance is Okay AND relative speed is Fast, THEN acceleration is } Y_6=[-4,-2]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_7: \mbox{ IF distance is Far AND relative speed is Slow, THEN acceleration is } Y_7=[9,11]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_8: \mbox{ IF distance is Far AND relative speed is Okay, THEN acceleration is } Y_8=[4,6]$
+                        </li>
+                        <li style="list-style-type: none">
+                            $\widetilde{R}_9: \mbox{ IF distance is Far AND relative speed is Fast, THEN acceleration is } Y_9=[-1,1]$
+                        </li>
+                    </ul>
+                    <div>
+                        <p>
+                            Assume the current distance to the front car is 47 meters, and the relative speed is 4 KM/h.
+                            Let $\underline{\mathrm{Close}}$ and $\overline{\mathrm{Close}}$ be the LMF and UMF of $\mathrm{Close}$, respectively.
+                            LMFs and UMFs of other words are denoted in a similar way.
+                            The membership grades on the corresponding LMFs and UMFs are shown in <a href="#fig11">Fig. $11$</a>:
+                        </p>
+                        <p style="text-align: center">
+
+                            $\quad \mu_{_{\underline{\mathrm{Close}}}}($
+                            <d-math id="dst_close_l_x1"></d-math>
+                            $),\mu_{_{\overline{\mathrm{Close}}}}($
+                            <d-math id="dst_close_u_x1"></d-math>
+                            $)]=[$
+                            <d-math id="dst_close_y_l"></d-math>
+                            $, $
+                            <d-math id="dst_close_y_u"></d-math>
+                            $]$
+                            $\quad \mu_{_{\underline{\mathrm{Okay}}}}($
+                            <d-math id="dst_close_l_x2"></d-math>
+                            $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                            <d-math id="dst_close_u_x2"></d-math>
+                            $)]=[$
+                            <d-math id="dst_oky_y_l"></d-math>
+                            $, $
+                            <d-math id="dst_oky_y_u"></d-math>
+                            $]$
+                            $\quad \mu_{_{\underline{\mathrm{Far}}}}($
+                            <d-math id="dst_close_l_x3"></d-math>
+                            $),\mu_{_{\overline{\mathrm{Far}}}}($
+                            <d-math id="dst_close_u_x3"></d-math>
+                            $)]=[$
+                            <d-math id="dst_far_y_l"></d-math>
+                            $, $
+                            <d-math id="dst_far_y_u"></d-math>
+                            $]$
+                        </p><br>
+                        <p style="text-align: center">
+                            $\quad \mu_{_{\underline{\mathrm{Slow}}}}($
+                            <d-math id="spd_slow_l_x1"></d-math>
+                            $),\mu_{_{\overline{\mathrm{Slow}}}}($
+                            <d-math id="spd_slow_u_x1"></d-math>
+                            $)]=[$
+                            <d-math id="spd_slow_y_l"></d-math>
+                            $, $
+                            <d-math id="spd_slow_y_u"></d-math>
+                            $]$
+                            $\quad \mu_{_{\underline{\mathrm{Okay}}}}($
+                            <d-math id="spd_slow_l_x2"></d-math>
+                            $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                            <d-math id="spd_slow_u_x2"></d-math>
+                            $)]=[$
+                            <d-math id="spd_okay_y_l"></d-math>
+                            $, $
+                            <d-math id="spd_okay_y_u"></d-math>
+                            $]$
+                            $\quad \mu_{_{\underline{\mathrm{Fast}}}}($
+                            <d-math id="spd_slow_l_x3"></d-math>
+                            $),\mu_{_{\overline{\mathrm{Fast}}}}($
+                            <d-math id="spd_slow_u_x3"></d-math>
+                            $)]=[$
+                            <d-math id="spd_fast_y_l"></d-math>
+                            $, $
+                            <d-math id="spd_fast_y_u"></d-math>
+                            $]$
+
+                        </p>
+                        <br>
+<!--                        <a class="marker" href="#fig11a"><span>Figure11(a)</span></a>-->
+<!--                        <a class="marker" href="#fig11b"><span>Figure11(b)</span></a>-->
+                        <a class="marker" href="#fig11"><span>Figure11</span></a>
+                        <div id="fig11" class="l-interactive" style="margin-bottom: 20px">
+                            <table>
+                                <tr>
+                                    <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
+                                    <td><div class="interactiveopener"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div id="T2FuzzyExp_a" style="width: 40%; margin: auto auto 10px;"></div>
+                            <div style="text-align: center"><b>(a)</b></div>
+                            <div id="T2FuzzyExp_b" style="width: 40%; margin: auto auto 10px;"></div>
+                            <div style="text-align: center"><b>(b)</b></div>
+                            <div class="caption"><b>Figure 11:</b><br>
+                                Membership intervals on the IT2 fuzzy sets. (a) Distance is 47 meters; (b) Relative speed is 4 KM/h.
+                            </div>
+                            <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_dist_drag.js"></script>
+                            <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_speed_drag.js"></script>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <br>
+                    <p>The firing intervals of the nine rules are:</p>
+                    <div>
+                        <table style="margin: auto auto">
+                            <tr>
+                                <th style="width: 10%; border-bottom: 1px solid black;border-right: 1px solid black;border-top: 1px solid black;border-collapse: collapse;text-align: center">Rule No.:</th>
+                                <th style="width: 45%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">Firing Interval</th>
+                                <th style="width: 5%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">Consequent</th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_1:$ </th>
+                                <th style="width: 45%; text-align: center">$[\underline{f}_1,\overline{f}_1]=[\mu_{_{\underline{\mathrm{Close}}}}($
+                                    <d-math id="dst_close_l_x2_a"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Slow}}}}($
+                                    <d-math id="spd_slow_l_x2_a"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Close}}}}($
+                                    <d-math id="dst_close_u_x1_a"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Slow}}}}($
+                                    <d-math id="spd_slow_u_x1_a"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_close_l_y_a"></d-math>
+                                    $\times $
+                                    <d-math id="spd_slow_l_y_a"></d-math>
+                                    $,$
+                                    <d-math id="dst_close_u_y_a"></d-math>
+                                    $\times$
+                                    <d-math id="spd_slow_u_y_a"></d-math>
+                                    $]=[$
+                                    <d-math id="result_1_2"></d-math>
+                                    $,$
+                                    <d-math id="result_1_1"></d-math>
+                                    $]$</th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th><d-math id=""></d-math>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_1,\overline{y}_1]=[-1,1]$</th>
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_2:$ </th>
+                                <th style="width: 45%; text-align: center">
+                                    $[\underline{f}_2,\overline{f}_2]=[\mu_{_{\underline{\mathrm{Close}}}}($
+                                    <d-math id="dst_close_l_x2_b"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Okay}}}}($
+                                    <d-math id="spd_okay_l_x2_b"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Close}}}}($
+                                    <d-math id="dst_close_u_x1_b"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    <d-math id="spd_okay_u_x1_b"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_close_l_y_b"></d-math>
+                                    $\times $
+                                    <d-math id="spd_okay_l_y_b"></d-math>
+                                    $,$
+                                    <d-math id="dst_close_u_y_b"></d-math>
+                                    $\times$
+                                    <d-math id="spd_okay_u_y_b"></d-math>
+                                    $]=[$
+                                    <d-math id="result_2_2"></d-math>
+                                    $,$
+                                    <d-math id="result_2_1"></d-math>
+                                    $]$
+
+                                </th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_2,\overline{y}_2]=[-6,-4]$</th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_3:$ </th>
+                                <th style="width: 45%; text-align: center">
+                                    $[\underline{f}_3,\overline{f}_3]=[\mu_{_{\underline{\mathrm{Close}}}}($
+                                    <d-math id="dst_close_l_x2_c"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Fast}}}}($
+                                    <d-math id="spd_fast_l_x2_c"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Close}}}}($
+                                    <d-math id="dst_close_u_x1_c"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Fast}}}}($
+                                    <d-math id="spd_fast_u_x1_c"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_close_l_y_c"></d-math>
+                                    $\times $
+                                    <d-math id="spd_fast_l_y_c"></d-math>
+                                    $,$
+                                    <d-math id="dst_close_u_y_c"></d-math>
+                                    $\times$
+                                    <d-math id="spd_fast_u_y_c"></d-math>
+                                    $]=[$
+                                    <d-math id="result_3_2"></d-math>
+                                    $,$
+                                    <d-math id="result_3_1"></d-math>
+                                    $]$
+
+                                </th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_3,\overline{y}_3]=[-11,-9]$ </th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_4:$ </th>
+                                <th style="width: 45%; text-align: center">
+                                    $[\underline{f}_4,\overline{f}_4]=[\mu_{_{\underline{\mathrm{Okay}}}}($
+                                    <d-math id="dst_oky_l_x2_d"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Slow}}}}($
+                                    <d-math id="spd_slow_l_x2_d"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    <d-math id="dst_oky_u_x1_d"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Slow}}}}($
+                                    <d-math id="spd_slow_u_x1_d"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_oky_l_y_d"></d-math>
+                                    $\times $
+                                    <d-math id="spd_slow_l_y_d"></d-math>
+                                    $,$
+                                    <d-math id="dst_oky_u_y_d"></d-math>
+                                    $\times$
+                                    <d-math id="spd_slow_u_y_d"></d-math>
+                                    $]=[$
+                                    <d-math id="result_4_2"></d-math>
+                                    $,$
+                                    <d-math id="result_4_1"></d-math>
+                                    $]$
+
+                                </th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_4,\overline{y}_4]=[2,4]$</th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_5:$ </th>
+                                <th style="width: 45%; text-align: center">
+                                    $[\underline{f}_5,\overline{f}_5]=[\mu_{_{\underline{\mathrm{Okay}}}}($
+                                    <d-math id="dst_oky_l_x2_e"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Okay}}}}($
+                                    <d-math id="spd_okay_l_x2_e"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    <d-math id="dst_oky_u_x1_e"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    <d-math id="spd_okay_u_x1_e"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_oky_l_y_e"></d-math>
+                                    $\times $
+                                    <d-math id="spd_okay_l_y_e"></d-math>
+                                    $,$
+                                    <d-math id="dst_oky_u_y_e"></d-math>
+                                    $\times$
+                                    <d-math id="spd_okay_u_y_e"></d-math>
+                                    $]=[$
+                                    <d-math id="result_5_2"></d-math>
+                                    $,$
+                                    <d-math id="result_5_1"></d-math>
+                                    $]$
+
+                                </th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_5,\overline{y}_5]=[-1,1]$</th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_6:$ </th>
+                                <th style="width: 45%; text-align: center">
+                                    $[\underline{f}_6,\overline{f}_6]=[\mu_{_{\underline{\mathrm{Okay}}}}($
+                                    <d-math id="dst_oky_l_x2_f"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Fast}}}}($
+                                    <d-math id="spd_fast_l_x2_f"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    <d-math id="dst_oky_u_x1_f"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Fast}}}}($
+                                    <d-math id="spd_fast_u_x1_f"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_oky_l_y_f"></d-math>
+                                    $\times $
+                                    <d-math id="spd_fast_l_y_f"></d-math>
+                                    $,$
+                                    <d-math id="dst_oky_u_y_f"></d-math>
+                                    $\times$
+                                    <d-math id="spd_fast_u_y_f"></d-math>
+                                    $]=[$
+                                    <d-math id="result_6_2"></d-math>
+                                    $,$
+                                    <d-math id="result_6_1"></d-math>
+                                    $]$
+
+                                </th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_6,\overline{y}_6]=[-4,-2]$</th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_7:$ </th>
+                                <th style="width: 45%; text-align: center">
+
+                                    $[\underline{f}_7,\overline{f}_7]=[\mu_{_{\underline{\mathrm{Far}}}}($
+                                    <d-math id="dst_far_l_x2_g"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Slow}}}}($
+                                    <d-math id="spd_slow_l_x2_g"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Far}}}}($
+                                    <d-math id="dst_far_u_x1_g"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Slow}}}}($
+                                    <d-math id="spd_slow_u_x1_g"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_far_l_y_g"></d-math>
+                                    $\times $
+                                    <d-math id="spd_slow_l_y_g"></d-math>
+                                    $,$
+                                    <d-math id="dst_far_u_y_g"></d-math>
+                                    $\times$
+                                    <d-math id="spd_slow_u_y_g"></d-math>
+                                    $]=[$
+                                    <d-math id="result_7_2"></d-math>
+                                    $,$
+                                    <d-math id="result_7_1"></d-math>
+                                    $]$
+
+
+                                </th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_7,\overline{y}_7]=[9,11]$</th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_8:$ </th>
+                                <th style="width: 45%; text-align: center">
+                                    $[\underline{f}_8,\overline{f}_8]=[\mu_{_{\underline{\mathrm{Far}}}}($
+                                    <d-math id="dst_far_l_x2_h"></d-math>
+                                    $)\times \mu_{_{\underline{\mathrm{Okay}}}}($
+                                    <d-math id="spd_okay_l_x2_h"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Far}}}}($
+                                    <d-math id="dst_far_u_x1_h"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    <d-math id="spd_okay_u_x1_h"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_far_l_y_h"></d-math>
+                                    $\times $
+                                    <d-math id="spd_okay_l_y_h"></d-math>
+                                    $,$
+                                    <d-math id="dst_far_u_y_h"></d-math>
+                                    $\times$
+                                    <d-math id="spd_okay_u_y_h"></d-math>
+                                    $]=[$
+                                    <d-math id="result_8_2"></d-math>
+                                    $,$
+                                    <d-math id="result_8_1"></d-math>
+                                    $]$
+                                </th>
+                                <th style="width: 5%; text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; text-align: center">$[\underline{y}_8,\overline{y}_8]=[4,6]$ </th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 10%; border-right: 1px solid black;border-bottom: 1px solid black;text-align: center">$\widetilde{R}_9:$ </th>
+                                <th style="width: 45%; border-bottom: 1px solid black;text-align: center">
+                                    $[\underline{f}_9,\overline{f}_9]\quad=\quad[\mu_{_{\underline{\mathrm{Far}}}}($
+                                    <d-math id="dst_far_l_x2_i"></d-math>
+                                    $)\times\mu_{_{\underline{\mathrm{Fast}}}}($
+                                    <d-math id="spd_fast_l_x2_i"></d-math>
+                                    $),\mu_{_{\overline{\mathrm{Far}}}}($
+                                    <d-math id="dst_far_u_x1_i"></d-math>
+                                    $)\times\mu_{_{\overline{\mathrm{Fast}}}}($
+                                    <d-math id="spd_fast_u_x1_i"></d-math>
+                                    $)]$<br>$\quad\quad\quad\quad=[$
+                                    <d-math id="dst_far_l_y_i"></d-math>
+                                    $\times$
+                                    <d-math id="spd_fast_l_y_i"></d-math>
+                                    $,$
+                                    <d-math id="dst_far_u_y_i"></d-math>
+                                    $\times$
+                                    <d-math id="spd_fast_u_y_i"></d-math>
+                                    $]=[$
+                                    <d-math id="result_9_2"></d-math>
+                                    $,$
+                                    <d-math id="result_9_1"></d-math>
+                                    $]$
+
+
+                                </th>
+                                <th style="width: 5%; border-bottom: 1px solid black;text-align: center">$\rightarrow$</th>
+                                <th style="width: 20%; border-bottom: 1px solid black;text-align: center">$[\underline{y}_9,\overline{y}_9]=[-1,1]$</th>
+
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div>
+                        <br>
+                        <p>
+                            Using EIASC, the type-reduced output is computed as:<br>
+                        </p>
+                        <a class="marker" href="#eq14"></a>
+                        <p>
+                            <span id="eq14">
+                                $ Y($
+                                <d-math id="dst_x1_t2"></d-math>
+                                $,$
+                                <d-math id="spd_x1_t2"></d-math>
+                                $)=\sum_{k=1}^9 F_k($
+                                <d-math id="dst_x2_t2"></d-math>
+                                $,$
+                                <d-math id="spd_x2_t2"></d-math>
+                                $)\cdot Y_k \div\sum_{k=1}^9 F_k($
+                                <d-math id="dst_x3_t2"></d-math>
+                                $,$
+                                <d-math id="spd_x3_t2"></d-math>
+                                $)$
+                                $=[$
+                                <d-math id="y_l_l"></d-math>
+                                $,$
+                                <d-math id="y_r_r"></d-math>
+                                $]\equiv[y_l,y_r]$
+                            </span>
+                            <span style= "float:right; text-align: right">
+                                $(14)$
+                            </span>
+                        </p>
+
+
+                        <p>Finally, the crisp output of the IT2 TSK fuzzy system is:</p>
+                        <p>
+                            <span>
+                                $ y =\frac{y_l+y_r}{2} =[($
+                                <d-math id="y_l"></d-math>
+                                $)+($
+                                <d-math id="y_r"></d-math>
+                                $)]\div 2=$
+                                <d-math id="result_y"></d-math>
+                                $.$
+                            </span>
+
+                        </p>
+
+                        <p>Note that this output is different from the output of the T1 fuzzy system in <a href="#T1 example">Section II-C</a>;
+                            however, the output of the T1 fuzzy system, $y(47,4)$ in <a href="#eq4">$(4)$</a>,
+                            is included in the output interval of the IT2 fuzzy system, $Y(47,4)$ above.</p>
+                        <p>
+                            For clarity, the nine rules are also summarized in <a href="#tab3">Table $3$</a>.
+                            The corresponding input-output mapping is shown in <a href="#fig12a">Fig. $12(a)$</a>,
+                            which can be changed by modifying the rule consequents in <a href="#tab3">Table $3$</a>.
+                            The input-output mapping of the IT2 fuzzy system is more complex than its T1 counterpart in <a href="#fig6">Fig. $6$</a>,
+                            as evidenced by the difference between their input-output mappings in <a href="#fig12b">Fig. $12(b)$</a>.
+                            Observe also that <a href="#fig12b">Fig. $12(b)$</a> looks smoother than <a href="#fig6">Fig. $6$</a>,
+                            suggesting that the IT2 controller will provide a smoother ride.</p>
+                    </div>
+
+                    <div>
+                        <a class="marker" href="#tab3"><span>rulebase2</span></a>
+                        <div class="caption" id="tab3">
+                            <b>Table 3:</b><br> Rulebase of the IT2 TSK fuzzy system in the car following example.
+                            The intervals are rule consequents, i.e., acceleration (KM/h$^2$).<br><br>
+                        </div>
+                        <table style="margin: auto auto">
+                            <tr>
+                                <th style="width: 25%; border-bottom: 1px solid black;border-right: 1px solid black;border-top: 1px solid black;border-collapse: collapse;text-align: center">Distance$\setminus$Relative Speed</th>
+                                <th style="width: 15%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">Slow</th>
+                                <th style="width: 15%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">Okay</th>
+                                <th style="width: 15%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center"> Fast </th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 25%; border-right: 1px solid black;border-top: 1px solid black;border-collapse: collapse;text-align: center">Close</th>
+                                <th style="width: 15%; border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_1=[\underline{y}_1,\overline{y}_1]=$<br>$[$
+                                    <input id = 'F2_l_y1' style="text-align: center; width: 25%" type="number" name="y1l" value="-1" oninput="value = listener_1_l()">
+                                    $,$
+                                    <input id = 'F2_u_y1' style="text-align: center; width: 25%" type="number" name="y1u" value="1"  oninput="value = listener_1_u()">
+                                    $]$
+                                </th>
+                                <th style="width: 15%; border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_2=[\underline{y}_2,\overline{y}_2]=$<br>$[$
+                                    <input id = 'F2_l_y2' style="text-align: center; width: 25%" type="number" name="y2l" value="-6" oninput="value = listener_2_l()">
+                                    $,$
+                                    <input id = 'F2_u_y2' style="text-align: center; width: 25%" type="number" name="y2u" value="-4"  oninput="value = listener_2_u()">
+                                    $]$
+                                </th>
+                                <th style="width: 15%; border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_3=[\underline{y}_3,\overline{y}_3]=$<br>$[$
+                                    <input id = 'F2_l_y3' style="text-align: center; width: 25%" type="number" name="y3l" value="-11" oninput="value = listener_3_l()">
+                                    $,$
+                                    <input id = 'F2_u_y3' style="text-align: center; width: 25%" type="number" name="y3u" value="-9" oninput="value = listener_3_u()">
+                                    $]$
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 25%; border-right: 1px solid black;border-top: 1px solid black;border-collapse: collapse;text-align: center">Okay</th>
+                                <th style="width: 15%; border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_4=[\underline{y}_4,\overline{y}_4]=$<br>$[$
+                                    <input id = 'F2_l_y4' style="text-align: center; width: 25%" type="number" name="y4l" value="2" oninput="value = listener_4_l()">
+                                    $,$
+                                    <input id = 'F2_u_y4' style="text-align: center; width: 25%" type="number" name="y4u" value="4" oninput="value = listener_4_u()">
+                                    $]$
+                                </th>
+                                <th style="width: 15%; border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_5=[\underline{y}_5,\overline{y}_5]=$<br>$[$
+                                    <input id = 'F2_l_y5' style="text-align: center; width: 25%" type="number" name="y5l" value="-1" oninput="value = listener_5_l()">
+                                    $,$
+                                    <input id = 'F2_u_y5' style="text-align: center; width: 25%" type="number" name="y5u" value="1" oninput="value = listener_5_u()">
+                                    $]$
+                                </th>
+                                <th style="width: 15%; border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_6=[\underline{y}_6,\overline{y}_6]=$<br>$[$
+                                    <input id = 'F2_l_y6' style="text-align: center; width: 25%" type="number" name="y1l" value="-4" oninput="value = listener_6_l()">
+                                    $,$
+                                    <input id = 'F2_u_y6' style="text-align: center; width: 25%" type="number" name="y1u" value="-2" oninput="value = listener_6_u()">
+                                    $]$
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th style="width: 25%; border-bottom: 1px solid black;border-right: 1px solid black;border-top: 1px solid black;border-collapse: collapse;text-align: center">Far</th>
+                                <th style="width: 15%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_7=[\underline{y}_7,\overline{y}_7]=$<br>$[$
+                                    <input id = 'F2_l_y7' style="text-align: center; width: 25%" type="number" name="y7l" value="9" oninput="value = listener_7_l()">
+                                    $,$
+                                    <input id = 'F2_u_y7' style="text-align: center; width: 25%" type="number" name="y7u" value="11" oninput="value = listener_7_u()">
+                                    $]$
+                                </th>
+                                <th style="width: 15%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_8=[\underline{y}_8,\overline{y}_8]=$<br>$[$
+                                    <input id = 'F2_l_y8' style="text-align: center; width: 25%" type="number" name="y8l" value="4" oninput="value = listener_8_l()">
+                                    $,$
+                                    <input id = 'F2_u_y8' style="text-align: center; width: 25%" type="number" name="y8u" value="6" oninput="value = listener_8_u()">
+                                    $]$
+                                </th>
+                                <th style="width: 15%; border-bottom: 1px solid black;border-top: 1px solid black;border-collapse: collapse; text-align: center">$Y_9=[\underline{y}_9,\overline{y}_9]=$<br>$[$
+                                    <input id = 'F2_l_y9' style="text-align: center; width: 25%" type="number" name="y9l" value="-1" oninput="value = listener_9_l()">
+                                    $,$
+                                    <input id = 'F2_u_y9' style="text-align: center;width: 25%" type="number" name="y9u" value="1" oninput="value = listener_9_u()">$]$
+                                </th>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                    <br>
+                    <button id="F2_acceleration_table" style="float: right" onclick="getvalueT2()">   Update  </button>
+
+                    <br><br>
+                    <a class="marker" href="#fig_T2_acc"><span>Figure 12</span></a>
+                    <div id="fig_T2_acc" class="l-interactive" style="margin-bottom: 20px">
+                        <table>
+                            <tr>
+                                <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
+                                <td><div class="interactiveopener"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="fig12a" style="margin-left: 25%"></div>
+                        <div style="text-align: center"><b>(a)</b></div>
+                        <div id="fig12b" style="margin-left: 25%"></div>
+                        <div style="text-align: center"><b>(b)</b></div>
+                        <!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
+                        <div class="caption">
+                            <b>Figure 12:</b> (a) Input-output mapping of the IT2 fuzzy system; (b) difference between the input-output mappings of the IT2 fuzzy system and
+                            the T1 fuzzy system.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <h3>E. IT2 Fuzzy System Optimization</h3>
+            <a class="marker" href="#IT2opt"><span>IT2 Fuzzy System Optimization</span></a>
+            <div id="IT2opt">
+                <p>Similar to its T1 counterpart, an IT2 fuzzy system should also be optimized for each specific task.
+                    There are generally two different strategies:</p>
+                <p>
+                <ol>
+                    <li><p><i>Evolutionary computing</i> <d-cite bibtex-key="Oh2011"></d-cite>
+                        <br>For example,
+                        genetic algorithms <d-cite bibtex-key="Hidalgo2009"></d-cite>,
+                        particle swarm optimization <d-cite bibtex-key="Wang2019b"></d-cite>, a
+                        nd their combination <d-cite bibtex-key="Martinez-Soto2014"></d-cite>,
+                        have been used.</p>
+                    </li>
+
+                    <li><p><i>Gradient descent</i>
+                        <br>For example, gradient descent has been used to optimize self-evolving
+                        interval type-2 fuzzy neural networks <d-cite bibtex-key="Lin2014"></d-cite>, and a hybrid of
+                        decoupled extended Kalman filter
+                        and gradient descent has been used to optimize interval type-2 intuitionistic
+                        fuzzy logic systems <d-cite bibtex-key="Eyoh2018b"></d-cite>.</p>
+                    </li>
+
+                </ol></p>
+            </div>
+
+            <h3>F. Main Differences between IT2 and T1 Fuzzy Systems</h3>
+            <a class="marker" href="#difference"><span>Main Differences between IT2 and T1 Fuzzy Systems</span></a>
+            <div id="difference">
+                <p>A challenging question is: <i>What are the main differences between IT2 and T1 fuzzy systems?</i> Once
+                the differences are clear, we can better understand the advantages of IT2 fuzzy systems and hence better
+                make use of them. In the literature there has been considerable effort on answering this challenging and
+                    fundamental question. Some important arguments are <d-cite bibtex-key="drwuFundamental2012"></d-cite>:</p>
+                <p>
+                <ol>
+                    <li><p><i>An IT2 fuzzy set can model inter-personal uncertainties</i>,
+                        which are intrinsic to human language, because its membership is an interval,
+                        instead of a crisp number in a T1 fuzzy set.</p>
+                    </li>
+
+                    <li><p><i>IT2 fuzzy sets reduce the rulebase size</i> <d-cite bibtex-key="Mendel2017"></d-cite> <d-cite bibtex-key="Hagras2007"></d-cite>,
+                        as each IT2 fuzzy set models more uncertainties than a T1 fuzzy set, so that the
+                        input/output domains can be covered by fewer fuzzy sets.</p>
+                    </li>
+
+                    <li><p><i>An IT2 fuzzy controller gives a smoother control surface than its T1 counterpart, especially in the region around the steady state</i>
+                        (i.e., when both the error and the change of error approach 0) <d-cite bibtex-key="drwuISA2006"></d-cite> <d-cite bibtex-key="Jammeh2009"></d-cite>.
+                        The Proportional-Integral (PI) gains of the IT2 fuzzy controller also change with the inputs,
+                        which cannot be achieved by the baseline T1 fuzzy controller.</p>
+                    </li>
+                    <li>
+                        <p><i>IT2 fuzzy controllers are more adaptive.</i>
+                        They can realize more complex input-output relationships which cannot be achieved by T1 fuzzy controllers <d-cite bibtex-key="Mendel2018"></d-cite>.</p>
+                    </li>
+
+                    <li><p><i>IT2 fuzzy controller have a novelty that does not exist in traditional T1 fuzzy controllers.</i>
+                        Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> showed that in an
+                        IT2 fuzzy controller <i>different</i> membership grades from the same IT2 fuzzy set can be used in different rules,
+                        whereas for traditional T1 fuzzy controller the <i>same</i> membership grade from the same T1 fuzzy set is always
+                        used in different rules. This again implies that an IT2 fuzzy controller is more complex than a T1 fuzzy controller
+                        and it cannot be implemented by a T1 fuzzy controller using the same rulebase.</p>
+                    </li>
+
+                </ol></p>
+
+            </div>
+
+        </div>
+
+        <h2>Conclusion</h2>
+        <a class="marker" href="#Conclusion"><span>Conclusion</span></a>
+        <div id="Conclusion">
+            <p>Fuzzy sets are suitable for modeling human linguistic uncertainties, and the resulting fuzzy systems can
+            then be used to perform inferences based on a linguistic rulebase. This paper has introduced the basic concepts
+            of T1 and IT2 fuzzy sets and systems, and illustrated their computations using a car following example.
+            Fuzzy systems have been used in numerous applications, particularly controls, from cement kiln in Denmark
+            to Sendai Subway in Japan, from rice cookers to air conditioners. Researchers who want to learn more about
+                T1 and IT2 fuzzy sets and systems are suggested to read <d-cite bibtex-key="Mendel2017"></d-cite>.</p>
+
+        </div>
+    </div>
+
+
+</d-article>
+
+
+<d-appendix>
+    <d-acknowledgements>
+<!--        <h3>Contributions</h3>-->
+<!--        <p>Some text describing who did what.</p>-->
+<!--        <h4>Sponsors</h4>-->
+<!--        <p>A description of sponsors.</p>-->
+    </d-acknowledgements>
+
+    <d-footnote-list></d-footnote-list>
+
+    <d-bibliography src="references_Fuzzy.bib"></d-bibliography>
+</d-appendix>
+
+<distill-footer></distill-footer>
+
+</body>
+</html>
+
+<script type="text/javascript" src="Fuzzy_solve/T1_acceleration_cal.js"></script>
+<script type="text/javascript" src="Fuzzy_solve/T2_acceleration_cal.js"></script>
