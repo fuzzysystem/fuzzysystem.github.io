@@ -17,16 +17,16 @@
 
 <head xmlns="">
     <script src="dist/template.v2.js"></script>
-<!--    <script src="dist/template.v2_1.js"></script>-->
+    <!--    <script src="dist/template.v2_1.js"></script>-->
     <link rel="stylesheet" href="dist/ieeexplore-immersive-article.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf8">
-<!--    <script src="https://d3js.org/d3.v4.js"></script>-->
+    <!--    <script src="https://d3js.org/d3.v4.js"></script>-->
     <script type="text/javascript" src="d3.v4.js"></script>
     <link rel="stylesheet" href="Fuzzy_solve/fuzzy_design.css">
     <script type="text/javascript" src="jquery-3.5.1.js"></script>
 
-<!--    <script src='https://cdn.plot.ly/plotly-2.14.0.min.js'></script>-->
+    <!--    <script src='https://cdn.plot.ly/plotly-2.14.0.min.js'></script>-->
     <script type="text/javascript" src='plotly-2.14.0.min.js'></script>
 
     <script type="text/javascript" src="Fuzzy_solve/T1_Fuzzy_demo.js"></script>
@@ -39,7 +39,7 @@
     <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_dist_drag.js"></script>
 
     <!--    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">-->
-<!--    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>-->
+    <!--    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>-->
     <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
     <script type="text/javascript"
             src="MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -256,16 +256,16 @@
                 <a class="marker" href="#define1"><span>Type-1 Fuzzy Sets Definition 1</span></a>
                 <div id="define1" >
                     <p>
-                    <a class="marker" href="#eq1"><span>equation1</span></a>
-                    A <i>T1 fuzzy set</i> $X$ is comprised of a <i>domain</i> $D_X$ of real numbers
-                    (also called the <i>universe of discourse</i> of $X$) together with a
-                    <i>membership function</i> (MF) $\mu_{_X}(x):\ D_X \to [0,1]$, i.e.,</p>
+                        <a class="marker" href="#eq1"><span>equation1</span></a>
+                        A <i>T1 fuzzy set</i> $X$ is comprised of a <i>domain</i> $D_X$ of real numbers
+                        (also called the <i>universe of discourse</i> of $X$) together with a
+                        <i>membership function</i> (MF) $\mu_{_X}(x):\ D_X \to [0,1]$, i.e.,</p>
                     <p>
                     <span id="eq1">
                          $X=\int_{D_X}\mu_{_X}(x)/x .$
                     </span>
 
-                    <span style= "float:right; text-align: right">
+                        <span style= "float:right; text-align: right">
                         $(1)$
                     </span></p>
                     <div>
@@ -369,42 +369,42 @@
                 <div>
                     <p>For a particular input $\mathbf{x}=(x_1,...,x_d)$, the operations in a TSK fuzzy system are:</p>
                     <p>
-                    <a class="marker" href="#operations"><span>Units</span></a>
+                        <a class="marker" href="#operations"><span>Units</span></a>
                     <ol id="opeartions">
-                    <li> <p><i>Fuzzification</i>:</p>
-                        <p>
-                            Compute $\mu_{X_{k,i}}(x_i)$, the membership grade of
-                            $x_i$ on $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).
-                        </p>
-                    </li>
-                    <li>
-                        <p><i>Inference</i>:</p>
-                        <p>Compute the firing level of each rule:<br></p>
-                        <span>$f_k(\mathbf{x})=\mu_{X_{k,1}}(x_1)\times\cdots\times\mu_{X_{k,d}}(x_d),$
+                        <li> <p><i>Fuzzification</i>:</p>
+                            <p>
+                                Compute $\mu_{X_{k,i}}(x_i)$, the membership grade of
+                                $x_i$ on $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).
+                            </p>
+                        </li>
+                        <li>
+                            <p><i>Inference</i>:</p>
+                            <p>Compute the firing level of each rule:<br></p>
+                            <span>$f_k(\mathbf{x})=\mu_{X_{k,1}}(x_1)\times\cdots\times\mu_{X_{k,d}}(x_d),$
                         </span>
 
-                        <p><br>Note that the minimum operation could also be used to replace the multiplication above.
-                            The inference engine output is:</p>
-                        <a class="marker" href="#eq3"><span>Units</span></a>
-                        <span id="eq3">
+                            <p><br>Note that the minimum operation could also be used to replace the multiplication above.
+                                The inference engine output is:</p>
+                            <a class="marker" href="#eq3"><span>Units</span></a>
+                            <span id="eq3">
                             $y(\mathbf{x})=\frac{\sum_{k=1}^K f_k(\mathbf{x})\cdot y_k(\mathbf{x})}{\sum_{k=1}^K f_k(\mathbf{x})}.$
                         </span>
-                        <span style= "float:right; text-align: right">
+                            <span style= "float:right; text-align: right">
                             $(3)$
                         </span></p>
 
-                    </li>
-                    <li> <p><i>Defuzzification</i>:</p>
-                        <p>Since the inference output is already a crisp number,
-                            no defuzzification is needed in a T1 TSK fuzzy system.
-                            The inference output $y(\mathbf{x})$ is the final output.</p></li>
+                        </li>
+                        <li> <p><i>Defuzzification</i>:</p>
+                            <p>Since the inference output is already a crisp number,
+                                no defuzzification is needed in a T1 TSK fuzzy system.
+                                The inference output $y(\mathbf{x})$ is the final output.</p></li>
                     </ol>
                     </p>
                 </div>
                 <div>
                     <p><a href="#eq3">$(3)$</a> fuses the consequents of multiple rules to give an output. If we view each rule as an expert,
-                    then a TSK fuzzy system is functionally equivalent to a mixture of expert model <d-cite bibtex-key="Jacobs1991"></d-cite> <d-cite bibtex-key="drwuTSK2020"></d-cite>.
-                    Alternatively, if we view each rule as a base model,
+                        then a TSK fuzzy system is functionally equivalent to a mixture of expert model <d-cite bibtex-key="Jacobs1991"></d-cite> <d-cite bibtex-key="drwuTSK2020"></d-cite>.
+                        Alternatively, if we view each rule as a base model,
                         then a TSK fuzzy system may also be understood as an adaptive ensemble model <d-cite bibtex-key="drwuTSK2020"></d-cite>.</p>
                 </div>
             </div>
@@ -491,19 +491,19 @@
                     <p>Assume the current distance to the front car is 47 meters, and the relative speed is 4 KM/h.
                         The membership grades of the corresponding T1 fuzzy sets are shown in <a href="#fig5">Fig. $5$</a>:</p>
                     <p>
-                        <p style="text-align: center">
+                    <p style="text-align: center">
                     <p style="text-align: center">
                         $\quad \mu_{_{\mathrm{Close}}}($<d-math id="dst_close_x1"></d-math>$)=$<d-math id="dst_close_y"></d-math>
                         $\quad \mu_{_{\mathrm{Okay}}}($<d-math id="dst_close_x2"></d-math>$)=$<d-math id="dst_oky_y"></d-math>
                         $\quad \mu_{_{\mathrm{Far}}}($<d-math id="dst_close_x3"></d-math>$)=$<d-math id="dst_far_y"></d-math>
                     </p>
 
-                        </p><br>
+                    </p><br>
                     <p style="text-align: center">
-                            $\quad \mu_{_{\mathrm{Slow}}}($<d-math id="spd_slow_x1"></d-math>$)=$<d-math id="spd_slow_y"></d-math>
+                        $\quad \mu_{_{\mathrm{Slow}}}($<d-math id="spd_slow_x1"></d-math>$)=$<d-math id="spd_slow_y"></d-math>
                         $\quad \mu_{_{\mathrm{Okay}}}($<d-math id="spd_slow_x2"></d-math>$)=$<d-math id="spd_okay_y"></d-math>
                         $\quad\mu_{_{\mathrm{Fast}}}($<d-math id="spd_slow_x3"></d-math>$)=$<d-math id="spd_fst_y"></d-math>
-                        </p>
+                    </p>
                     </p>
 
                     <a class="marker" href="#fig5"><span>Figure5</span></a>
@@ -531,152 +531,152 @@
                     <div>
                         <p>The firing levels of the nine rules are:<br></p>
                         <p style="text-align: left">
-                            <ul>
-                                <li style="list-style-type: none">
-                                    $R_1: \quad f_1($
-                                    <d-math id="dst_close_x1_a"></d-math>
-                                    $, $
-                                    <d-math id="spd_slow_x1_a"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Close}}}($
-                                    <d-math id="dst_close_x2_a"></d-math>
-                                    $) \quad\times \quad\mu_{_{\mathrm{Slow}}}($
-                                    <d-math id="spd_slow_x2_a"></d-math>
-                                    $)\quad= \quad$
-                                    <d-math id="dst_close_y_a"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_slow_y_a"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_1"></d-math>
-                                </li>
-                                <li style="list-style-type: none">
-                                    $R_2: \quad f_2($
-                                    <d-math id="dst_close_x1_b"></d-math>
-                                    $, $
-                                    <d-math id="spd_okay_x1_b"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Close}}}($
-                                    <d-math id="dst_close_x2_b"></d-math>
-                                    $) \quad\times \quad\mu_{_{\mathrm{Okay}}}($
-                                    <d-math id="spd_okay_x2_b"></d-math>
-                                    $)\quad= \quad$
-                                    <d-math id="dst_close_y_b"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_okay_y_b"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_2"></d-math>
-                                </li>
-                                <li style="list-style-type: none">
-                                    $R_3: \quad f_3($
-                                    <d-math id="dst_close_x1_c"></d-math>
-                                    $, $
-                                    <d-math id="spd_fst_x1_c"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Close}}}($
-                                    <d-math id="dst_close_x2_c"></d-math>
-                                    $) \quad\times\quad \mu_{_{\mathrm{Fast}}}($
-                                    <d-math id="spd_fst_x2_c"></d-math>
-                                    $)\quad= \quad$
-                                    <d-math id="dst_close_y_c"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_fst_y_c"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_3"></d-math>
-                                </li>
-                                <li style="list-style-type: none">
-                                    $R_4: \quad f_4($
-                                    <d-math id="dst_oky_x1_d"></d-math>
-                                    $, $
-                                    <d-math id="spd_slow_x1_d"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
-                                    <d-math id="dst_oky_x2_d"></d-math>
-                                    $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
-                                    <d-math id="spd_slow_x2_d"></d-math>
-                                    $)\quad= \quad$
-                                    <d-math id="dst_oky_y_d"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_slow_y_d"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_4"></d-math>
-                                </li>
-                                <li style="list-style-type: none">
-                                    $R_5: \quad f_5($
-                                    <d-math id="dst_oky_x1_e"></d-math>
-                                    $, $
-                                    <d-math id="spd_okay_x1_e"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
-                                    <d-math id="dst_oky_x2_e"></d-math>
-                                    $)\quad \times \quad\mu_{_{\mathrm{Okay}}}($
-                                    <d-math id="spd_okay_x2_e"></d-math>
-                                    $)\quad= \quad$
-                                    <d-math id="dst_oky_y_e"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_okay_y_e"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_5"></d-math>
-                                </li>
-                                <li style="list-style-type: none">
-                                    $R_6: \quad f_6($
-                                    <d-math id="dst_oky_x1_f"></d-math>
-                                    $, $
-                                    <d-math id="spd_fst_x1_f"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
-                                    <d-math id="dst_oky_x2_f"></d-math>
-                                    $) \quad\times \quad\mu_{_{\mathrm{Fast}}}($
-                                    <d-math id="spd_fst_x2_f"></d-math>
-                                    $)\quad=\quad $
-                                    <d-math id="dst_oky_y_f"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_fst_y_f"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_6"></d-math>
-                                </li>
-                                <li style="list-style-type: none;text-align: left">
-                                    $R_7: \quad f_7($
-                                    <d-math id="dst_far_x1_g"></d-math>
-                                    $, $
-                                    <d-math id="spd_slow_x1_g"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Far}}}($
-                                    <d-math id="dst_far_x2_g"></d-math>
-                                    $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
-                                    <d-math id="spd_slow_x2_g"></d-math>
-                                    $)\quad=\quad $
-                                    <d-math id="dst_far_y_g"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_slow_y_g"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_7"></d-math>
-                                </li>
-                                <li style="list-style-type: none">
-                                    $R_8: \quad f_8($
-                                    <d-math id="dst_far_x1_h"></d-math>
-                                    $, $
-                                    <d-math id="spd_okay_x1_h"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Far}}}($
-                                    <d-math id="dst_far_x2_h"></d-math>
-                                    $)\quad \times\quad \mu_{_{\mathrm{Okay}}} ($
-                                    <d-math id="spd_okay_x2_h"></d-math>
-                                    $)\quad= \quad$
-                                    <d-math id="dst_far_y_h"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_okay_y_h"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_8"></d-math>
-                                </li>
-                                <li style="list-style-type: none">
-                                    $R_9: \quad f_9($
-                                    <d-math id="dst_far_x1_i"></d-math>
-                                    $, $
-                                    <d-math id="spd_fst_x1_i"></d-math>
-                                    $)\quad=\quad\mu_{_{\mathrm{Far}}}($
-                                    <d-math id="dst_far_x2_i"></d-math>
-                                    $)\quad \times \quad \mu_{_{\mathrm{Fast}}}($
-                                    <d-math id="spd_fst_x2_i"></d-math>
-                                    $)\quad=\quad $
-                                    <d-math id="dst_far_y_i"></d-math>
-                                    $\quad\times\quad$
-                                    <d-math id="spd_fst_y_i"></d-math>
-                                    $\quad=\quad$
-                                    <d-math id="result_9"></d-math>
-                                </li>
-                            </ul>
+                        <ul>
+                            <li style="list-style-type: none">
+                                $R_1: \quad f_1($
+                                <d-math id="dst_close_x1_a"></d-math>
+                                $, $
+                                <d-math id="spd_slow_x1_a"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                <d-math id="dst_close_x2_a"></d-math>
+                                $) \quad\times \quad\mu_{_{\mathrm{Slow}}}($
+                                <d-math id="spd_slow_x2_a"></d-math>
+                                $)\quad= \quad$
+                                <d-math id="dst_close_y_a"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_slow_y_a"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_1"></d-math>
+                            </li>
+                            <li style="list-style-type: none">
+                                $R_2: \quad f_2($
+                                <d-math id="dst_close_x1_b"></d-math>
+                                $, $
+                                <d-math id="spd_okay_x1_b"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                <d-math id="dst_close_x2_b"></d-math>
+                                $) \quad\times \quad\mu_{_{\mathrm{Okay}}}($
+                                <d-math id="spd_okay_x2_b"></d-math>
+                                $)\quad= \quad$
+                                <d-math id="dst_close_y_b"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_okay_y_b"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_2"></d-math>
+                            </li>
+                            <li style="list-style-type: none">
+                                $R_3: \quad f_3($
+                                <d-math id="dst_close_x1_c"></d-math>
+                                $, $
+                                <d-math id="spd_fst_x1_c"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                <d-math id="dst_close_x2_c"></d-math>
+                                $) \quad\times\quad \mu_{_{\mathrm{Fast}}}($
+                                <d-math id="spd_fst_x2_c"></d-math>
+                                $)\quad= \quad$
+                                <d-math id="dst_close_y_c"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_fst_y_c"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_3"></d-math>
+                            </li>
+                            <li style="list-style-type: none">
+                                $R_4: \quad f_4($
+                                <d-math id="dst_oky_x1_d"></d-math>
+                                $, $
+                                <d-math id="spd_slow_x1_d"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                <d-math id="dst_oky_x2_d"></d-math>
+                                $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
+                                <d-math id="spd_slow_x2_d"></d-math>
+                                $)\quad= \quad$
+                                <d-math id="dst_oky_y_d"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_slow_y_d"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_4"></d-math>
+                            </li>
+                            <li style="list-style-type: none">
+                                $R_5: \quad f_5($
+                                <d-math id="dst_oky_x1_e"></d-math>
+                                $, $
+                                <d-math id="spd_okay_x1_e"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                <d-math id="dst_oky_x2_e"></d-math>
+                                $)\quad \times \quad\mu_{_{\mathrm{Okay}}}($
+                                <d-math id="spd_okay_x2_e"></d-math>
+                                $)\quad= \quad$
+                                <d-math id="dst_oky_y_e"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_okay_y_e"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_5"></d-math>
+                            </li>
+                            <li style="list-style-type: none">
+                                $R_6: \quad f_6($
+                                <d-math id="dst_oky_x1_f"></d-math>
+                                $, $
+                                <d-math id="spd_fst_x1_f"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                <d-math id="dst_oky_x2_f"></d-math>
+                                $) \quad\times \quad\mu_{_{\mathrm{Fast}}}($
+                                <d-math id="spd_fst_x2_f"></d-math>
+                                $)\quad=\quad $
+                                <d-math id="dst_oky_y_f"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_fst_y_f"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_6"></d-math>
+                            </li>
+                            <li style="list-style-type: none;text-align: left">
+                                $R_7: \quad f_7($
+                                <d-math id="dst_far_x1_g"></d-math>
+                                $, $
+                                <d-math id="spd_slow_x1_g"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                <d-math id="dst_far_x2_g"></d-math>
+                                $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
+                                <d-math id="spd_slow_x2_g"></d-math>
+                                $)\quad=\quad $
+                                <d-math id="dst_far_y_g"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_slow_y_g"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_7"></d-math>
+                            </li>
+                            <li style="list-style-type: none">
+                                $R_8: \quad f_8($
+                                <d-math id="dst_far_x1_h"></d-math>
+                                $, $
+                                <d-math id="spd_okay_x1_h"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                <d-math id="dst_far_x2_h"></d-math>
+                                $)\quad \times\quad \mu_{_{\mathrm{Okay}}} ($
+                                <d-math id="spd_okay_x2_h"></d-math>
+                                $)\quad= \quad$
+                                <d-math id="dst_far_y_h"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_okay_y_h"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_8"></d-math>
+                            </li>
+                            <li style="list-style-type: none">
+                                $R_9: \quad f_9($
+                                <d-math id="dst_far_x1_i"></d-math>
+                                $, $
+                                <d-math id="spd_fst_x1_i"></d-math>
+                                $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                <d-math id="dst_far_x2_i"></d-math>
+                                $)\quad \times \quad \mu_{_{\mathrm{Fast}}}($
+                                <d-math id="spd_fst_x2_i"></d-math>
+                                $)\quad=\quad $
+                                <d-math id="dst_far_y_i"></d-math>
+                                $\quad\times\quad$
+                                <d-math id="spd_fst_y_i"></d-math>
+                                $\quad=\quad$
+                                <d-math id="result_9"></d-math>
+                            </li>
+                        </ul>
                         </p>
 
                     </div>
@@ -735,12 +735,12 @@
 
                         <p>
                             <br>i.e., the car should have a fairly large deceleration to maintain the distance at 50 meters.
-                        This is intuitive, as the current distance is shorter than 50 meters, and the relative speed is fast.
+                            This is intuitive, as the current distance is shorter than 50 meters, and the relative speed is fast.
                         </p>
                     </div>
                     <div>
                         <p>The above nine rules are summarized in <a href="tab1">Table $ 1$</a>.
-                        The corresponding input-output mapping is shown in <a href="fig_T1_acc">Fig. $6$</a>,
+                            The corresponding input-output mapping is shown in <a href="fig_T1_acc">Fig. $6$</a>,
                             which can be changed by modifying the rule consequents in <a href="tab1">Table $1$</a>.</p>
                         <div>
                             <a class="marker" href="#tab1"><span>rulebase</span></a>
@@ -779,7 +779,7 @@
                         </div>
                     </div>
                     <br>
-                        <button id="F1_acceleration_table" style="float: right" onclick="getvalue()">   Update  </button>
+                    <button id="F1_acceleration_table" style="float: right" onclick="getvalue()">   Update  </button>
 
                     <br><br>
                     <a class="marker" href="#fig_T1_acc"><span>Figure 6</span></a>
@@ -792,7 +792,7 @@
                             </tr>
                         </table>
                         <div id="fig6" style="margin-left: 25%"></div>
-<!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
+                        <!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
                         <div class="caption">
                             <b>Figure 6:</b> Input-output mapping of the T1 fuzzy system.
                         </div>
@@ -813,26 +813,26 @@
                         <li>
                             <p><i>Evolutionary computing</i> <d-cite bibtex-key="Ishibuchi1995"></d-cite>.</p>
                             <p>The antecedent and consequent parameters are encoded as chromosomes in a population;
-                            genetic operators, e.g., selection, crossover, mutation, and reproduction,
-                            can then be used to generate the next (better) generation.
-                            The best chromosome in the final generation is selected as the best parameter set.</p>
+                                genetic operators, e.g., selection, crossover, mutation, and reproduction,
+                                can then be used to generate the next (better) generation.
+                                The best chromosome in the final generation is selected as the best parameter set.</p>
                         </li>
 
                         <li>
                             <p><i>Gradient descent</i>. For example, back-propagation <d-cite bibtex-key="Rumelhart1986"></d-cite></p>
                             <p>can be used to iteratively find the optimal antecedent and consequent parameters.
-                            Recently, inspired by the equivalence/similarity between TSK fuzzy systems and
-                            neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective
-                            optimization techniques for the latter have been extended to fuzzy system
-                            optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>
+                                Recently, inspired by the equivalence/similarity between TSK fuzzy systems and
+                                neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective
+                                optimization techniques for the latter have been extended to fuzzy system
+                                optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>
                         </li>
 
                         <li>
                             <p><i>Gradient descent and least squares estimation</i>. </p>
                             <p>For example,
-                            in adaptive-network-based fuzzy inference system (ANFIS) <d-cite bibtex-key="Jang1993"></d-cite>,
-                            the antecedent parameters are optimized by gradient descent, and the consequent
-                            parameters by least squares estimation.</p>
+                                in adaptive-network-based fuzzy inference system (ANFIS) <d-cite bibtex-key="Jang1993"></d-cite>,
+                                the antecedent parameters are optimized by gradient descent, and the consequent
+                                parameters by least squares estimation.</p>
                         </li>
                     </ol>
 
@@ -861,7 +861,7 @@
                 <h4>Definition 2 <d-cite bibtex-key="Mendel2017"></d-cite></h4> <a class="marker" href="#define2"><span>IT2 fuzzy set Definition 2</span></a>
                 <div id="define2">
                     <p>
-                    An IT2 fuzzy set $\tilde{X}$ is characterized by its MF $\mu_{\tilde{X}} (x,u)$, i.e.,</p>
+                        An IT2 fuzzy set $\tilde{X}$ is characterized by its MF $\mu_{\tilde{X}} (x,u)$, i.e.,</p>
                     <a class="marker" href="#eq5"><span>equation1</span></a>
 
                     <p></p><span id="eq5">
@@ -874,7 +874,7 @@
                     </span></p>
 
                     <p>where $x$, called the <i>primary variable</i>, has domain $D_{\tilde{X}}$;
-                    $u\in [0,1]$ is the <i>secondary variable</i>; and, the amplitude of $\mu_{\tilde{X}} (x,u)$,
+                        $u\in [0,1]$ is the <i>secondary variable</i>; and, the amplitude of $\mu_{\tilde{X}} (x,u)$,
                         called a <i>secondary grade</i> of $\tilde{X}$, equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. $\blacksquare$</p>
                 </div>
                 <div>
@@ -917,9 +917,9 @@
             <div id="'IT2 sys">
                 <div>
                     <p><a href="#fig8">Fig. $8$</a> shows the schematic diagram of an IT2 fuzzy system. It is similar to its T1 counterpart,
-                    the major difference being that at least one of the fuzzy sets in the rulebase is an IT2 fuzzy set.
-                    Hence, the outputs of the inference engine are IT2 fuzzy sets, and a type-reducer is usually needed
-                    (it can be bypassed <d-cite bibtex-key="Nie2008"></d-cite> <d-cite bibtex-key="Mendel2017"></d-cite>, too)
+                        the major difference being that at least one of the fuzzy sets in the rulebase is an IT2 fuzzy set.
+                        Hence, the outputs of the inference engine are IT2 fuzzy sets, and a type-reducer is usually needed
+                        (it can be bypassed <d-cite bibtex-key="Nie2008"></d-cite> <d-cite bibtex-key="Mendel2017"></d-cite>, too)
                         to convert them into a T1 fuzzy set before defuzzification can be carried out.</p>
                 </div>
                 <div>
@@ -940,16 +940,16 @@
                         and $Y_k(\mathbf{x}) = [\underline{y}_k,\  \overline{y}_k]$ is an interval,
                         which can be understood as the centroid <d-cite bibtex-key="Mendel2017"></d-cite> of a consequent
                         IT2 fuzzy set<d-footnote>The rule consequents can be IT2 fuzzy sets;
-                        however, when the popular center-of-sets type-reducer <d-cite bibtex-key="Mendel2017"></d-cite> is used,
-                        these consequent IT2 fuzzy sets are replaced by their centroids in the computation;
-                        so, it is more convenient to represent the rule consequents as intervals directly.</d-footnote>.
+                            however, when the popular center-of-sets type-reducer <d-cite bibtex-key="Mendel2017"></d-cite> is used,
+                            these consequent IT2 fuzzy sets are replaced by their centroids in the computation;
+                            so, it is more convenient to represent the rule consequents as intervals directly.</d-footnote>.
                         In many applications we use $\underline{y}_n=\overline{y}_n$, i.e., each rule consequent is a crisp number.</p>
                     </div>
 
                 </div>
                 <div>
                     <p>
-                    For a particular input $\mathbf{x}=(x_1,...,x_d)$, the output of the IT2 TSK fuzzy system is computed as:
+                        For a particular input $\mathbf{x}=(x_1,...,x_d)$, the output of the IT2 TSK fuzzy system is computed as:
                         <a class="marker" href="#inference2"></a></p>
                     <ol>
                         <li>
@@ -972,7 +972,7 @@
                                 </span>
                             </p>
                             <p>
-                            Note that the minimum operation could also be used to replace the multiplication above. Inference is performed by:
+                                Note that the minimum operation could also be used to replace the multiplication above. Inference is performed by:
                             </p>
                             <a class="marker" href="#eq7"></a>
                             <p>
@@ -1055,11 +1055,11 @@
                             <p>and $\{\underline{y}_k\}_{k=1}^K$ and $\{\overline{y}_k\}_{k=1}^K$ have been sorted in ascending order,
                                 respectively.</p>
                             <p>
-                            $y_l$ and $y_r$ can be computed using the original Karnik-Mendel algorithms <d-cite bibtex-key="Mendel2017"></d-cite>,
-                            the enhanced Karnik-Mendel algorithms <d-cite bibtex-key="drwuEKM2009"></d-cite>, the iterative algorithm with stop condition (IASC),
-                            or the enhanced IASC (EIASC) <d-cite bibtex-key="drwuCCTFS2013"></d-cite>, all of which have been included in the official Matlab Fuzzy
-                            Logic Toolbox<d-footnote>https://www.mathworks.com/help/fuzzy/type-2-fuzzy-inference-systems.html</d-footnote>.
-                            See, also <d-cite bibtex-key="drwuDAND2021"></d-cite> for other algorithms.</p>
+                                $y_l$ and $y_r$ can be computed using the original Karnik-Mendel algorithms <d-cite bibtex-key="Mendel2017"></d-cite>,
+                                the enhanced Karnik-Mendel algorithms <d-cite bibtex-key="drwuEKM2009"></d-cite>, the iterative algorithm with stop condition (IASC),
+                                or the enhanced IASC (EIASC) <d-cite bibtex-key="drwuCCTFS2013"></d-cite>, all of which have been included in the official Matlab Fuzzy
+                                Logic Toolbox<d-footnote>https://www.mathworks.com/help/fuzzy/type-2-fuzzy-inference-systems.html</d-footnote>.
+                                See, also <d-cite bibtex-key="drwuDAND2021"></d-cite> for other algorithms.</p>
                         </li>
                         <li>
                             <p><i>Defuzzification</i>:</p>
@@ -1319,8 +1319,8 @@
 
                         </p>
                         <br>
-<!--                        <a class="marker" href="#fig11a"><span>Figure11(a)</span></a>-->
-<!--                        <a class="marker" href="#fig11b"><span>Figure11(b)</span></a>-->
+                        <!--                        <a class="marker" href="#fig11a"><span>Figure11(a)</span></a>-->
+                        <!--                        <a class="marker" href="#fig11b"><span>Figure11(b)</span></a>-->
                         <a class="marker" href="#fig11"><span>Figure11</span></a>
                         <div id="fig11" class="l-interactive" style="margin-bottom: 20px">
                             <table>
@@ -1826,8 +1826,8 @@
             <a class="marker" href="#difference"><span>Main Differences between IT2 and T1 Fuzzy Systems</span></a>
             <div id="difference">
                 <p>A challenging question is: <i>What are the main differences between IT2 and T1 fuzzy systems?</i> Once
-                the differences are clear, we can better understand the advantages of IT2 fuzzy systems and hence better
-                make use of them. In the literature there has been considerable effort on answering this challenging and
+                    the differences are clear, we can better understand the advantages of IT2 fuzzy systems and hence better
+                    make use of them. In the literature there has been considerable effort on answering this challenging and
                     fundamental question. Some important arguments are <d-cite bibtex-key="drwuFundamental2012"></d-cite>:</p>
                 <p>
                 <ol>
@@ -1848,7 +1848,7 @@
                     </li>
                     <li>
                         <p><i>IT2 fuzzy controllers are more adaptive.</i>
-                        They can realize more complex input-output relationships which cannot be achieved by T1 fuzzy controllers <d-cite bibtex-key="Mendel2018"></d-cite>.</p>
+                            They can realize more complex input-output relationships which cannot be achieved by T1 fuzzy controllers <d-cite bibtex-key="Mendel2018"></d-cite>.</p>
                     </li>
 
                     <li><p><i>IT2 fuzzy controller have a novelty that does not exist in traditional T1 fuzzy controllers.</i>
@@ -1869,10 +1869,10 @@
         <a class="marker" href="#Conclusion"><span>Conclusion</span></a>
         <div id="Conclusion">
             <p>Fuzzy sets are suitable for modeling human linguistic uncertainties, and the resulting fuzzy systems can
-            then be used to perform inferences based on a linguistic rulebase. This paper has introduced the basic concepts
-            of T1 and IT2 fuzzy sets and systems, and illustrated their computations using a car following example.
-            Fuzzy systems have been used in numerous applications, particularly controls, from cement kiln in Denmark
-            to Sendai Subway in Japan, from rice cookers to air conditioners. Researchers who want to learn more about
+                then be used to perform inferences based on a linguistic rulebase. This paper has introduced the basic concepts
+                of T1 and IT2 fuzzy sets and systems, and illustrated their computations using a car following example.
+                Fuzzy systems have been used in numerous applications, particularly controls, from cement kiln in Denmark
+                to Sendai Subway in Japan, from rice cookers to air conditioners. Researchers who want to learn more about
                 T1 and IT2 fuzzy sets and systems are suggested to read <d-cite bibtex-key="Mendel2017"></d-cite>.</p>
 
         </div>
@@ -1884,10 +1884,10 @@
 
 <d-appendix>
     <d-acknowledgements>
-<!--        <h3>Contributions</h3>-->
-<!--        <p>Some text describing who did what.</p>-->
-<!--        <h4>Sponsors</h4>-->
-<!--        <p>A description of sponsors.</p>-->
+        <!--        <h3>Contributions</h3>-->
+        <!--        <p>Some text describing who did what.</p>-->
+        <!--        <h4>Sponsors</h4>-->
+        <!--        <p>A description of sponsors.</p>-->
     </d-acknowledgements>
 
     <d-footnote-list></d-footnote-list>
