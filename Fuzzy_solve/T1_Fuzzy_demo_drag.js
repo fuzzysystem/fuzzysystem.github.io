@@ -209,7 +209,7 @@ function onStart() {
     let visible="Hidden";
     d3.select(this).raise().classed("active", true);
     let org_x0 = x.invert(d3.mouse(this)[0])
-    let x0 = x.invert(d3.mouse(this)[0]).toFixed(1);
+    let x0 = x.invert(d3.mouse(this)[0]).toFixed(2);
     let i = bisect(data, x0, 0.1);
     let y0=0;
     let org_y0 =0;
@@ -228,7 +228,7 @@ function onStart() {
     }
 
     let selectedData_x = x0;
-    let selectedData_y0 = org_y0.toFixed(1);
+    let selectedData_y0 = org_y0.toFixed(2);
     d3.select(this).attr("cx", x(org_x0)).attr("cy", y(org_y0));
     focusLabel
         .html("(" + selectedData_x + ", "  + selectedData_y0+ ")")
@@ -267,7 +267,7 @@ function onDrag() {
     let visible="Hidden";
 
     let org_x0 = x.invert(d3.mouse(this)[0])
-    let x0 = x.invert(d3.mouse(this)[0]).toFixed(1);
+    let x0 = x.invert(d3.mouse(this)[0]).toFixed(2);
     let i = bisect(data, x0, 0.1);
     let y0=0;
     let org_y0 =0;
@@ -286,7 +286,7 @@ function onDrag() {
     }
 
     let selectedData_x = x0;
-    let selectedData_y0 = org_y0.toFixed(1);
+    let selectedData_y0 = org_y0.toFixed(2);
     d3.select(this).attr("cx", x(org_x0)).attr("cy", y(org_y0));
     focusLabel
         .html("(" + selectedData_x + ", "  + selectedData_y0+ ")")
@@ -328,7 +328,7 @@ function onEnd() {
 
     d3.select(this).classed("active", false);
     let org_x0 = x.invert(d3.mouse(this)[0])
-    let x0 = x.invert(d3.mouse(this)[0]).toFixed(1);
+    let x0 = x.invert(d3.mouse(this)[0]).toFixed(2);
     let i = bisect(data, x0, 0.1);
     let y0=0;
     let org_y0 =0;
@@ -348,7 +348,7 @@ function onEnd() {
 
 
     let selectedData_x = x0;
-    let selectedData_y0 = org_y0.toFixed(1);
+    let selectedData_y0 = org_y0.toFixed(2);
 
     focusLabel
         .html("(" + selectedData_x + ", "  + selectedData_y0+ ")")
