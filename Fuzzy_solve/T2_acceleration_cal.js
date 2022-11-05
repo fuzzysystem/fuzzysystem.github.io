@@ -4044,6 +4044,7 @@ var layout3 = {
             spikethickness: 6},
         zaxis: {title: 'Acceleration',
             spikecolor: '#000000',
+            // range: [-10,10],
             spikethickness: 6}
     }
 };

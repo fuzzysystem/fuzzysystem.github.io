@@ -72,9 +72,9 @@ svg3.append("g")
     .attr("fill-width", "3px")
     .style('font-family', 'Times New Roman')
     .style('font-style', 'italic')
-    .attr("x", -(margin.left)+5)
+    .attr("x", -(margin.left)+30)
     .attr("y", height *0.05)
-    .text('μ(x)');
+    .text('u');
 
 svg3.append("g")
     .append("text")
@@ -83,7 +83,7 @@ svg3.append("g")
     .style('font-family', 'Times New Roman')
     .attr("x", -(margin.left) + 280)
     .attr("y", height*0.3)
-    .text('X');
+    .text('X̃');
 
 svg3.append("g")
     .append("text")
@@ -123,7 +123,7 @@ svg3.append("g")
     .style('font-size', '22px')
     .style('font-style', 'italic')
     .style('font-family', 'Times New Roman')
-    .attr("x", -(margin.left) + 250)
+    .attr("x", -(margin.left) + 280)
     .attr("y", height*0.45)
     .text('FOU')
     .style("fill", color)
@@ -190,7 +190,7 @@ var drag = d3.drag()
 
 var circle1 = svg3
     .append("circle")
-    .attr("cx", x(5))
+    .attr("cx", x(4))
     .attr("cy", y(1))
     .attr("r", 10)
     .style("fill", color1)
@@ -199,8 +199,8 @@ var circle1 = svg3
     .call(drag);
 var circle2 = svg3
     .append("circle")
-    .attr("cx", x(5))
-    .attr("cy", y(0.75))
+    .attr("cx", x(4))
+    .attr("cy", y(0.5))
     .attr("r", 10)
     .style("fill", color2)
     .style("opacity", 0.5)
@@ -213,10 +213,10 @@ var focuseLine2LMF =
         .style("stroke-dasharray","5,5")//dashed array for line
         .style("stroke", "red")
         .attr("stroke-width", 3)
-        .attr("x1",x(5) )
-        .attr("x2", x(5))
+        .attr("x1",x(4) )
+        .attr("x2", x(4))
         .attr("y1",y(1))
-        .attr("y2", y(0.75))
+        .attr("y2", y(0.5))
         .style("visibility", "visible");
 
 var focuseLine2x =
@@ -225,9 +225,9 @@ var focuseLine2x =
         .style("stroke-dasharray","5,5")//dashed array for line
         .style("stroke", color3)
         .attr("stroke-width", 3)
-        .attr("x1",x(5) )
-        .attr("x2", x(5))
-        .attr("y1",y(0.75))
+        .attr("x1",x(4) )
+        .attr("x2", x(4))
+        .attr("y1",y(0.5))
         .attr("y2", y(0))
         .style("visibility", "visible");
 
@@ -238,7 +238,7 @@ var focuseLine2y_1 =
         .style("stroke-dasharray","5,5")//dashed array for line
         .style("stroke", color3)
         .attr("stroke-width", 3)
-        .attr("x1",x(5) )
+        .attr("x1",x(4) )
         .attr("x2", x(0))
         .attr("y1",y(1))
         .attr("y2", y(1))
@@ -250,10 +250,10 @@ var focuseLine2y_2 =
         .style("stroke-dasharray","5,5")//dashed array for line
         .style("stroke", color3)
         .attr("stroke-width", 3)
-        .attr("x1",x(5) )
+        .attr("x1",x(4) )
         .attr("x2", x(0))
-        .attr("y1",y(0.75))
-        .attr("y2", y(0.75))
+        .attr("y1",y(0.5))
+        .attr("y2", y(0.5))
         .style("visibility", "visible");
 
 var foucseXval =
@@ -265,9 +265,9 @@ var foucseXval =
         .style("fill", color)
         .attr("fill-width", 2)
         .style('font-family', 'Times New Roman')
-        .attr("x", x(5) - 10)
+        .attr("x", x(4) - 10)
         .attr("y", height + 45)
-        .text("5")
+        .text("4")
         .style("visibility", "visible");
 
 var foucseYval_1 =
@@ -292,8 +292,8 @@ var foucseYval_2 =
         .attr("fill-width", 2)
         .style('font-family', 'Times New Roman')
         .attr("x", -(margin.left) +2)
-        .attr("y", y(0.75))
-        .text("0.75")
+        .attr("y", y(0.5))
+        .text("0.5")
         .style("visibility", "visible");
 
 let y0_umf=1;
@@ -315,7 +315,7 @@ function onStart() {
 
     var maxY = 0;
 
-    if(x0<=1){
+    if(x0<=1 && x0>=0){
         y0_umf=0;
         org_y0_umf =0;
         vis_label1 = 'visible';
@@ -388,7 +388,7 @@ function onStart() {
 
     }
 
-    else{
+    else if(x0>8 && x0<=9){
         y0_umf= 0;
         org_y0_umf = 0;
         vis_label1 = 'visible';
@@ -399,6 +399,32 @@ function onStart() {
 
         maxY=0;
 
+    }else if(9< x0){
+
+        y0_umf= 0;
+        org_y0_umf = 0;
+        vis_label1 = 'visible';
+
+        y0_lmf =0;
+        org_y0_lmf =0;
+        vis_label2 = 'visible';
+
+        maxY=0;
+        x0 = 9;
+        org_x0 = 9;
+    }
+    else{
+        y0_umf=0;
+        org_y0_umf =0;
+        vis_label1 = 'visible';
+
+        y0_lmf =0;
+        org_y0_lmf =0;
+        vis_label2 = 'Hidden';
+
+        maxY=0;
+        x0 = 0;
+        org_x0 = 0;
     }
 
 
@@ -416,53 +442,53 @@ function onStart() {
         .html("(" + selectedData_x_umf + ", "  + selectedData_y0_umf+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_umf)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", 'hidden')
 
     focusLabel2
         .html("(" + selectedData_x_lmf + ", "  + selectedData_y0_lmf+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_lmf)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", 'hidden')
 
     focuseLine2x
         .attr("x1",x(org_x0) )
         .attr("x2", x(org_x0))
         .attr("y1",y(org_y0_lmf))
         .attr("y2", y(0))
-        .style("visibility", visible)
+        .style("visibility", 'visible')
 
     focuseLine2LMF
         .attr("x1",x(org_x0) )
         .attr("x2", x(org_x0))
         .attr("y1",y(org_y0_umf))
         .attr("y2", y(org_y0_lmf))
-        .style("visibility", visible)
+        .style("visibility", 'visible')
 
     focuseLine2y_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_umf))
         .attr("y2", y(org_y0_umf))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_lmf))
         .attr("y2", y(org_y0_lmf))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
 
     foucseYval_1
         .attr("y", y(org_y0_umf))
         .text(selectedData_y0_umf)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2
         .attr("y", y(org_y0_lmf))
         .text(selectedData_y0_lmf)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseXval
         .attr("x", x(org_x0) - 10)
         .text(x0)
-        .style("visibility", visible);
+        .style("visibility", 'visible');
 }
 
 function onDrag() {
@@ -474,7 +500,7 @@ function onDrag() {
     var vis_label2 = 'Hidden';
     var maxY = 0;
 
-    if(x0<=1){
+    if(x0<=1 && x0>=0){
         y0_umf=0;
         org_y0_umf =0;
         vis_label1 = 'visible';
@@ -547,7 +573,7 @@ function onDrag() {
 
     }
 
-    else{
+    else if (x0<=9 && x0>8){
         y0_umf= 0;
         org_y0_umf = 0;
         vis_label1 = 'visible';
@@ -559,6 +585,36 @@ function onDrag() {
         maxY=0;
 
     }
+    else if(9< x0){
+
+    y0_umf= 0;
+    org_y0_umf = 0;
+    vis_label1 = 'visible';
+
+    y0_lmf =0;
+    org_y0_lmf =0;
+    vis_label2 = 'Hidden';
+
+    maxY=0;
+    x0 = 9;
+    org_x0 = 9;
+}
+else{
+        y0_umf=0;
+        org_y0_umf =0;
+        vis_label1 = 'visible';
+
+        y0_lmf =0;
+        org_y0_lmf =0;
+        vis_label2 = 'visible';
+
+        maxY=0;
+        x0 = 0;
+        org_x0 = 0;
+}
+
+
+
     let selectedData_x_umf = x0;
     let selectedData_y0_umf = org_y0_umf.toFixed(2);
     let selectedData_x_lmf = x0;
@@ -573,53 +629,53 @@ function onDrag() {
         .html("(" + selectedData_x_umf + ", "  + selectedData_y0_umf+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_umf)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", 'hidden')
 
     focusLabel2
         .html("(" + selectedData_x_lmf + ", "  + selectedData_y0_lmf+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_lmf)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", 'hidden')
 
     focuseLine2x
         .attr("x1",x(org_x0) )
         .attr("x2", x(org_x0))
         .attr("y1",y(org_y0_lmf))
         .attr("y2", y(0))
-        .style("visibility", visible)
+        .style("visibility", 'visible')
 
     focuseLine2LMF
         .attr("x1",x(org_x0) )
         .attr("x2", x(org_x0))
         .attr("y1",y(org_y0_umf))
         .attr("y2", y(org_y0_lmf))
-        .style("visibility", visible)
+        .style("visibility", 'visible')
 
     focuseLine2y_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_umf))
         .attr("y2", y(org_y0_umf))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_lmf))
         .attr("y2", y(org_y0_lmf))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
 
     foucseYval_1
         .attr("y", y(org_y0_umf))
         .text(selectedData_y0_umf)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2
         .attr("y", y(org_y0_lmf))
         .text(selectedData_y0_lmf)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseXval
         .attr("x", x(org_x0) - 10)
         .text(x0)
-        .style("visibility", visible);
+        .style("visibility", 'visible');
 
 }
 
@@ -637,7 +693,7 @@ function onEnd() {
     var vis_label2 = 'Hidden';
     var maxY = 0;
 
-    if(x0<=1){
+    if(x0<=1 && x0>=0){
         y0_umf=0;
         org_y0_umf =0;
         vis_label1 = 'Hidden';
@@ -710,7 +766,7 @@ function onEnd() {
 
     }
 
-    else{
+    else if (8<x0 && x0<=9){
         y0_umf= 0;
         org_y0_umf = 0;
         vis_label1 = 'Hidden';
@@ -722,6 +778,34 @@ function onEnd() {
         maxY=0;
 
     }
+    else if(9< x0){
+
+        y0_umf= 0;
+        org_y0_umf = 0;
+        vis_label1 = 'Hidden';
+
+        y0_lmf =0;
+        org_y0_lmf =0;
+        vis_label2 = 'Hidden';
+
+        maxY=0;
+        x0 = 9;
+        org_x0 = 9;
+    }
+    else{
+        y0_umf=0;
+        org_y0_umf =0;
+        vis_label1 = 'Hidden';
+
+        y0_lmf =0;
+        org_y0_lmf =0;
+        vis_label2 = 'Hidden';
+
+        maxY=0;
+        x0 = 0;
+        org_x0 = 0;
+    }
+
     let selectedData_x_umf = x0;
     let selectedData_y0_umf = org_y0_umf.toFixed(2);
     let selectedData_x_lmf = x0;

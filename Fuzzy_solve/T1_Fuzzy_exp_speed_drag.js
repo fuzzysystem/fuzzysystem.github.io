@@ -156,6 +156,7 @@ var focusLabel1 =
         .attr('fill', color1)
         .style('font-family', 'Times New Roman')
 
+
 var focusLabel2 =
     svg
         .append('g')
@@ -327,7 +328,7 @@ let x0 =4;
 
 
 function onStart() {
-    let visible="Hidden";
+    let visible="Visible";
     d3.select(this).raise().classed("active", true);
     org_x0 = x.invert(d3.mouse(this)[0])
     x0 = Number(x.invert(d3.mouse(this)[0]).toFixed(2)); // 读x坐标
@@ -338,7 +339,7 @@ function onStart() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= -5){
+    if(x0 <= -5 && x0 >= -10){
         y0_slow=1;
         org_y0_slow =1;
         vis_label1 = 'visible';
@@ -398,6 +399,42 @@ function onStart() {
 
     }
 
+    else if(5<x0 && x0<=10){
+        y0_slow = 0;
+        org_y0_slow = 0;
+        vis_label1 = 'Hidden'
+
+        y0_okay = 0;
+        org_y0_okay = 0;
+        vis_label2 = 'Hidden'
+
+        y0_fast =1;
+        org_y0_fast =1;
+        vis_label3 = 'visible';
+
+        maxY = org_y0_fast;
+
+    }
+
+    else if(x0<-10){
+        y0_slow = 1;
+        org_y0_slow = 1;
+        vis_label1 = 'visible'
+
+        y0_okay = 0;
+        org_y0_okay = 0;
+        vis_label2 = 'Hidden'
+
+        y0_fast =0;
+        org_y0_fast =0;
+        vis_label3 = 'Hidden';
+
+        maxY = org_y0_slow;
+        x0= -10;
+        org_x0 = -10;
+
+    }
+
     else{
         y0_slow = 0;
         org_y0_slow = 0;
@@ -411,7 +448,9 @@ function onStart() {
         org_y0_fast =1;
         vis_label3 = 'visible';
 
-        maxY = org_y0_fast
+        maxY = org_y0_fast;
+        x0=10;
+        org_x0=10;
 
     }
 
@@ -431,19 +470,19 @@ function onStart() {
         .html("(" + selectedData_x_slow + ", "  + selectedData_y0_slow+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_slow)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", "hidden")
 
     focusLabel2
         .html("(" + selectedData_x_okay + ", "  + selectedData_y0_okay+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_okay)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", "hidden")
 
     focusLabel3
         .html("(" + selectedData_x_fast + ", "  + selectedData_y0_fast+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_fast)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", "hidden")
 
     focuseLine2x
         .attr("x1",x(org_x0) )
@@ -456,32 +495,32 @@ function onStart() {
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_slow))
         .attr("y2", y(org_y0_slow))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_okay))
         .attr("y2", y(org_y0_okay))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_fast))
         .attr("y2", y(org_y0_fast))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     foucseYval_1
         .attr("y", y(org_y0_slow))
         .text(selectedData_y0_slow)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2
         .attr("y", y(org_y0_okay))
         .text(selectedData_y0_okay)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3
         .attr("y", y(org_y0_fast))
         .text(selectedData_y0_fast)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
     foucseXval
         .attr("x", x(org_x0) - 10)
@@ -490,7 +529,7 @@ function onStart() {
 }
 
 function onDrag() {
-    let visible="Hidden";
+    let visible="visible";
     org_x0 = x.invert(d3.mouse(this)[0])
     x0 = Number(x.invert(d3.mouse(this)[0]).toFixed(2)); // 读x坐标
 
@@ -499,7 +538,7 @@ function onDrag() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= -5){
+    if(x0 <= -5 && x0>= -10){
         y0_slow=1;
         org_y0_slow =1;
         vis_label1 = 'visible';
@@ -558,6 +597,40 @@ function onDrag() {
         }
 
     }
+    else if (x0 >5 && x0<=10){
+        y0_slow = 0;
+        org_y0_slow = 0;
+        vis_label1 = 'Hidden'
+
+        y0_okay = 0;
+        org_y0_okay = 0;
+        vis_label2 = 'Hidden'
+
+        y0_fast =1;
+        org_y0_fast =1;
+        vis_label3 = 'visible';
+
+        maxY = org_y0_fast;
+    }
+
+    else if(x0 < -10){
+        y0_slow = 1;
+        org_y0_slow = 1;
+        vis_label1 = 'visible'
+
+        y0_okay = 0;
+        org_y0_okay = 0;
+        vis_label2 = 'Hidden'
+
+        y0_fast =0;
+        org_y0_fast =0;
+        vis_label3 = 'Hidden';
+
+        maxY = org_y0_slow;
+        x0= -10;
+        org_x0= -10;
+
+    }
 
     else{
         y0_slow = 0;
@@ -572,7 +645,9 @@ function onDrag() {
         org_y0_fast =1;
         vis_label3 = 'visible';
 
-        maxY = org_y0_fast
+        maxY = org_y0_fast;
+        x0=10;
+        org_x0=10;
 
     }
 
@@ -592,19 +667,19 @@ function onDrag() {
         .html("(" + selectedData_x_slow + ", "  + selectedData_y0_slow+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_slow)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", 'Hidden')
 
     focusLabel2
         .html("(" + selectedData_x_okay + ", "  + selectedData_y0_okay+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_okay)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", 'Hidden')
 
     focusLabel3
         .html("(" + selectedData_x_fast + ", "  + selectedData_y0_fast+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_fast)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", 'Hidden')
 
     focuseLine2x
         .attr("x1",x(org_x0) )
@@ -617,32 +692,32 @@ function onDrag() {
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_slow))
         .attr("y2", y(org_y0_slow))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_okay))
         .attr("y2", y(org_y0_okay))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_fast))
         .attr("y2", y(org_y0_fast))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     foucseYval_1
         .attr("y", y(org_y0_slow))
         .text(selectedData_y0_slow)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2
         .attr("y", y(org_y0_okay))
         .text(selectedData_y0_okay)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3
         .attr("y", y(org_y0_fast))
         .text(selectedData_y0_fast)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
     foucseXval
         .attr("x", x(org_x0) - 10)
@@ -666,7 +741,7 @@ function onEnd() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= -5){
+    if(x0 <= -5 && x0>-10){
         y0_slow=1;
         org_y0_slow =1;
         vis_label1 = 'visible';
@@ -725,6 +800,40 @@ function onEnd() {
         }
 
     }
+    else if(x0>5 && x0<=10){
+        y0_slow = 0;
+        org_y0_slow = 0;
+        vis_label1 = 'Hidden'
+
+        y0_okay = 0;
+        org_y0_okay = 0;
+        vis_label2 = 'Hidden'
+
+        y0_fast =1;
+        org_y0_fast =1;
+        vis_label3 = 'visible';
+
+        maxY = org_y0_fast;
+    }
+
+    else if(x0<-10){
+        y0_slow = 1;
+        org_y0_slow = 1;
+        vis_label1 = 'visible'
+
+        y0_okay = 0;
+        org_y0_okay = 0;
+        vis_label2 = 'Hidden'
+
+        y0_fast =0;
+        org_y0_fast =0;
+        vis_label3 = 'Hidden';
+
+        maxY = org_y0_slow;
+        x0= -10;
+        org_x0= -10;
+
+    }
 
     else{
         y0_slow = 0;
@@ -739,7 +848,9 @@ function onEnd() {
         org_y0_fast =1;
         vis_label3 = 'visible';
 
-        maxY = org_y0_fast
+        maxY = org_y0_fast;
+        x0=10;
+        org_x0=10;
 
     }
 
@@ -839,6 +950,44 @@ function onEnd() {
             (Number(y0_far.toFixed(2)) * Number(y0_okay.toFixed(2)))+
             (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2)))
         );
+
+///
+    if (result>=8){
+        describ = 'a large accelaration';
+    }
+    else if (result<8 && result >=4){
+        describ = 'an accelaration';
+
+    }
+    else if (result<4 && result >=1.5){
+        describ = 'a moderate accelaration';
+    }
+    else if (result<1.5 && result >-1.5){
+        describ = 'almost no speed change';
+    }
+    else if (result<=-1.5 && result >-4){
+        describ = 'a moderate decelaration';
+    }
+    else if (result<=-4 && result >-8){
+        describ = 'a decelaration';
+    }
+    else{
+        describ = 'a large decelaration';
+    }
+    document.getElementById("describe").innerHTML = describ;
+///
+    if(x0 >1.5){
+        speed_dis = 'is fast';
+    }
+    else if (x0<1.5 && x0>-1.5){
+        speed_dis = 'is the same';
+    }
+    else{
+        speed_dis = 'is slow';
+    }
+    document.getElementById("speed_dis").innerHTML = speed_dis;
+
+
     document.getElementById("acceleration").innerHTML =result.toFixed(2);
     document.getElementById("spd_x1").innerHTML = x0;
     document.getElementById("spd_x2").innerHTML = x0;
@@ -1047,7 +1196,45 @@ let result =
     );
 document.getElementById("acceleration").innerHTML =result.toFixed(2)
 
+///
+let describ ='';
+if (result>=8){
+    describ = 'a large accelaration';
+}
+else if (result<8 && result >=4){
+    describ = 'an accelaration';
 
+}
+else if (result<4 && result >=1.5){
+    describ = 'a moderate accelaration';
+}
+else if (result<1.5 && result >-1.5){
+    describ = 'almost no speed change';
+}
+else if (result<=-1.5 && result >-4){
+    describ = 'a moderate decelaration';
+}
+else if (result<=-4 && result >-8){
+    describ = 'a decelaration';
+}
+else{
+    describ = 'a large decelaration';
+}
+document.getElementById("describe").innerHTML = describ;
+///
+///
+let speed_dis ='';
+if(x0 >1.5){
+    speed_dis = 'is fast';
+}
+else if (x0<1.5 && x0>-1.5){
+    speed_dis = 'is the same';
+}
+else{
+    speed_dis = 'is slow';
+}
+document.getElementById("speed_dis").innerHTML = speed_dis;
+///
 
 document.getElementById("result_1").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_slow.toFixed(2))).toFixed(2);
 document.getElementById("result_2").innerHTML = (Number(y0_close.toFixed(2)) * Number(y0_okay.toFixed(2))).toFixed(2);
@@ -1063,5 +1250,6 @@ export { y0_slow };
 export { y0_okay };
 export { y0_fast };
 export { result };
+export { describ };
 
 export{y1,y2,y3,y4,y5,y6,y7,y8,y9};

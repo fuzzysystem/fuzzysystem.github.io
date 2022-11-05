@@ -206,7 +206,7 @@ var foucseYval =
 
 
 function onStart() {
-    let visible="Hidden";
+    let visible="Visible";
     d3.select(this).raise().classed("active", true);
     let org_x0 = x.invert(d3.mouse(this)[0])
     let x0 = x.invert(d3.mouse(this)[0]).toFixed(2);
@@ -225,6 +225,22 @@ function onStart() {
         y0 =0.5*(6-x0);
         org_y0 = 0.5 * (6 -org_x0);
 
+    }else if(0<x0 && x0<1){
+        y0 = 0;
+        org_y0 = 0;
+    }else if(6<x0 && x0<8){
+        y0 = 0;
+        org_y0 = 0;
+    }else if(x0<0){
+        x0=0;
+        org_x0 = 0;
+        y0=0;
+        org_y0=0;
+    }else{
+        x0=8;
+        org_x0 = 8;
+        y0=0;
+        org_y0=0;
     }
 
     let selectedData_x = x0;
@@ -234,7 +250,7 @@ function onStart() {
         .html("(" + selectedData_x + ", "  + selectedData_y0+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0)+45)
-        .style("visibility", "visible")
+        .style("visibility", "Hidden")
 
     focuseLine2x
         .attr("x1",x(org_x0) )
@@ -264,7 +280,7 @@ function onStart() {
 }
 
 function onDrag() {
-    let visible="Hidden";
+    let visible="Visible";
 
     let org_x0 = x.invert(d3.mouse(this)[0])
     let x0 = x.invert(d3.mouse(this)[0]).toFixed(2);
@@ -283,6 +299,22 @@ function onDrag() {
         y0 =0.5*(6-x0);
         org_y0 = 0.5 * (6 -org_x0);
 
+    }else if(0<x0 && x0<1){
+        y0 = 0;
+        org_y0 = 0;
+    }else if(6<x0 && x0<8){
+        y0 = 0;
+        org_y0 = 0;
+    }else if(x0<0){
+        x0=0;
+        org_x0 = 0;
+        y0=0;
+        org_y0=0;
+    }else{
+        x0=8;
+        org_x0 = 8;
+        y0=0;
+        org_y0=0;
     }
 
     let selectedData_x = x0;
@@ -293,7 +325,7 @@ function onDrag() {
         // .html("x:" + selectedData_x + ", " + "μ(x):" + selectedData_y0)
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0)+45)
-        .style("visibility", "visible")
+        .style("visibility", "Hidden")
 
     focuseLine2x
         .attr("x1",x(org_x0) )
@@ -344,6 +376,22 @@ function onEnd() {
         y0 =0.5*(6-x0);
         org_y0 = 0.5 * (6 -org_x0);
 
+    }else if(0<x0 && x0<1){
+        y0 = 0;
+        org_y0 = 0;
+    }else if(6<x0 && x0<8){
+        y0 = 0;
+        org_y0 = 0;
+    }else if(x0<0){
+        x0=0;
+        org_x0 = 0;
+        y0=0;
+        org_y0=0;
+    }else{
+        x0=8;
+        org_x0 = 8;
+        y0=0;
+        org_y0=0;
     }
 
 

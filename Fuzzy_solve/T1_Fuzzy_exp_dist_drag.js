@@ -326,7 +326,7 @@ let x0 =47;
 
 
 function onStart() {
-    let visible="Hidden";
+    let visible="visible";
     d3.select(this).raise().classed("active", true);
     org_x0 = x.invert(d3.mouse(this)[0])
     x0 = Number(x.invert(d3.mouse(this)[0]).toFixed(2)); // 读x坐标
@@ -337,7 +337,7 @@ function onStart() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= 45){
+    if(x0 <= 45 && x0>40){
         y0_close=1;
         org_y0_close =1;
         vis_label1 = 'visible';
@@ -397,6 +397,40 @@ function onStart() {
 
     }
 
+    else if(x0>55 && x0<=60){
+        y0_close = 0;
+        org_y0_close = 0;
+        vis_label1 = 'Hidden'
+
+        y0_oky = 0;
+        org_y0_oky = 0;
+        vis_label2 = 'Hidden'
+
+        y0_far =1;
+        org_y0_far =1;
+        vis_label3 = 'visible';
+
+        maxY = org_y0_far;
+
+    }
+
+    else if(x0<=40){
+        y0_close=1;
+        org_y0_close =1;
+        vis_label1 = 'visible';
+
+        y0_oky =0;
+        org_y0_oky =0;
+        vis_label2 = 'Hidden';
+
+        y0_far =0;
+        org_y0_far =0;
+        vis_label3 = 'Hidden';
+
+        maxY=1;
+        x0=40;
+        org_x0=40;
+    }
     else{
         y0_close = 0;
         org_y0_close = 0;
@@ -410,8 +444,9 @@ function onStart() {
         org_y0_far =1;
         vis_label3 = 'visible';
 
-        maxY = org_y0_far
-
+        maxY = org_y0_far;
+        x0=60;
+        org_x0=60;
     }
 
 
@@ -430,19 +465,19 @@ function onStart() {
         .html("(" + selectedData_x_close + ", "  + selectedData_y0_close+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_close)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", "hidden")
 
     focusLabel2
         .html("(" + selectedData_x_okay + ", "  + selectedData_y0_oky+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_oky)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", "hidden")
 
     focusLabel3
         .html("(" + selectedData_x_far + ", "  + selectedData_y0_far+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_far)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", "hidden")
 
     focuseLine2x
         .attr("x1",x(org_x0) )
@@ -455,32 +490,32 @@ function onStart() {
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_close))
         .attr("y2", y(org_y0_close))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_oky))
         .attr("y2", y(org_y0_oky))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_far))
         .attr("y2", y(org_y0_far))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     foucseYval_1
         .attr("y", y(org_y0_close))
         .text(selectedData_y0_close)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2
         .attr("y", y(org_y0_oky))
         .text(selectedData_y0_oky)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3
         .attr("y", y(org_y0_far))
         .text(selectedData_y0_far)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
     foucseXval
         .attr("x", x(org_x0) - 10)
@@ -489,7 +524,7 @@ function onStart() {
 }
 
 function onDrag() {
-    let visible="Hidden";
+    let visible="visible";
     org_x0 = x.invert(d3.mouse(this)[0])
     x0 = Number(x.invert(d3.mouse(this)[0]).toFixed(2)); // 读x坐标
 
@@ -498,7 +533,7 @@ function onDrag() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= 45){
+    if(x0 <= 45 && x0>40){
         y0_close=1;
         org_y0_close =1;
         vis_label1 = 'visible';
@@ -558,7 +593,7 @@ function onDrag() {
 
     }
 
-    else{
+    else if(x0>55 && x0<=60){
         y0_close = 0;
         org_y0_close = 0;
         vis_label1 = 'Hidden'
@@ -573,6 +608,41 @@ function onDrag() {
 
         maxY = org_y0_far;
 
+    }
+
+    else if(x0<=40){
+        y0_close=1;
+        org_y0_close =1;
+        vis_label1 = 'visible';
+
+        y0_oky =0;
+        org_y0_oky =0;
+        vis_label2 = 'Hidden';
+
+        y0_far =0;
+        org_y0_far =0;
+        vis_label3 = 'Hidden';
+
+        maxY=1;
+        x0=40;
+        org_x0=40;
+    }
+    else{
+        y0_close = 0;
+        org_y0_close = 0;
+        vis_label1 = 'Hidden'
+
+        y0_oky = 0;
+        org_y0_oky = 0;
+        vis_label2 = 'Hidden'
+
+        y0_far =1;
+        org_y0_far =1;
+        vis_label3 = 'visible';
+
+        maxY = org_y0_far;
+        x0=60;
+        org_x0=60;
     }
 
 
@@ -591,19 +661,19 @@ function onDrag() {
         .html("(" + selectedData_x_close + ", "  + selectedData_y0_close+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_close)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", "hidden")
 
     focusLabel2
         .html("(" + selectedData_x_okay + ", "  + selectedData_y0_oky+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_oky)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", "hidden")
 
     focusLabel3
         .html("(" + selectedData_x_far + ", "  + selectedData_y0_far+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_far)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", "hidden")
 
     focuseLine2x
         .attr("x1",x(org_x0) )
@@ -616,32 +686,32 @@ function onDrag() {
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_close))
         .attr("y2", y(org_y0_close))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_oky))
         .attr("y2", y(org_y0_oky))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_far))
         .attr("y2", y(org_y0_far))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     foucseYval_1
         .attr("y", y(org_y0_close))
         .text(selectedData_y0_close)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2
         .attr("y", y(org_y0_oky))
         .text(selectedData_y0_oky)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3
         .attr("y", y(org_y0_far))
         .text(selectedData_y0_far)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
     foucseXval
         .attr("x", x(org_x0) - 10)
@@ -665,7 +735,7 @@ function onEnd() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= 45){
+    if(x0 <= 45 && x0>40){
         y0_close=1;
         org_y0_close =1;
         vis_label1 = 'visible';
@@ -725,7 +795,7 @@ function onEnd() {
 
     }
 
-    else{
+    else if(x0>55 && x0<=60){
         y0_close = 0;
         org_y0_close = 0;
         vis_label1 = 'Hidden'
@@ -740,6 +810,41 @@ function onEnd() {
 
         maxY = org_y0_far;
 
+    }
+
+    else if(x0<=40){
+        y0_close=1;
+        org_y0_close =1;
+        vis_label1 = 'visible';
+
+        y0_oky =0;
+        org_y0_oky =0;
+        vis_label2 = 'Hidden';
+
+        y0_far =0;
+        org_y0_far =0;
+        vis_label3 = 'Hidden';
+
+        maxY=1;
+        x0=40;
+        org_x0=40;
+    }
+    else{
+        y0_close = 0;
+        org_y0_close = 0;
+        vis_label1 = 'Hidden'
+
+        y0_oky = 0;
+        org_y0_oky = 0;
+        vis_label2 = 'Hidden'
+
+        y0_far =1;
+        org_y0_far =1;
+        vis_label3 = 'visible';
+
+        maxY = org_y0_far;
+        x0=60;
+        org_x0=60;
     }
 
 
@@ -758,19 +863,19 @@ function onEnd() {
         .html("(" + selectedData_x_close + ", "  + selectedData_y0_close+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_close)+45)
-        .style("visibility", 'hidden')
+        .style("visibility", "hidden")
 
     focusLabel2
         .html("(" + selectedData_x_okay + ", "  + selectedData_y0_oky+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_oky)+45)
-        .style("visibility", 'hidden')
+        .style("visibility", "hidden")
 
     focusLabel3
         .html("(" + selectedData_x_far + ", "  + selectedData_y0_far+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_far)+45)
-        .style("visibility", 'hidden')
+        .style("visibility", "hidden")
 
     focuseLine2x
         .attr("x1",x(org_x0) )
@@ -926,9 +1031,50 @@ function onEnd() {
             (Number(y0_far.toFixed(2)) * Number(y0_fast.toFixed(2)))
         );
     document.getElementById("acceleration").innerHTML =result2.toFixed(2)
+
+    ///
+    let describ2 ='';
+    if (result2>=8){
+        describ2 = 'a large accelaration';
+    }
+    else if (result2<8 && result2 >=4){
+        describ2 = 'an accelaration';
+
+    }
+    else if (result2<4 && result2 >=1.5){
+        describ2 = 'a moderate accelaration';
+    }
+    else if (result2<1.5 && result2 >-1.5){
+        describ2 = 'almost no speed change';
+    }
+    else if (result2<=-1.5 && result2 >-4){
+        describ2 = 'a moderate decelaration';
+    }
+    else if (result2<=-4 && result2 >-8){
+        describ2 = 'a decelaration';
+    }
+    else{
+        describ2 = 'a large decelaration';
+    }
+    document.getElementById("describe").innerHTML = describ2;
+///
+///
+    let dist_dis ='';
+    if(x0 <=48.5){
+        dist_dis = 'is shorter than';
+    }
+    else if (x0<51.5 && x0>48.5){
+        dist_dis = 'is almost';
+    }
+    else{
+        dist_dis = 'is longer than';
+    }
+    document.getElementById("dist_dis").innerHTML = dist_dis;
+///
+
 }
 
-import { y0_slow } from './T1_Fuzzy_exp_speed_drag.js';
+import {describ, result, y0_slow} from './T1_Fuzzy_exp_speed_drag.js';
 import { y0_okay } from './T1_Fuzzy_exp_speed_drag.js';
 import { y0_fast } from './T1_Fuzzy_exp_speed_drag.js';
 // import { result } from './T1_Fuzzy_exp_speed_drag.js';
@@ -981,6 +1127,17 @@ document.getElementById("dst_far_x1_i").innerHTML = x0;
 document.getElementById("dst_far_x2_i").innerHTML = x0;
 document.getElementById("dst_far_y_i").innerHTML = org_y0_far.toFixed(2);
 
+let dist_dis ='';
+if(x0 <=48.5){
+    dist_dis = 'is shorter than';
+}
+else if (x0<51.5&& x0>48.5){
+    dist_dis = 'is almost';
+}
+else{
+    dist_dis = 'is longer than';
+}
+document.getElementById("dist_dis").innerHTML = dist_dis;
 
 export { y0_close };
 export { y0_oky };

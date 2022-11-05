@@ -531,7 +531,7 @@ function onStart() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= -7){
+    if(x0 <= -12){
         y0_slow_u = 1;
         org_y0_slow_u = 1;
         y0_slow_l=1;
@@ -551,7 +551,31 @@ function onStart() {
         vis_label3 = 'Hidden';
 
         maxY=org_y0_slow_u;
-    }else if(-7<x0 && x0<=-5){
+        x0=-12;
+        org_x0=-12;
+    }
+    else if(x0 <= -7 && x0>-12){
+        y0_slow_u = 1;
+        org_y0_slow_u = 1;
+        y0_slow_l=1;
+        org_y0_slow_l =1;
+        vis_label1 = 'visible';
+
+        y0_okay_u =0;
+        org_y0_okay_u =0;
+        y0_okay_l =0;
+        org_y0_okay_l =0;
+        vis_label2 = 'Hidden';
+
+        y0_fast_u =0;
+        org_y0_fast_u =0;
+        y0_fast_l =0;
+        org_y0_fast_l =0;
+        vis_label3 = 'Hidden';
+
+        maxY=org_y0_slow_u;
+    }
+    else if(-7<x0 && x0<=-5){
         y0_slow_u = 1;
         org_y0_slow_u = 1;
         y0_slow_l= 0.2 * (-2 - x0);
@@ -735,7 +759,7 @@ function onStart() {
 
         maxY=org_y0_fast_u;
 
-    }else{
+    }else if(7<x0 && x0<=10){
         y0_slow_u = 0;
         org_y0_slow_u =0;
         y0_slow_l=0;
@@ -755,6 +779,29 @@ function onStart() {
         vis_label3 = 'visible';
 
         maxY=org_y0_fast_u;
+    }
+else{
+        y0_slow_u = 0;
+        org_y0_slow_u =0;
+        y0_slow_l=0;
+        org_y0_slow_l =0;
+        vis_label1 = 'Hidden';
+
+        y0_okay_u =0;
+        org_y0_okay_u =0;
+        y0_okay_l =0;
+        org_y0_okay_l =0;
+        vis_label2 = 'hidden';
+
+        y0_fast_u =1;
+        org_y0_fast_u =1;
+        y0_fast_l =1;
+        org_y0_fast_l =1;
+        vis_label3 = 'visible';
+
+        maxY=org_y0_fast_u;
+        x0=10;
+        org_x0=10;
     }
 
 
@@ -782,112 +829,112 @@ function onStart() {
         .html("(" + selectedData_x_slow_u + ", "  + selectedData_y0_slow_u+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_slow_u)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", 'hidden')
 
     focusLabel2_1
         .html("(" + selectedData_x_okay_u + ", "  + selectedData_y0_okay_u+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_okay_u)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", 'hidden')
 
     focusLabel3_1
         .html("(" + selectedData_x_fast_u + ", "  + selectedData_y0_fast_u+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_fast_u)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", 'hidden')
 
     focusLabel1_2
         .html("(" + selectedData_x_slow_l + ", "  + selectedData_y0_slow_l+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_slow_l)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", 'hidden')
 
     focusLabel2_2
         .html("(" + selectedData_x_okay_l + ", "  + selectedData_y0_okay_l+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_okay_l)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", 'hidden')
 
     focusLabel3_2
         .html("(" + selectedData_x_fast_l + ", "  + selectedData_y0_fast_l+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_fast_l)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", 'hidden')
 
     focuseLine2x
         .attr("x1",x(org_x0) )
         .attr("x2", x(org_x0))
         .attr("y1",y(maxY))
         .attr("y2", y(0))
-        .style("visibility", visible)
+        .style("visibility", 'visible')
 
     focuseLine2y_1_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_slow_u))
         .attr("y2", y(org_y0_slow_u))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_okay_u))
         .attr("y2", y(org_y0_okay_u))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_fast_u))
         .attr("y2", y(org_y0_fast_u))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     focuseLine2y_1_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_slow_l))
         .attr("y2", y(org_y0_slow_l))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_okay_l))
         .attr("y2", y(org_y0_okay_l))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_fast_l))
         .attr("y2", y(org_y0_fast_l))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     foucseYval_1_1
         .attr("y", y(org_y0_slow_u))
         .text(selectedData_y0_slow_u)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2_1
         .attr("y", y(org_y0_okay_u))
         .text(selectedData_y0_okay_u)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3_1
         .attr("y", y(org_y0_fast_u))
         .text(selectedData_y0_fast_u)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
     foucseYval_1_2
         .attr("y", y(org_y0_slow_l))
         .text(selectedData_y0_slow_l)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2_2
         .attr("y", y(org_y0_okay_l))
         .text(selectedData_y0_okay_l)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3_2
         .attr("y", y(org_y0_fast_l))
         .text(selectedData_y0_fast_l)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
 
     foucseXval
         .attr("x", x(org_x0) - 10)
         .text(x0)
-        .style("visibility", visible);
+        .style("visibility", 'visible');
 }
 
 function onDrag() {
@@ -900,7 +947,30 @@ function onDrag() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= -7){
+    if(x0 <= -12){
+        y0_slow_u = 1;
+        org_y0_slow_u = 1;
+        y0_slow_l=1;
+        org_y0_slow_l =1;
+        vis_label1 = 'visible';
+
+        y0_okay_u =0;
+        org_y0_okay_u =0;
+        y0_okay_l =0;
+        org_y0_okay_l =0;
+        vis_label2 = 'Hidden';
+
+        y0_fast_u =0;
+        org_y0_fast_u =0;
+        y0_fast_l =0;
+        org_y0_fast_l =0;
+        vis_label3 = 'Hidden';
+
+        maxY=org_y0_slow_u;
+        x0=-12;
+        org_x0=-12;
+    }
+    else if(x0 <= -7 && x0>-12){
         y0_slow_u = 1;
         org_y0_slow_u = 1;
         y0_slow_l=1;
@@ -1113,6 +1183,27 @@ function onDrag() {
         maxY=org_y0_fast_u;
 
     }
+    else if(7<x0 && x0<=10){
+        y0_slow_u = 0;
+        org_y0_slow_u =0;
+        y0_slow_l=0;
+        org_y0_slow_l =0;
+        vis_label1 = 'Hidden';
+
+        y0_okay_u =0;
+        org_y0_okay_u =0;
+        y0_okay_l =0;
+        org_y0_okay_l =0;
+        vis_label2 = 'hidden';
+
+        y0_fast_u =1;
+        org_y0_fast_u =1;
+        y0_fast_l =1;
+        org_y0_fast_l =1;
+        vis_label3 = 'visible';
+
+        maxY=org_y0_fast_u;
+    }
     else{
         y0_slow_u = 0;
         org_y0_slow_u =0;
@@ -1133,6 +1224,8 @@ function onDrag() {
         vis_label3 = 'visible';
 
         maxY=org_y0_fast_u;
+        x0=10;
+        org_x0=10;
     }
 
 
@@ -1160,112 +1253,112 @@ function onDrag() {
         .html("(" + selectedData_x_slow_u + ", "  + selectedData_y0_slow_u+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_slow_u)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", 'hidden')
 
     focusLabel2_1
         .html("(" + selectedData_x_okay_u + ", "  + selectedData_y0_okay_u+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_okay_u)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", 'hidden')
 
     focusLabel3_1
         .html("(" + selectedData_x_fast_u + ", "  + selectedData_y0_fast_u+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_fast_u)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", 'hidden')
 
     focusLabel1_2
         .html("(" + selectedData_x_slow_l + ", "  + selectedData_y0_slow_l+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_slow_l)+45)
-        .style("visibility", vis_label1)
+        .style("visibility", 'hidden')
 
     focusLabel2_2
         .html("(" + selectedData_x_okay_l + ", "  + selectedData_y0_okay_l+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_okay_l)+45)
-        .style("visibility", vis_label2)
+        .style("visibility", 'hidden')
 
     focusLabel3_2
         .html("(" + selectedData_x_fast_l + ", "  + selectedData_y0_fast_l+ ")")
         .attr("x", x(org_x0)+25)
         .attr("y", y(org_y0_fast_l)+45)
-        .style("visibility", vis_label3)
+        .style("visibility", 'hidden')
 
     focuseLine2x
         .attr("x1",x(org_x0) )
         .attr("x2", x(org_x0))
         .attr("y1",y(maxY))
         .attr("y2", y(0))
-        .style("visibility", visible)
+        .style("visibility", 'visible')
 
     focuseLine2y_1_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_slow_u))
         .attr("y2", y(org_y0_slow_u))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_okay_u))
         .attr("y2", y(org_y0_okay_u))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3_1
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_fast_u))
         .attr("y2", y(org_y0_fast_u))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     focuseLine2y_1_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_slow_l))
         .attr("y2", y(org_y0_slow_l))
-        .style("visibility", visible)
+        .style("visibility", vis_label1)
     focuseLine2y_2_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_okay_l))
         .attr("y2", y(org_y0_okay_l))
-        .style("visibility", visible)
+        .style("visibility", vis_label2)
     focuseLine2y_3_2
         .attr("x1",x(org_x0) )
         .attr("y1",y(org_y0_fast_l))
         .attr("y2", y(org_y0_fast_l))
-        .style("visibility", visible)
+        .style("visibility", vis_label3)
 
     foucseYval_1_1
         .attr("y", y(org_y0_slow_u))
         .text(selectedData_y0_slow_u)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2_1
         .attr("y", y(org_y0_okay_u))
         .text(selectedData_y0_okay_u)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3_1
         .attr("y", y(org_y0_fast_u))
         .text(selectedData_y0_fast_u)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
     foucseYval_1_2
         .attr("y", y(org_y0_slow_l))
         .text(selectedData_y0_slow_l)
-        .style("visibility", visible);
+        .style("visibility", vis_label1);
 
     foucseYval_2_2
         .attr("y", y(org_y0_okay_l))
         .text(selectedData_y0_okay_l)
-        .style("visibility", visible);
+        .style("visibility", vis_label2);
 
     foucseYval_3_2
         .attr("y", y(org_y0_fast_l))
         .text(selectedData_y0_fast_l)
-        .style("visibility", visible);
+        .style("visibility", vis_label3);
 
 
     foucseXval
         .attr("x", x(org_x0) - 10)
         .text(x0)
-        .style("visibility", visible);
+        .style("visibility", 'visible');
 
 }
 
@@ -1284,7 +1377,7 @@ function onEnd() {
     var vis_label3 = 'Hidden';
     var maxY = 0;
 
-    if(x0 <= -7){
+    if(x0 <= -12){
         y0_slow_u = 1;
         org_y0_slow_u = 1;
         y0_slow_l=1;
@@ -1304,7 +1397,31 @@ function onEnd() {
         vis_label3 = 'Hidden';
 
         maxY=org_y0_slow_u;
-    }else if(-7<x0 && x0<=-5){
+        x0=-12;
+        org_x0=-12;
+    }
+    else if(x0 <= -7 && x0>-12){
+        y0_slow_u = 1;
+        org_y0_slow_u = 1;
+        y0_slow_l=1;
+        org_y0_slow_l =1;
+        vis_label1 = 'visible';
+
+        y0_okay_u =0;
+        org_y0_okay_u =0;
+        y0_okay_l =0;
+        org_y0_okay_l =0;
+        vis_label2 = 'Hidden';
+
+        y0_fast_u =0;
+        org_y0_fast_u =0;
+        y0_fast_l =0;
+        org_y0_fast_l =0;
+        vis_label3 = 'Hidden';
+
+        maxY=org_y0_slow_u;
+    }
+    else if(-7<x0 && x0<=-5){
         y0_slow_u = 1;
         org_y0_slow_u = 1;
         y0_slow_l= 0.2 * (-2 - x0);
@@ -1488,7 +1605,7 @@ function onEnd() {
 
         maxY=org_y0_fast_u;
 
-    }else{
+    }else if(7<x0 && x0<=10){
         y0_slow_u = 0;
         org_y0_slow_u =0;
         y0_slow_l=0;
@@ -1508,6 +1625,29 @@ function onEnd() {
         vis_label3 = 'visible';
 
         maxY=org_y0_fast_u;
+    }
+else{
+        y0_slow_u = 0;
+        org_y0_slow_u =0;
+        y0_slow_l=0;
+        org_y0_slow_l =0;
+        vis_label1 = 'Hidden';
+
+        y0_okay_u =0;
+        org_y0_okay_u =0;
+        y0_okay_l =0;
+        org_y0_okay_l =0;
+        vis_label2 = 'hidden';
+
+        y0_fast_u =1;
+        org_y0_fast_u =1;
+        y0_fast_l =1;
+        org_y0_fast_l =1;
+        vis_label3 = 'visible';
+
+        maxY=org_y0_fast_u;
+        x0=10;
+        org_x0=10;
     }
 
 
@@ -1640,7 +1780,7 @@ function onEnd() {
     foucseXval
         .attr("x", x(org_x0) - 10)
         .text(x0)
-        .style("visibility", visible);
+        .style("visibility", 'visible');
 
     results_l =
         (
