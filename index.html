@@ -54,8 +54,13 @@
     <title>Type-1 and Interval Type-2 Fuzzy Systems</title>
 </head>
 
+
 <body>
-<button id="backToTopButton" class="backToTopButton">
+<!--<button id="backToTopButton" class="backToTopButton">-->
+<!--    <i class="icon&#45;&#45;min icon-back-to-top-arrow"></i>-->
+<!--</button>-->
+
+<button id="backToTopButton" class="backToTopButton" style="display: flex;">
     <i class="icon--min icon-back-to-top-arrow"></i>
 </button>
 
@@ -279,7 +284,7 @@
                         <p>
                             <a href="#eq1">$(1)$</a> is a fuzzy set notation, introduced by Zadeh, as a shorthand
                             in which $\int$ denotes the collection of all points $x\in D_X$
-                            with associated <i>membership grade</i> $\mu_{_X}(x)$. $\blacksquare$
+                            with associated <i>membership grade</i> $\mu_{_X}(x)$.
                         </p>
                     </div>
                 </div>
@@ -326,18 +331,18 @@
                         there is no value (e.g., 0.3) in between, i.e., a crisp set cannot model partial agreement.
                     </p>
                     <a class="marker" href="#fig2"><span>Figure 2</span></a>
-                    <div class="l-interactive" style="margin-bottom: 20px">
+                    <div  id="fig2" class="l-interactive" style="margin-bottom: 20px">
                         <table>
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                <td><div class="interactiveopener"></div>
+                                <td><div class="interactiveopener">Try to drag the blue dot and change the membership grade of $x$.</div>
                                 </td>
                             </tr>
                         </table>
                         <div id="T1Fuzzy" style="width: 40%; margin: auto auto 10px;"></div>
-                        <div class="caption"><b>Figure 2:</b><br> Example of a T1 fuzzy set: Introducing the T1 Fuzzy set.</div>
+                        <div class="caption"><b>Figure 2:</b> An example of a T1 fuzzy set.</div>
                     </div>
-                    <script id="fig2" type="module" src="Fuzzy_solve/T1_Fuzzy_demo_drag.js"></script>
+                    <script type="module" src="Fuzzy_solve/T1_Fuzzy_demo_drag.js"></script>
 
                 </div>
             </div>
@@ -355,14 +360,14 @@
                 </div>
                 <a class="marker" href="#fig3"><span>Figure 3</span></a>
                 <div class="l-body" style="width: 100%">
-                    <img id="fig3" src="myimg/T1FLS.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 40%; display: block"/>
-                    <div class="caption"><b>Figure 3:</b><br> Diagram of a T1 fuzzy system.</div>
+                    <img id="fig3" src="myimg/T1FLS.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 70%; display: block"/>
+                    <div class="caption"><b>Figure 3:</b> Diagram of a T1 fuzzy system.</div>
                 </div>
 
                 <div><br>
                     <p>There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are words <d-cite bibtex-key="Chang1972"></d-cite>,
                         and Takagi-Sugeno-Kang (TSK), in which rule consequents ar mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.
-                        The latter may be more poplar, due to their simplicity and flexibility. T1 TSK rules are:</p>
+                        The latter is poplar, due to their simplicity and flexibility. T1 TSK rules are:</p>
                     <p>
                         $R_k: \mbox{ IF } x_1 \mbox{ is } X_{k,1} \mbox{ AND } \cdots \mbox{ AND } x_d \mbox{ is } X_{k,d},
                         \mbox{ THEN } y_k(\mathbf{x}) = \sum_{i=1}^d a_{k,i}x_i + b_k, \quad k=1,...,K$
@@ -518,7 +523,8 @@
                         <table>
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                <td><div class="interactiveopener"></div>
+                                <td><div class="interactiveopener">Try to drag the dots to change the distance and relative speed.
+                                    The membership grades and the subsequent content will be updated simultaneously. </div>
                                 </td>
                             </tr>
                         </table>
@@ -527,8 +533,9 @@
                         <div id="T1FuzzyExp_b" style="width: 40%; margin: auto auto 10px;"></div>
                         <div style="text-align: center"><b>(b)</b></div>
                         <div class="caption">
-                            <b>Figure 5:</b> Membership grades on the T1 fuzzy sets. (a) Distance is 47 meters;
-                            (b) Relative speed is 4 KM/h.
+                            <b>Figure 5:</b><br> Membership grades on the T1 fuzzy sets.
+                            (a) Distance is 47 meters, the membership interval on Close is 0.6, on Okay is 0.4, and on Far is 0;
+                            (b) Relative speed is 4 KM/h, the membership interval on Slow is 0, on Okay is 0.2, and on Fast is 0.8.
                         </div>
                         <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_dist_drag.js"></script>
                         <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_speed_drag.js"></script>
@@ -741,14 +748,14 @@
                         </span>
 
                         <p>
-                            <br>i.e., the car should have a fairly large deceleration to maintain the distance at 50 meters.
-                            This is intuitive, as the current distance is shorter than 50 meters, and the relative speed is fast.
+                            <br>i.e., the car should have <b><span id="describe"></span></b> to maintain the distance at 50 meters.
+                            This is intuitive, as the current distance <b><span id="dist_dis"></span></b> 50 meters, and the relative speed <b><span id="speed_dis"></span></b>.
                         </p>
                     </div>
                     <div>
-                        <p>The above nine rules are summarized in <a href="tab1">Table $ 1$</a>.
-                            The corresponding input-output mapping is shown in <a href="fig_T1_acc">Fig. $6$</a>,
-                            which can be changed by modifying the rule consequents in <a href="tab1">Table $1$</a>.</p>
+                        <p>The above nine rules are summarized in <a href="#tab1">Table $ 1$</a>.
+                            The corresponding input-output mapping is shown in <a href="#fig_T1_acc">Fig. $6$</a>,
+                            which can be changed by modifying the rule consequents in <a href="#tab1">Table $1$</a>.</p>
                         <div>
                             <a class="marker" href="#tab1"><span>rulebase</span></a>
                             <div class="caption" id="tab1">
@@ -794,14 +801,17 @@
                         <table>
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                <td><div class="interactiveopener"></div>
+                                <td><div class="interactiveopener">
+                                    Try to change the rulebase of <a href="#tab1">Table $ 1$</a> by inputting values or clicking the sidebar arrows.
+                                    After adjusting the rulebase, please click the <i>update</i> button and get your customized input-output mapping of the T1 fuzzy system.
+                                </div>
                                 </td>
                             </tr>
                         </table>
                         <div id="fig6" style="margin-left: 25%"></div>
                         <!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
                         <div class="caption">
-                            <b>Figure 6:</b> Input-output mapping of the T1 fuzzy system.
+                            <b>Figure 6:</b><br>Input-output mapping of the T1 fuzzy system. The figure can be zoomed and rotated by your mouse or the top right buttons.
                         </div>
                     </div>
 
@@ -814,7 +824,9 @@
             <a class="marker" href="#T1 opt"><span>Type-1 Fuzzy optimization</span></a>
             <div id="T1 opt">
                 <div>
-                    <p>A T1 fuzzy system should be optimized for each specific task.
+                    <p>A T1 fuzzy system should be optimized for each specific task. For example, in the car following fuzzy controller,
+                        for fast and accurate response, the membership functions and/or the rule consequents may need to be tuned.
+                        A T1 fuzzy system should be optimized for each specific task.
                         Generally, there are three different strategies <d-cite bibtex-key="drwuGD2020"></d-cite>:</p>
                     <ol>
                         <li>
@@ -826,12 +838,12 @@
                         </li>
 
                         <li>
-                            <p><i>Gradient descent</i>. For example, back-propagation <d-cite bibtex-key="Rumelhart1986"></d-cite></p>
-                            <p>can be used to iteratively find the optimal antecedent and consequent parameters.
-                                Recently, inspired by the equivalence/similarity between TSK fuzzy systems and
-                                neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective
-                                optimization techniques for the latter have been extended to fuzzy system
-                                optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>
+                            <p><i>Gradient descent</i>.</p> <p>For example, back-propagation <d-cite bibtex-key="Rumelhart1986"></d-cite>
+                            can be used to iteratively find the optimal antecedent and consequent parameters.
+                            Recently, inspired by the equivalence/similarity between TSK fuzzy systems and
+                            neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective
+                            optimization techniques for the latter have been extended to fuzzy system
+                            optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>
                         </li>
 
                         <li>
@@ -853,6 +865,11 @@
         <div id="IT2fuzzy set">
             <div>
                 <p>
+                    A T1 fuzzy set is certain in the sense that its membership grades are crisp values. Type-2 fuzzy sets <d-cite bibtex-key="Bezdek1993"></d-cite>,
+                    characterized by MFs that are themselves fuzzy, may be used to model more uncertainties.
+                    For example, different drivers may have different understanding of the linguistic term Far in the motivating example,
+                    and hence may provide different T1 fuzzy sets for it.
+                    Type-2 fuzzy sets can be used to incorporate these inter-personal uncertainties.
                     Despite having a name which carries the connotation of uncertainty,
                     research has shown that there are limitations in the ability of T1 fuzzy sets to model
                     and minimize the effect of uncertainties <d-cite bibtex-key="Mendel2017"></d-cite> <d-cite bibtex-key="Hagras2007"></d-cite>.
@@ -882,11 +899,11 @@
 
                     <p>where $x$, called the <i>primary variable</i>, has domain $D_{\tilde{X}}$;
                         $u\in [0,1]$ is the <i>secondary variable</i>; and, the amplitude of $\mu_{\tilde{X}} (x,u)$,
-                        called a <i>secondary grade</i> of $\tilde{X}$, equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. $\blacksquare$</p>
+                        called a <i>secondary grade</i> of $\tilde{X}$, equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. </p>
                 </div>
                 <div>
                     <p>
-                        An example of an IT2 fuzzy set $\tilde{X}$ is shown in <a herf="#fig7">Fig. $7$</a>.
+                        An example of an IT2 fuzzy set $\tilde{X}$ is shown in <a href="#fig7k">Fig. $7$</a>.
                         Observe that unlike a T1 fuzzy set, whose membership for each $x$ is a number,
                         the membership of an IT2 fuzzy set is an interval. For example, the membership of $x=3$ is $[0.25, 1]$,
                         and the membership of $x=5$ is $[0.75, 1]$. A membership interval $[0.25, 1]$ means that
@@ -895,25 +912,28 @@
                         an IT2 fuzzy set can model inter-personal uncertainties, whereas a T1 fuzzy set cannot.
                     </p>
                     <p>
-                        <a herf="#fig7">Fig. $7$</a> shows that an IT2 fuzzy set is bounded from the above and below by two T1 fuzzy sets,
+                        <a href="#fig7k">Fig. $7$</a> shows that an IT2 fuzzy set is bounded from the above and below by two T1 fuzzy sets,
                         which are called <i>upper MF</i> (UMF) and <i>lower MF</i> (LMF), respectively.
                         The area between the LMF and the UMF is the <i>footprint of uncertainty</i> (FOU).
                     </p>
                 </div>
                 <div>
                     <a class="marker" href="#fig7"><span>equation1</span></a>
-                    <div class="l-interactive" style="margin-bottom: 20px">
+                    <div id="fig7k" class="l-interactive" style="margin-bottom: 20px">
                         <table>
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                <td><div class="interactiveopener"></div>
+                                <td><div class="interactiveopener">
+                                    Try to drag the blue or green dot and change the membership interval of $x$.
+                                </div>
                                 </td>
                             </tr>
                         </table>
                         <div id="IT2FuzzyExp" style="width: 40%; margin: auto auto 10px;"></div>
-                        <div class="caption"><b>Figure 7:</b><br> Example of an IT2 fuzzy set.</div>
+                        <div class="caption"><b>Figure 7:</b><br> Example of an IT2 fuzzy set. When the input x=4, the membership interval is [0.5,1],
+                            represented by the red dashed line.</div>
                     </div>
-                    <script id="fig7" type="module" src="Fuzzy_solve/IT2_Fuzzy_demo.js"></script>
+                    <script type="module" src="Fuzzy_solve/IT2_Fuzzy_demo.js"></script>
                 </div>
 
 
@@ -933,7 +953,7 @@
                     <a class="marker" href="#fig8"><span>Figure1</span></a>
 
                     <div class="l-body" style="width: 100%">
-                        <img id="fig8" src="myimg/IT2FLS.svg" alt="An IT2 fuzzy system" style="margin: auto auto; width: 50%; display: block"/>
+                        <img id="fig8" src="myimg/IT2FLS.svg" alt="An IT2 fuzzy system" style="margin: auto auto; width: 80%; display: block"/>
                         <div class="caption"><b>Figure 8:</b><br> An IT2 fuzzy system.</div>
                     </div>
                 </div>
@@ -1333,7 +1353,9 @@
                             <table>
                                 <tr>
                                     <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                    <td><div class="interactiveopener"></div>
+                                    <td><div class="interactiveopener">Try to drag the dots to change the distance and relative speed.
+                                        The membership intervals and the subsequent content will be updated simultaneously.
+                                    </div>
                                     </td>
                                 </tr>
                             </table>
@@ -1342,7 +1364,9 @@
                             <div id="T2FuzzyExp_b" style="width: 40%; margin: auto auto 10px;"></div>
                             <div style="text-align: center"><b>(b)</b></div>
                             <div class="caption"><b>Figure 11:</b><br>
-                                Membership intervals on the IT2 fuzzy sets. (a) Distance is 47 meters; (b) Relative speed is 4 KM/h.
+                                Membership intervals on the IT2 fuzzy sets.
+                                (a) Distance is 47 meters, the membership interval on Close is [0.2 ,0.6 ], on Okay is [0,0.67], and on Far is [0,0];
+                                (b) Relative speed is 4 KM/h, the membership interval on Slow is [ 0, 0], on Okay is [ 0, 0.43], and on Fast is [ 0.4, 0.8].
                             </div>
                             <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_dist_drag.js"></script>
                             <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_speed_drag.js"></script>
@@ -1785,7 +1809,11 @@
                         <table>
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                <td><div class="interactiveopener"></div>
+                                <td><div class="interactiveopener">Try to change the rulebase of <a href="#tab1">Table $1$</a> and
+                                    <a href="#tab3">Table $3$</a> by inputting values or clicking the sidebar arrows.
+                                    After adjusting the rulebases, please click the update buttons to get your customized
+                                    input-output mapping of the IT2 fuzzy system and the difference between the input-output
+                                    mappings of the IT2 fuzzy system and the T1 fuzzy system.</div>
                                 </td>
                             </tr>
                         </table>
@@ -1795,8 +1823,8 @@
                         <div style="text-align: center"><b>(b)</b></div>
                         <!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
                         <div class="caption">
-                            <b>Figure 12:</b> (a) Input-output mapping of the IT2 fuzzy system; (b) difference between the input-output mappings of the IT2 fuzzy system and
-                            the T1 fuzzy system.
+                            <b>Figure 12:</b> <br>(a) Input-output mapping of the IT2 fuzzy system; (b) difference between the input-output mappings of the IT2 fuzzy system and
+                            the T1 fuzzy system.<br>The figure can be zoomed and rotated by your mouse or the top right buttons.
                         </div>
                     </div>
 
@@ -1853,18 +1881,22 @@
                         The Proportional-Integral (PI) gains of the IT2 fuzzy controller also change with the inputs,
                         which cannot be achieved by the baseline T1 fuzzy controller.</p>
                     </li>
-                    <li>
-                        <p><i>IT2 fuzzy controllers are more adaptive.</i>
-                            They can realize more complex input-output relationships which cannot be achieved by T1 fuzzy controllers <d-cite bibtex-key="Mendel2018"></d-cite>.</p>
+                    <li><p>Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> also explained two fundamental differences between IT2 and T1 fuzzy systems, i.e., adaptiveness and novelty.
+                        Since explaining them requires deeper understanding of IT2 fuzzy sets and systems, which is beyond the scope of this tutorial,
+                        we suggest interested readers to refer to <d-cite bibtex-key="drwuFundamental2012"></d-cite> for details.</p>
                     </li>
+                    <!--                    <li>-->
+                    <!--                        <p><i>IT2 fuzzy controllers are more adaptive.</i>-->
+                    <!--                            They can realize more complex input-output relationships which cannot be achieved by T1 fuzzy controllers <d-cite bibtex-key="Mendel2018"></d-cite>.</p>-->
+                    <!--                    </li>-->
 
-                    <li><p><i>IT2 fuzzy controller have a novelty that does not exist in traditional T1 fuzzy controllers.</i>
-                        Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> showed that in an
-                        IT2 fuzzy controller <i>different</i> membership grades from the same IT2 fuzzy set can be used in different rules,
-                        whereas for traditional T1 fuzzy controller the <i>same</i> membership grade from the same T1 fuzzy set is always
-                        used in different rules. This again implies that an IT2 fuzzy controller is more complex than a T1 fuzzy controller
-                        and it cannot be implemented by a T1 fuzzy controller using the same rulebase.</p>
-                    </li>
+                    <!--                    <li><p><i>IT2 fuzzy controller have a novelty that does not exist in traditional T1 fuzzy controllers.</i>-->
+                    <!--                        Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> showed that in an-->
+                    <!--                        IT2 fuzzy controller <i>different</i> membership grades from the same IT2 fuzzy set can be used in different rules,-->
+                    <!--                        whereas for traditional T1 fuzzy controller the <i>same</i> membership grade from the same T1 fuzzy set is always-->
+                    <!--                        used in different rules. This again implies that an IT2 fuzzy controller is more complex than a T1 fuzzy controller-->
+                    <!--                        and it cannot be implemented by a T1 fuzzy controller using the same rulebase.</p>-->
+                    <!--                    </li>-->
 
                 </ol></p>
 
