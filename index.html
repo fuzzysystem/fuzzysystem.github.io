@@ -69,22 +69,22 @@
     <script id='distill-front-matter' type="text/json">{
     "title": "Type-1 and Interval Type-2 Fuzzy Systems",
     "description": "The basic concepts of T1 and IT2 fuzzy sets and systems.",
-    "published": "Aug 30, 2022",
+    "published": "Nov. 6, 2022",
     "authors": [
       {
         "author":"Dongrui Wu",
-        "authorURL":"https://adockhorn.github.io/",
-        "affiliations": [{"name": "Huazhong University of Science and Technology Wuhan"}]
+        "authorURL":"https://sites.google.com/site/drwuhust",
+        "affiliations": [{"name": "Huazhong University of Science and Technology, Wuhan, China"}]
       },
       {
         "author":"Ruimin Peng",
-        "authorURL":"https://github.com/SimonLucas/",
-        "affiliations": [{"name": "Huazhong University of Science and Technology Wuhan"}]
+        "authorURL":"https://lab.bciml.cn/pengruimin",
+        "affiliations": [{"name": "Huazhong University of Science and Technology, Wuhan, China"}]
       },
       {
         "author":"Jerry M. Mendel",
-        "authorURL":"https://sipi.usc.edu/~mendel/",
-        "affiliations": [{"name": "University of Southern California Los Angeles"}]
+        "authorURL":"https://www.jmmprof.com",
+        "affiliations": [{"name": "University of Southern California, Los Angeles, CA USA"}]
       }
     ],
     "katex": {
@@ -233,7 +233,7 @@
 
             <p>Some intuitive rules would apply, e.g.,</p>
             <p>
-                $\mbox{ IF the distance is far AND your relative speed is slow, THEN your acceleration should be positive};$
+                $\mbox{IF the distance is far AND your relative speed is slow, THEN your acceleration should be positive};$
             </p>
             <p>
                 $\mbox{IF the distance is close AND your relative speed is fast, THEN your acceleration should be negative};$
@@ -263,6 +263,7 @@
                     finance <d-cite bibtex-key="Bojadziev2007"></d-cite>, medicine <d-cite bibtex-key="Phuong2001"></d-cite>,
                     energy <d-cite bibtex-key="Suganthi2015"></d-cite>, brain-computer interfaces <d-cite bibtex-key="drwuSF2018"></d-cite>,
                     etc.</p>
+                    
 
                 <h4>Definition 1</h4>
                 <a class="marker" href="#define1"><span>Type-1 Fuzzy Sets Definition 1</span></a>
@@ -294,7 +295,7 @@
                     <a class="marker" href="#fig1"><span>Figure1</span></a>
 
                     <div class="l-body" style="width: 100%">
-                        <img id="fig1" src="myimg/T1FS2.svg" alt="Alternative text in case the image cannot be loaded." style="margin: auto auto; width: 40%; display: block"/>
+                        <img id="fig1" src="myimg/T1FS2.png" alt="Alternative text in case the image cannot be loaded." style="margin: auto auto; width: 40%; display: block"/>
                         <div class="caption"><b>Figure 1:</b><br> A trapezoidal T1 fuzzy set.</div>
                     </div>
                 </div>
@@ -302,7 +303,7 @@
                     <p>The membership grade of $x$ can be computed as:</p>
 
                     <span>
-                        $u(x)=\left\{\begin{array}{cl}
+                        $u_X(x)=\left\{\begin{array}{cl}
                         \frac{x-a}{b-a}, & x\in(a,b) \\
                         1, & x\in[b,c] \\
                         \frac{d-x}{d-c}, & x\in(c,d)\\
@@ -354,14 +355,11 @@
                     <a href="#fig3">Figure $3$</a> shows the diagram of a typical T1 fuzzy system,
                     which consists of four components: fuzzifier, rulebase, inference engine,
                     and defuzzifier. The fuzzifier transforms crisp inputs into T1 fuzzy sets.
-                    The inference engine performs inference on the T1 fuzzy sets, combining the outputs of the rules in
-                    the rulebase into a new T1 fuzzy set.
-                    The defuzzifier converts the mapped T1 fuzzy set
-                    into a crisp output.</p>
+                    The inference engine performs inference on the T1 fuzzy sets, combining the outputs of the rules in the rulebase into a new T1 fuzzy set. The defuzzifier converts the mapped T1 fuzzy set into a crisp output.</p>
                 </div>
                 <a class="marker" href="#fig3"><span>Figure 3</span></a>
                 <div class="l-body" style="width: 100%">
-                    <img id="fig3" src="myimg/T1FLS.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 70%; display: block"/>
+                    <img id="fig3" src="myimg/T1FLS.png" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 70%; display: block"/>
                     <div class="caption"><b>Figure 3:</b> Diagram of a T1 fuzzy system.</div>
                 </div>
 
@@ -370,13 +368,14 @@
                         There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are
                         words modeled by T1 fuzzy sets <d-cite bibtex-key="Chang1972"></d-cite>,
                         and Takagi-Sugeno-Kang (TSK), in which rule consequents are mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.
-                        The latter is popular, due to their simplicity and flexibility. T1 TSK rules are:
-                    </p>
+                        The latter is popular, due to their simplicity and flexibility. </p>
+                        
+                        <p>T1 TSK rules are:                 </p>
 <!--                    <p>There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are words <d-cite bibtex-key="Chang1972"></d-cite>,-->
 <!--                        and Takagi-Sugeno-Kang (TSK), in which rule consequents ar mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.-->
 <!--                        The latter is popular, due to their simplicity and flexibility. T1 TSK rules are:</p>-->
                     <p>
-                        $R_k: \mbox{ IF } x_1 \mbox{ is } X_{k,1} \mbox{ AND } \cdots \mbox{ AND } x_d \mbox{ is } X_{k,d},
+                        $R_k: \mbox{ IF } X_1 \mbox{ is } X_{k,1} \mbox{ AND } \cdots \mbox{ AND } X_d \mbox{ is } X_{k,d},
                         \mbox{ THEN } y_k(\mathbf{x}) = \sum_{i=1}^d a_{k,i}x_i + b_k, \quad k=1,...,K$
                     </p>
                     <br>
@@ -428,7 +427,7 @@
                             <p>
                                 Since the inference output is already a crisp number,
                                 no defuzzification is needed in a T1 TSK fuzzy system.
-                                The inference output $y(x)$ is the final output.</p>
+                                The inference output $y(\mathbf{x})$ is the final output.</p>
                             <p>
                                 However, for Mamdani T1 fuzzy systems, since the rule consequents
                                 are words modeled by T1 fuzzy sets, the inference output is also
@@ -467,10 +466,10 @@
                     <a class="marker" href="#fig4b"><span>Figure4(b)</span></a>
 
                     <div class="l-body" style="width: 100%">
-                        <img id="fig4a" src="myimg/Distance.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 30%; display: block"/>
+                        <img id="fig4a" src="myimg/Distance.png" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width: 40%; display: block"/>
                         <div style="text-align: center"><b>(a)</b></div>
 
-                        <img id="fig4b" src="myimg/Speed.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:30%; display: block"/>
+                        <img id="fig4b" src="myimg/Speed.png" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:40%; display: block"/>
                         <div style="text-align: center"><b>(b)</b></div>
 
                         <div class="caption"><b>Figure 4:</b><br>T1 fuzzy sets for the distance and the relative speed, in the car following example.
@@ -554,8 +553,8 @@
                         <table>
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                <td><div class="interactiveopener">Try to drag the dots to change the distance and relative speed.
-                                    The membership grades and the subsequent content will be updated simultaneously. </div>
+                                <td><div class="interactiveopener">Try to drag the dots to change the distance and relative speed values.
+                                    The membership grades and all subsequent calculations will be updated accordingly. </div>
                                 </td>
                             </tr>
                         </table>
@@ -844,8 +843,8 @@
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
                                 <td><div class="interactiveopener">
-                                    Try to change the rulebase of <a href="#tab1">Table $ 1$</a> by inputting values or clicking the sidebar arrows.
-                                    After adjusting the rulebase, please click the <i>update</i> button and get your customized input-output mapping of the T1 fuzzy system.
+                                    Try to change the rule consequent values in <a href="#tab1">Table $ 1$</a> by direct typing or clicking on the sidebar arrows.
+                                    After adjusting the rulebase, click the "Update" button to update all calculations.
                                 </div>
                                 </td>
                             </tr>
@@ -853,7 +852,7 @@
                         <div id="fig6" style="margin-left: 25%"></div>
                         <!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
                         <div class="caption">
-                            <b>Figure 6:</b><br>Input-output mapping of the T1 fuzzy system. The figure can be zoomed and rotated by your mouse or the top right buttons.
+                            <b>Figure 6:</b><br>Input-output mapping of the T1 fuzzy system. The figure can be zoomed and rotated by using the mouse or the top right buttons.
                         </div>
                     </div>
 
@@ -902,22 +901,19 @@
 <!--            </div>-->
         </div>
 
-        <h2>Interval Type-2 (IT2) Fuzzy Sets and Fuzzy Systems</h2>
+        <h2>Interval Type-2 Fuzzy Sets and Fuzzy Systems</h2>
         <a class="marker" href="#IT2fuzzy set"><span>Interval Type-2 (IT2) Fuzzy Sets and Fuzzy Systems</span></a>
         <div id="IT2fuzzy set">
             <div>
                 <p>
-                    A T1 fuzzy set is certain in the sense that its membership grades are crisp values. Type-2 fuzzy sets <d-cite bibtex-key="Bezdek1993"></d-cite>,
-                    characterized by MFs that are themselves fuzzy, may be used to model more uncertainties.
-                    For example, different drivers may have different understanding of the linguistic term Far in the motivating example,
-                    and hence may provide different T1 fuzzy sets for it.
-                    Type-2 fuzzy sets can be used to incorporate these inter-personal uncertainties.
                     Despite having a name which carries the connotation of uncertainty,
                     research has shown that there are limitations in the ability of T1 fuzzy sets to model
                     and minimize the effect of uncertainties <d-cite bibtex-key="Mendel2017"></d-cite> <d-cite bibtex-key="Hagras2007"></d-cite>.
-                    This is because a T1 fuzzy set is certain in the sense that its membership grades are crisp values.
-                    Type-2 fuzzy sets <d-cite bibtex-key="Zadeh1975"></d-cite>, characterized by MFs that are themselves fuzzy,
-                    have been attracting interests.</p>
+                    This is because a T1 fuzzy set is certain in the sense that its membership grades are crisp values.</p>
+                    
+                    <p>For example, different drivers may have different understanding of the linguistic term Far in the motivating example,
+                    and hence may provide different T1 fuzzy sets for it.
+                    Type-2 fuzzy sets <d-cite bibtex-key="Zadeh1975"></d-cite> can be used to incorporate these inter-personal uncertainties.</p>
             </div>
             <h3>A. IT2 Fuzzy Sets</h3>
             <a class="marker" href="#IT2FuzzySets"><span>IT2 Fuzzy Sets</span></a>
@@ -927,12 +923,11 @@
                 <h4>Definition 2 <d-cite bibtex-key="Mendel2017"></d-cite></h4> <a class="marker" href="#define2"><span>IT2 fuzzy set Definition 2</span></a>
                 <div id="define2">
                     <p>
-                        An IT2 fuzzy set $\tilde{X}$ is characterized by its MF $u_{\tilde{X}} (x,u)$, i.e.,</p>
+                        An IT2 fuzzy set $\tilde{X}$ is defined as</p>
                     <a class="marker" href="#eq5"><span>equation1</span></a>
 
                     <p></p><span id="eq5">
-                        $\widetilde{X}=\int\limits_{x\in D_{\tilde{X}}}\, \int\limits_{u\in [0,1]}u_{\tilde{X}} (x,u)/(x,u)
-                    =\int\limits_{x\in D_{\tilde{X}}}\,\int\limits_{u\in [0,1]}1/(x,u)
+                        $\widetilde{X}=\int\limits_{x\in D_{\tilde{X}}}\,\int\limits_{u\in [0,1]}1/(x,u)
                     =\int\limits_{x\in D_{\tilde{X}}}\left.\left[\int\limits_{u\in [0,1]}1/u\right]\right/x$
                     </span>
                     <span style="float: right">
@@ -940,8 +935,7 @@
                     </span></p>
 
                     <p>where $x$, called the <i>primary variable</i>, has domain $D_{\tilde{X}}$;
-                        $u\in [0,1]$ is the <i>secondary variable</i>; and, the amplitude of $u_{\tilde{X}} (x,u)$,
-                        called a <i>secondary grade</i> of $\tilde{X}$, equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. </p>
+                        $u\in [0,1]$ is the <i>secondary variable</i>; and, the <i>secondary grade</i> of $\tilde{X}$ equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. </p>
                 </div>
                 <div>
                     <p>
@@ -966,7 +960,7 @@
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
                                 <td><div class="interactiveopener">
-                                    Try to drag the blue or green dot and change the membership interval of $x$.
+                                    Try to drag the blue or green dot to change the membership interval of $x$.
                                 </div>
                                 </td>
                             </tr>
@@ -996,12 +990,12 @@
                     <a class="marker" href="#fig8"><span>Figure1</span></a>
 
                     <div class="l-body" style="width: 100%">
-                        <img id="fig8" src="myimg/IT2FLS.svg" alt="An IT2 fuzzy system" style="margin: auto auto; width: 80%; display: block"/>
+                        <img id="fig8" src="myimg/IT2FLS.png" alt="An IT2 fuzzy system" style="margin: auto auto; width: 80%; display: block"/>
                         <div class="caption"><b>Figure 8:</b><br> An IT2 fuzzy system.</div>
                     </div>
                 </div>
                 <div><br>
-                    <p>Consider the rulebase of an IT2 TSK fuzzy system consisting of $K$ rules, assuming the following form:</p>
+                    <p>Assume the rulebase of an IT2 TSK fuzzy system consisting of $K$ rules in the following form:</p>
                     <p>
                         $\tilde{R}_k: \mbox{ IF } x_1 \mbox{ is } \widetilde{X}_{k,1} \mbox{ AND } \cdots \mbox{ AND } x_d \mbox{ is } \widetilde{X}_{k,d}, \mbox{ THEN } Y_k(\mathbf{x}) = [\underline{y}_k,\ \overline{y}_k], \quad k=1,...,K
                         $
@@ -1025,7 +1019,7 @@
                         <li>
                             <p><i>Fuzzification</i>: </p>
                             <p>Compute the membership interval
-                                $[u_{\underline{X}_{k,i}}(x_i),u_{\overline{X}_{k,i}}(x_i)]$ of $x_i$ on each $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).</p>
+                                $[u_{\underline{X}_{k,i}}(x_i),u_{\overline{X}_{k,i}}(x_i)]$ of $x_i$ on each $\widetilde{X}_{k,i}$ ($k=1,...,K$; $i=1,...,d$).</p>
                         </li>
                         <li id="inference2">
                             <p><i>Inference</i>:</p>
@@ -1270,10 +1264,10 @@
                     <a class="marker" href="#fig9b"><span>Figure9(b)</span></a>
 
                     <div class="l-body" style="width: 100%">
-                        <img id="fig9a" src="myimg/Yl.svg" alt="Distance." style="margin: auto auto; width: 30%; display: block"/>
+                        <img id="fig9a" src="myimg/Yl.png" alt="Distance." style="margin: auto auto; width: 40%; display: block"/>
                         <div style="text-align: center"><b>(a)</b></div>
 
-                        <img id="fig9b" src="myimg/Yr.svg" alt="Speed." style="margin: auto auto; width:30%; display: block"/>
+                        <img id="fig9b" src="myimg/Yr.png" alt="Speed." style="margin: auto auto; width:40%; display: block"/>
                         <div style="text-align: center"><b>(b)</b></div>
 
                         <div class="caption"><b>Figure 9:</b><br>
@@ -1306,10 +1300,10 @@
                     <a class="marker" href="#fig10b"><span>Figure10(b)</span></a>
 
                     <div class="l-body" style="width: 100%">
-                        <img id="fig10a" src="myimg/DistanceT2.svg" alt="Diagram of a IT2 fuzzy system." style="margin: auto auto; width: 30%; display: block"/>
+                        <img id="fig10a" src="myimg/DistanceT2.png" alt="Diagram of a IT2 fuzzy system." style="margin: auto auto; width: 40%; display: block"/>
                         <div style="text-align: center"><b>(a)</b></div>
 
-                        <img id="fig10b" src="myimg/SpeedT2.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:30%; display: block"/>
+                        <img id="fig10b" src="myimg/SpeedT2.png" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:40%; display: block"/>
                         <div style="text-align: center"><b>(b)</b></div>
 
                         <div class="caption"><b>Figure 10:</b><br> IT2 fuzzy sets for the distance and the relative speed, in the car following example.
@@ -1424,8 +1418,8 @@
                             <table>
                                 <tr>
                                     <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                    <td><div class="interactiveopener">Try to drag the dots to change the distance and relative speed.
-                                        The membership intervals and the subsequent content will be updated simultaneously.
+                                    <td><div class="interactiveopener">Try to drag the dots to change the distance and relative speed values.
+                                        The membership intervals and all subsequent calculations will be updated accordingly.
                                     </div>
                                     </td>
                                 </tr>
@@ -1898,11 +1892,9 @@
                         <table>
                             <tr>
                                 <td><img src="image/icon_pointer.png" alt="Interactive Element" style="width: 32px; height: 32px"></td>
-                                <td><div class="interactiveopener">Try to change the rulebase of <a href="#tab1">Table $1$</a> and
-                                    <a href="#tab3">Table $3$</a> by inputting values or clicking the sidebar arrows.
-                                    After adjusting the rulebases, please click the update buttons to get your customized
-                                    input-output mapping of the IT2 fuzzy system and the difference between the input-output
-                                    mappings of the IT2 fuzzy system and the T1 fuzzy system.</div>
+                                <td><div class="interactiveopener">Try to change the rule consequent values in <a href="#tab1">Table $1$</a> and
+                                    <a href="#tab3">Table $3$</a> by direct typing or clicking the sidebar arrows.
+                                    After adjusting the rulebases, click the "Update" button to automatically update all calculations.</div>
                                 </td>
                             </tr>
                         </table>
@@ -1912,15 +1904,14 @@
                         <div style="text-align: center"><b>(b)</b></div>
                         <!--                        <iframe name="toppage" width=750 height=750 src="T1_acceleration.html" frameborder="no" ></iframe>-->
                         <div class="caption">
-                            <b>Figure 12:</b> <br>(a) Input-output mapping of the IT2 fuzzy system; (b) difference between the input-output mappings of the IT2 fuzzy system and
-                            the T1 fuzzy system.<br>The figure can be zoomed and rotated by your mouse or the top right buttons.
+                            <b>Figure 12:</b> <br>(a) Input-output mapping of the IT2 fuzzy system; (b) difference between the input-output mappings of the IT2 fuzzy system and                             the T1 fuzzy system. The figure can be zoomed and rotated by using the mouse or the top right buttons.
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <h3>E. IT2 Fuzzy System Optimization</h3>
+            <h3>E. Fuzzy System Optimization</h3>
             <a class="marker" href="#IT2opt"><span>IT2 Fuzzy System Optimization</span></a>
             <div id="IT2opt">
                 <p>A fuzzy system should be optimized for each specific task.
