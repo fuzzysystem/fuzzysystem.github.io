@@ -75,6 +75,18 @@ svg5.append("g")
     .style('font-family', "Times New Roman")
     .call(yAxis);
 
+svg5.append("g")
+    .attr("class", "y axis")
+    .append("text")
+    .attr("class", "axis-label")
+    .attr("fill", "black")
+    .style('font-size', '22px')
+    .attr("fill-width", "3px")
+    .style('font-family', "Times New Roman")
+    .style('font-style', 'italic')
+    .attr("x", -(margin.left)+40)
+    .attr("y", height *0.05)
+    .text('u');
 
 svg5.append("g")
     .append("text")
@@ -1850,6 +1862,14 @@ else{
     document.getElementById("spd_okay_y_l").innerHTML = org_y0_okay_l.toFixed(2);
     document.getElementById("spd_fast_y_l").innerHTML = org_y0_fast_l.toFixed(2);
 
+    document.getElementById("spd_slow_l_x4").innerHTML = x0;
+    document.getElementById("spd_slow_y_u2").innerHTML = org_y0_slow_u.toFixed(2);
+    document.getElementById("spd_okay_y_u2").innerHTML = org_y0_okay_u.toFixed(2);
+    document.getElementById("spd_fast_y_u2").innerHTML = org_y0_fast_u.toFixed(2);
+    document.getElementById("spd_slow_y_l2").innerHTML = org_y0_slow_l.toFixed(2);
+    document.getElementById("spd_okay_y_l2").innerHTML = org_y0_okay_l.toFixed(2);
+    document.getElementById("spd_fast_y_l2").innerHTML = org_y0_fast_l.toFixed(2);
+
     document.getElementById("spd_slow_u_x1_a").innerHTML = x0;
     document.getElementById("spd_slow_l_x2_a").innerHTML = x0;
     document.getElementById("spd_slow_u_y_a").innerHTML = org_y0_slow_u.toFixed(2);
@@ -1932,6 +1952,14 @@ document.getElementById("spd_fast_y_u").innerHTML = org_y0_fast_u.toFixed(2);
 document.getElementById("spd_slow_y_l").innerHTML = org_y0_slow_l.toFixed(2);
 document.getElementById("spd_okay_y_l").innerHTML = org_y0_okay_l.toFixed(2);
 document.getElementById("spd_fast_y_l").innerHTML = org_y0_fast_l.toFixed(2);
+
+document.getElementById("spd_slow_l_x4").innerHTML = x0;
+document.getElementById("spd_slow_y_u2").innerHTML = org_y0_slow_u.toFixed(2);
+document.getElementById("spd_okay_y_u2").innerHTML = org_y0_okay_u.toFixed(2);
+document.getElementById("spd_fast_y_u2").innerHTML = org_y0_fast_u.toFixed(2);
+document.getElementById("spd_slow_y_l2").innerHTML = org_y0_slow_l.toFixed(2);
+document.getElementById("spd_okay_y_l2").innerHTML = org_y0_okay_l.toFixed(2);
+document.getElementById("spd_fast_y_l2").innerHTML = org_y0_fast_l.toFixed(2);
 
 document.getElementById("spd_slow_u_x1_a").innerHTML = x0;
 document.getElementById("spd_slow_l_x2_a").innerHTML = x0;

@@ -62,6 +62,18 @@ svg.append("g")
     .style('font-family', "Times New Roman")
     .call(yAxis);
 
+svg.append("g")
+    .attr("class", "y axis")
+    .append("text")
+    .attr("class", "axis-label")
+    .attr("fill", "black")
+    .style('font-size', '22px')
+    .attr("fill-width", "3px")
+    .style('font-family', "Times New Roman")
+    .style('font-style', 'italic')
+    .attr("x", -(margin.left)+40)
+    .attr("y", height *0.05)
+    .text('u');
 
 svg.append("g")
     .append("text")
@@ -1000,6 +1012,11 @@ function onEnd() {
     document.getElementById("spd_slow_y").innerHTML = y0_slow.toFixed(2);
     document.getElementById("spd_fst_y").innerHTML = y0_fast.toFixed(2);
 
+    document.getElementById("spd_slow_x4").innerHTML = x0;
+    document.getElementById("spd_okay_y2").innerHTML = y0_okay.toFixed(2);
+    document.getElementById("spd_slow_y2").innerHTML = y0_slow.toFixed(2);
+    document.getElementById("spd_fst_y2").innerHTML = y0_fast.toFixed(2);
+
     document.getElementById("spd_slow_x1_a").innerHTML = x0;
     document.getElementById("spd_slow_x2_a").innerHTML = x0;
     document.getElementById("spd_slow_y_a").innerHTML = y0_slow.toFixed(2);
@@ -1087,6 +1104,10 @@ document.getElementById("spd_slow_x3").innerHTML = x0;
 document.getElementById("spd_okay_y").innerHTML = y0_okay.toFixed(2);
 document.getElementById("spd_slow_y").innerHTML = y0_slow.toFixed(2);
 document.getElementById("spd_fst_y").innerHTML = y0_fast.toFixed(2);
+document.getElementById("spd_slow_x4").innerHTML = x0;
+document.getElementById("spd_okay_y2").innerHTML = y0_okay.toFixed(2);
+document.getElementById("spd_slow_y2").innerHTML = y0_slow.toFixed(2);
+document.getElementById("spd_fst_y2").innerHTML = y0_fast.toFixed(2);
 
 
 document.getElementById("spd_slow_x1_a").innerHTML = x0;

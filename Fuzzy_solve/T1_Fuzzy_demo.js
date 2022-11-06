@@ -67,9 +67,10 @@ svg.append("g")
     .attr("fill-width", "3px")
     .style('font-family', 'Geogria')
     .style('font-style', 'italic')
-    .attr("x", -(margin.left)+5)
+    .attr("x", -(margin.left)+40)
     .attr("y", height *0.05)
-    .text('μ(x)');
+    // .text('μ(x)');
+    .text('u');
 
 svg.append("g")
     .append("text")

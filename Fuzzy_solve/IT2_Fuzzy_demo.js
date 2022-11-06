@@ -72,7 +72,7 @@ svg3.append("g")
     .attr("fill-width", "3px")
     .style('font-family', 'Times New Roman')
     .style('font-style', 'italic')
-    .attr("x", -(margin.left)+30)
+    .attr("x", -(margin.left)+40)
     .attr("y", height *0.05)
     .text('u');
 
@@ -298,12 +298,12 @@ var foucseYval_2 =
 
 let y0_umf=1;
 let org_y0_umf =1;
-let y0_lmf =0.75;
-let org_y0_lmf =0.75;
+let y0_lmf =0.5;
+let org_y0_lmf =0.5;
 let org_x0 = 5;
-let x0 =5;
-
-
+let x0 =4;
+let selectedData_y0_umf = org_y0_umf.toFixed(2);
+let selectedData_y0_lmf = org_y0_lmf.toFixed(2);
 function onStart() {
     let visible="Hidden";
     d3.select(this).raise().classed("active", true);
@@ -867,4 +867,10 @@ function onEnd() {
         .attr("x", x(org_x0) - 10)
         .text(x0)
         .style("visibility", visible);
+    document.getElementById("x0").innerHTML = x0;
+    document.getElementById("lmf").innerHTML = selectedData_y0_lmf;
+    document.getElementById("umf").innerHTML = selectedData_y0_umf;
 }
+document.getElementById("x0").innerHTML = x0;
+document.getElementById("lmf").innerHTML = selectedData_y0_lmf;
+document.getElementById("umf").innerHTML = selectedData_y0_umf;

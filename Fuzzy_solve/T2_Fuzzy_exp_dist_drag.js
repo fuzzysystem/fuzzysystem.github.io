@@ -68,6 +68,18 @@ svg4.append("g")
     .style('font-family', "Times New Roman")
     .call(yAxis);
 
+svg4.append("g")
+    .attr("class", "y axis")
+    .append("text")
+    .attr("class", "axis-label")
+    .attr("fill", "black")
+    .style('font-size', '22px')
+    .attr("fill-width", "3px")
+    .style('font-family', "Times New Roman")
+    .style('font-style', 'italic')
+    .attr("x", -(margin.left)+40)
+    .attr("y", height *0.05)
+    .text('u');
 
 svg4.append("g")
     .append("text")
@@ -1888,6 +1900,14 @@ function onEnd() {
     document.getElementById("dst_oky_y_l").innerHTML = org_y0_oky_l.toFixed(2);
     document.getElementById("dst_far_y_l").innerHTML = org_y0_far_l.toFixed(2);
 
+    document.getElementById("dst_close_l_x4").innerHTML = x0;
+    document.getElementById("dst_close_y_u2").innerHTML = org_y0_close_u.toFixed(2);
+    document.getElementById("dst_oky_y_u2").innerHTML = org_y0_oky_u.toFixed(2);
+    document.getElementById("dst_far_y_u2").innerHTML = org_y0_far_u.toFixed(2);
+    document.getElementById("dst_close_y_l2").innerHTML = org_y0_close_l.toFixed(2);
+    document.getElementById("dst_oky_y_l2").innerHTML = org_y0_oky_l.toFixed(2);
+    document.getElementById("dst_far_y_l2").innerHTML = org_y0_far_l.toFixed(2);
+
     document.getElementById("dst_close_u_x1_a").innerHTML = x0;
     document.getElementById("dst_close_l_x2_a").innerHTML = x0;
     document.getElementById("dst_close_u_y_a").innerHTML = org_y0_close_u.toFixed(2);
@@ -2025,6 +2045,14 @@ document.getElementById("dst_far_y_u").innerHTML = org_y0_far_u.toFixed(2);
 document.getElementById("dst_close_y_l").innerHTML = org_y0_close_l.toFixed(2);
 document.getElementById("dst_oky_y_l").innerHTML = org_y0_oky_l.toFixed(2);
 document.getElementById("dst_far_y_l").innerHTML = org_y0_far_l.toFixed(2);
+
+document.getElementById("dst_close_l_x4").innerHTML = x0;
+document.getElementById("dst_close_y_u2").innerHTML = org_y0_close_u.toFixed(2);
+document.getElementById("dst_oky_y_u2").innerHTML = org_y0_oky_u.toFixed(2);
+document.getElementById("dst_far_y_u2").innerHTML = org_y0_far_u.toFixed(2);
+document.getElementById("dst_close_y_l2").innerHTML = org_y0_close_l.toFixed(2);
+document.getElementById("dst_oky_y_l2").innerHTML = org_y0_oky_l.toFixed(2);
+document.getElementById("dst_far_y_l2").innerHTML = org_y0_far_l.toFixed(2);
 
 document.getElementById("dst_close_u_x1_a").innerHTML = x0;
 document.getElementById("dst_close_l_x2_a").innerHTML = x0;

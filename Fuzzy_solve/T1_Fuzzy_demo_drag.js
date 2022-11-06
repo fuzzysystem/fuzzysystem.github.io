@@ -70,9 +70,10 @@ svg.append("g")
     .attr("fill-width", "3px")
     .style('font-family', "Times New Roman")
     .style('font-style', 'italic')
-    .attr("x", -(margin.left)+5)
+    .attr("x", -(margin.left)+40)
     .attr("y", height *0.05)
-    .text('μ(x)');
+    .text('u');
+    // .text('μ(x)');
 
 svg.append("g")
     .append("text")
@@ -431,6 +432,9 @@ function onEnd() {
         .attr("y", height + 50)
         .text(selectedData_x)
         .style("visibility", visible);
+
+    document.getElementById("x_value").innerHTML = x0;
+    document.getElementById("y_value").innerHTML = y0;
 
 }
 
