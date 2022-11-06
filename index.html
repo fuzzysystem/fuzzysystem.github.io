@@ -271,10 +271,10 @@
                         <a class="marker" href="#eq1"><span>equation1</span></a>
                         A <i>T1 fuzzy set</i> $X$ is comprised of a <i>domain</i> $D_X$ of real numbers
                         (also called the <i>universe of discourse</i> of $X$) together with a
-                        <i>membership function</i> (MF) $\mu_{_X}(x):\ D_X \to [0,1]$, i.e.,</p>
+                        <i>membership function</i> (MF) $u_{_X}(x):\ D_X \to [0,1]$, i.e.,</p>
                     <p>
                     <span id="eq1">
-                         $X=\int_{D_X}\mu_{_X}(x)/x .$
+                         $X=\int_{D_X}u_{_X}(x)/x .$
                     </span>
 
                         <span style= "float:right; text-align: right">
@@ -284,13 +284,13 @@
                         <p>
                             <a href="#eq1">$(1)$</a> is a fuzzy set notation, introduced by Zadeh, as a shorthand
                             in which $\int$ denotes the collection of all points $x\in D_X$
-                            with associated <i>membership grade</i> $\mu_{_X}(x)$.
+                            with associated <i>membership grade</i> $u_{_X}(x)$.
                         </p>
                     </div>
                 </div>
 
                 <div>
-                    <p>A trapezoidal T1 fuzzy set is shown in <a href="#fig1">Fig. $1$</a>.</p>
+                    <p>A trapezoidal T1 fuzzy set is shown in <a href="#fig1">Figure $1$</a>.</p>
                     <a class="marker" href="#fig1"><span>Figure1</span></a>
 
                     <div class="l-body" style="width: 100%">
@@ -302,7 +302,7 @@
                     <p>The membership grade of $x$ can be computed as:</p>
 
                     <span>
-                        $\mu(x)=\left\{\begin{array}{cl}
+                        $u(x)=\left\{\begin{array}{cl}
                         \frac{x-a}{b-a}, & x\in(a,b) \\
                         1, & x\in[b,c] \\
                         \frac{d-x}{d-c}, & x\in(c,d)\\
@@ -320,11 +320,11 @@
                 </div>
                 <div>
                     <p>
-                        <a href="#fig2">Fig. $2$</a> shows a specific example of a T1 fuzzy set "Moderate".
+                        <a href="#fig2">Figure $2$</a> shows a specific example of a T1 fuzzy set "Moderate".
                         When only integer numbers are considered in the domain, the T1 fuzzy set can be
                         represented as $\{0/1, 0.5/2, 1/3, 1/4, 0.5/5, 0/6\}$, where $0/1$ means
                         that $x=1$ has a membership grade of 0 in Moderate, and $0.5/2$ means $x=2$ has a
-                        membership grade of $1$ in Moderate. <a href="#fig2">Fig. $2$</a> shows that there
+                        membership grade of $1$ in Moderate. <a href="#fig2">Figure $2$</a> shows that there
                         is complete agreement (certainty) for $x\in[0,1]\cup[3,4]\cup[6,+\infty)$,
                         and partial agreement for $x\in(1,3)\cup(4,6)$. In contrast, for a crisp set,
                         the membership grade of each element in it is either 0 or 1;
@@ -351,11 +351,12 @@
             <a class="marker" href="#T1fuzzy sys"><span>Type-1 Fuzzy Systems</span></a>
             <div id="T1fuzzy sys">
                 <div><p>
-                    <a href="#fig3">Fig. $3$</a> shows the diagram of a typical T1 fuzzy system,
+                    <a href="#fig3">Figure $3$</a> shows the diagram of a typical T1 fuzzy system,
                     which consists of four components: fuzzifier, rulebase, inference engine,
                     and defuzzifier. The fuzzifier transforms crisp inputs into T1 fuzzy sets.
-                    Utilizing the rulebase, the inference engine performs inference on the T1 fuzzy sets,
-                    to map them into a new T1 fuzzy set. The defuzzifier converts the mapped T1 fuzzy set
+                    The inference engine performs inference on the T1 fuzzy sets, combining the outputs of the rules in
+                    the rulebase into a new T1 fuzzy set.
+                    The defuzzifier converts the mapped T1 fuzzy set
                     into a crisp output.</p>
                 </div>
                 <a class="marker" href="#fig3"><span>Figure 3</span></a>
@@ -365,18 +366,35 @@
                 </div>
 
                 <div><br>
-                    <p>There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are words <d-cite bibtex-key="Chang1972"></d-cite>,
-                        and Takagi-Sugeno-Kang (TSK), in which rule consequents ar mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.
-                        The latter is poplar, due to their simplicity and flexibility. T1 TSK rules are:</p>
+                    <p>
+                        There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are
+                        words modeled by T1 fuzzy sets <d-cite bibtex-key="Chang1972"></d-cite>,
+                        and Takagi-Sugeno-Kang (TSK), in which rule consequents are mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.
+                        The latter is popular, due to their simplicity and flexibility. T1 TSK rules are:
+                    </p>
+<!--                    <p>There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are words <d-cite bibtex-key="Chang1972"></d-cite>,-->
+<!--                        and Takagi-Sugeno-Kang (TSK), in which rule consequents ar mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.-->
+<!--                        The latter is popular, due to their simplicity and flexibility. T1 TSK rules are:</p>-->
                     <p>
                         $R_k: \mbox{ IF } x_1 \mbox{ is } X_{k,1} \mbox{ AND } \cdots \mbox{ AND } x_d \mbox{ is } X_{k,d},
                         \mbox{ THEN } y_k(\mathbf{x}) = \sum_{i=1}^d a_{k,i}x_i + b_k, \quad k=1,...,K$
                     </p>
                     <br>
-                    <p>where $d$ is the input dimensionality, $K$ is the number of rules, $X_{k,i}$ is the MF for input $x_i$ ($i=1,...,d$)
-                        in the $k^{\mathrm{th}}$ rule, and $a_{k,i}$ and $b_k$ ($k=1,...,K$) are adjustable regression coefficients.
-                        Many times all $a_{k,i}$ are set to 0.
+                    <p>
+                        where $d$ is the input dimensionality, $K$ is the number of rules, $X_{k,i}$ is a linguistic term
+                        (modeled by a T1 fuzzy set) for linguistic variable $X_i$ ($i=1,...,d$) in the $k^{\mathrm{th}}$ rule,
+                        $x_i$ is the crisp input for $X_i$, and $a_{k,i}$ and $b_k$ ($k=1,...,K$) are adjustable regression coefficients.
+                        Many times all $a_{k,i}$ are set to 0, i.e., each rule consequent is a constant.</p>
+
+                    <p>
+                        For the car following example, $d=2$, $X_1$ denotes Distance, $X_2$ denotes
+                        Relative Speed, $K=9$ if both Distance and Relative Speed have three linguistic terms (T1 fuzzy sets),
+                        and $x_1$ and $x_2$ are the current input values of Distance and Relative Speed, respectively.
                     </p>
+<!--                    <p>where $d$ is the input dimensionality, $K$ is the number of rules, $X_{k,i}$ is the T1 fuzzy set for input $x_i$ ($i=1,...,d$)-->
+<!--                        in the $k^{\mathrm{th}}$ rule, and $a_{k,i}$ and $b_k$ ($k=1,...,K$) are adjustable regression coefficients.-->
+<!--                        Many times all $a_{k,i}$ are set to $0$, i.e., each rule consequent is a constant.-->
+<!--                    </p>-->
                 </div>
                 <div>
                     <p>For a particular input $\mathbf{x}=(x_1,...,x_d)$, the operations in a TSK fuzzy system are:</p>
@@ -385,14 +403,14 @@
                     <ol id="opeartions">
                         <li> <p><i>Fuzzification</i>:</p>
                             <p>
-                                Compute $\mu_{X_{k,i}}(x_i)$, the membership grade of
+                                Compute $u_{X_{k,i}}(x_i)$, the membership grade of
                                 $x_i$ on $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).
                             </p>
                         </li>
                         <li>
                             <p><i>Inference</i>:</p>
                             <p>Compute the firing level of each rule:<br></p>
-                            <span>$f_k(\mathbf{x})=\mu_{X_{k,1}}(x_1)\times\cdots\times\mu_{X_{k,d}}(x_d),$
+                            <span>$f_k(\mathbf{x})=u_{X_{k,1}}(x_1)\times\cdots\times u_{X_{k,d}}(x_d),$
                         </span>
 
                             <p><br>Note that the minimum operation could also be used to replace the multiplication above.
@@ -407,9 +425,18 @@
 
                         </li>
                         <li> <p><i>Defuzzification</i>:</p>
-                            <p>Since the inference output is already a crisp number,
+                            <p>
+                                Since the inference output is already a crisp number,
                                 no defuzzification is needed in a T1 TSK fuzzy system.
-                                The inference output $y(\mathbf{x})$ is the final output.</p></li>
+                                The inference output $y(x)$ is the final output.</p>
+                            <p>
+                                However, for Mamdani T1 fuzzy systems, since the rule consequents
+                                are words modeled by T1 fuzzy sets, the inference output is also
+                                a T1 fuzzy set, which must be defuzzified to obtain a crisp output.
+                                One popular defuzzification approach is to compute the centroid of
+                                that T1 fuzzy set.
+                            </p>
+                        </li>
                     </ol>
                     </p>
                 </div>
@@ -427,9 +454,12 @@
                 <div>
                     <p>
                         This subsection presents a simple example to illustrate the computations in a T1 TSK fuzzy system.
-                        Consider the car following example introduced at the beginning of this paper.
-                        Assume the distance has three MFs, Close, Okay and Far, as depicted in <a href="#fig4a">Fig. $4(a)$</a>,
-                        and the relative speed also has three MFs, Slow, Okay and Fast, as depicted in <a href="#fig4b">Fig. $4(b)$</a>.
+                        Consider the car following example introduced at the beginning of this paper.</p>
+                    <p>
+                        Assume the distance has three linguistic terms (modeled by T1 fuzzy sets), Close, Okay and Far,
+                        as depicted in <a href="#fig4a">Figure $4(a)$</a>,
+                        and the relative speed also has three linguistic terms (modeled by T1 fuzzy sets), Slow, Okay and Fast,
+                        as depicted in <a href="#fig4b">Figure $4(b)$</a>.
                         Note that the same word "Okay" for the distance and the relative speed could have different T1 FS definitions.
                     </p>
 
@@ -443,7 +473,8 @@
                         <img id="fig4b" src="myimg/Speed.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:30%; display: block"/>
                         <div style="text-align: center"><b>(b)</b></div>
 
-                        <div class="caption"><b>Figure 4:</b><br> T1 MFs for the distance and the relative speed, in the car following example.</div>
+                        <div class="caption"><b>Figure 4:</b><br>T1 fuzzy sets for the distance and the relative speed, in the car following example.
+                        </div>
                     </div>
 
                 </div>
@@ -501,20 +532,20 @@
 
 
                     <p>Assume the current distance to the front car is 47 meters, and the relative speed is 4 KM/h.
-                        The membership grades of the corresponding T1 fuzzy sets are shown in <a href="#fig5">Fig. $5$</a>:</p>
+                        The membership grades of the corresponding T1 fuzzy sets are shown in <a href="#fig5">Figure $5$</a>:</p>
                     <p>
                     <p style="text-align: center">
                     <p style="text-align: center">
-                        $\quad \mu_{_{\mathrm{Close}}}($<d-math id="dst_close_x1"></d-math>$)=$<d-math id="dst_close_y"></d-math>
-                        $\quad \mu_{_{\mathrm{Okay}}}($<d-math id="dst_close_x2"></d-math>$)=$<d-math id="dst_oky_y"></d-math>
-                        $\quad \mu_{_{\mathrm{Far}}}($<d-math id="dst_close_x3"></d-math>$)=$<d-math id="dst_far_y"></d-math>
+                        $\quad u_{_{\mathrm{Close}}}($<d-math id="dst_close_x1"></d-math>$)=$<d-math id="dst_close_y"></d-math>
+                        $\quad u_{_{\mathrm{Okay}}}($<d-math id="dst_close_x2"></d-math>$)=$<d-math id="dst_oky_y"></d-math>
+                        $\quad u_{_{\mathrm{Far}}}($<d-math id="dst_close_x3"></d-math>$)=$<d-math id="dst_far_y"></d-math>
                     </p>
 
                     </p><br>
                     <p style="text-align: center">
-                        $\quad \mu_{_{\mathrm{Slow}}}($<d-math id="spd_slow_x1"></d-math>$)=$<d-math id="spd_slow_y"></d-math>
-                        $\quad \mu_{_{\mathrm{Okay}}}($<d-math id="spd_slow_x2"></d-math>$)=$<d-math id="spd_okay_y"></d-math>
-                        $\quad\mu_{_{\mathrm{Fast}}}($<d-math id="spd_slow_x3"></d-math>$)=$<d-math id="spd_fst_y"></d-math>
+                        $\quad u_{_{\mathrm{Slow}}}($<d-math id="spd_slow_x1"></d-math>$)=$<d-math id="spd_slow_y"></d-math>
+                        $\quad u_{_{\mathrm{Okay}}}($<d-math id="spd_slow_x2"></d-math>$)=$<d-math id="spd_okay_y"></d-math>
+                        $\quad u_{_{\mathrm{Fast}}}($<d-math id="spd_slow_x3"></d-math>$)=$<d-math id="spd_fst_y"></d-math>
                     </p>
                     </p>
 
@@ -534,8 +565,14 @@
                         <div style="text-align: center"><b>(b)</b></div>
                         <div class="caption">
                             <b>Figure 5:</b><br> Membership grades on the T1 fuzzy sets.
-                            (a) Distance is 47 meters, the membership interval on Close is 0.6, on Okay is 0.4, and on Far is 0;
-                            (b) Relative speed is 4 KM/h, the membership interval on Slow is 0, on Okay is 0.2, and on Fast is 0.8.
+                            (a) Distance is <span id="dst_close_x4"></span> meters, the membership interval on
+                            Close is <span id="dst_close_y2"></span>,
+                            on Okay is <span id="dst_oky_y2"></span>,
+                            and on Far is <span id="dst_far_y2"></span>;
+                            (b) Relative speed is <span id="spd_slow_x4"></span> KM/h, the membership interval on
+                            Slow is <span id="spd_slow_y2"></span>,
+                            on Okay is <span id="spd_okay_y2"></span>,
+                            and on Fast is <span id="spd_fst_y2"></span>.
                         </div>
                         <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_dist_drag.js"></script>
                         <script type="module" src="Fuzzy_solve/T1_Fuzzy_exp_speed_drag.js"></script>
@@ -551,9 +588,9 @@
                                 <d-math id="dst_close_x1_a"></d-math>
                                 $, $
                                 <d-math id="spd_slow_x1_a"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                $)\quad=\quad u_{_{\mathrm{Close}}}($
                                 <d-math id="dst_close_x2_a"></d-math>
-                                $) \quad\times \quad\mu_{_{\mathrm{Slow}}}($
+                                $) \quad\times \quad u_{_{\mathrm{Slow}}}($
                                 <d-math id="spd_slow_x2_a"></d-math>
                                 $)\quad= \quad$
                                 <d-math id="dst_close_y_a"></d-math>
@@ -567,9 +604,9 @@
                                 <d-math id="dst_close_x1_b"></d-math>
                                 $, $
                                 <d-math id="spd_okay_x1_b"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                $)\quad=\quad u_{_{\mathrm{Close}}}($
                                 <d-math id="dst_close_x2_b"></d-math>
-                                $) \quad\times \quad\mu_{_{\mathrm{Okay}}}($
+                                $) \quad\times \quad u_{_{\mathrm{Okay}}}($
                                 <d-math id="spd_okay_x2_b"></d-math>
                                 $)\quad= \quad$
                                 <d-math id="dst_close_y_b"></d-math>
@@ -583,9 +620,9 @@
                                 <d-math id="dst_close_x1_c"></d-math>
                                 $, $
                                 <d-math id="spd_fst_x1_c"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Close}}}($
+                                $)\quad=\quad u_{_{\mathrm{Close}}}($
                                 <d-math id="dst_close_x2_c"></d-math>
-                                $) \quad\times\quad \mu_{_{\mathrm{Fast}}}($
+                                $) \quad\times\quad u_{_{\mathrm{Fast}}}($
                                 <d-math id="spd_fst_x2_c"></d-math>
                                 $)\quad= \quad$
                                 <d-math id="dst_close_y_c"></d-math>
@@ -599,9 +636,9 @@
                                 <d-math id="dst_oky_x1_d"></d-math>
                                 $, $
                                 <d-math id="spd_slow_x1_d"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                $)\quad=\quad u_{_{\mathrm{Okay}}}($
                                 <d-math id="dst_oky_x2_d"></d-math>
-                                $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
+                                $)\quad \times \quad u_{_{\mathrm{Slow}}}($
                                 <d-math id="spd_slow_x2_d"></d-math>
                                 $)\quad= \quad$
                                 <d-math id="dst_oky_y_d"></d-math>
@@ -615,9 +652,9 @@
                                 <d-math id="dst_oky_x1_e"></d-math>
                                 $, $
                                 <d-math id="spd_okay_x1_e"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                $)\quad=\quad u_{_{\mathrm{Okay}}}($
                                 <d-math id="dst_oky_x2_e"></d-math>
-                                $)\quad \times \quad\mu_{_{\mathrm{Okay}}}($
+                                $)\quad \times \quad u_{_{\mathrm{Okay}}}($
                                 <d-math id="spd_okay_x2_e"></d-math>
                                 $)\quad= \quad$
                                 <d-math id="dst_oky_y_e"></d-math>
@@ -631,9 +668,9 @@
                                 <d-math id="dst_oky_x1_f"></d-math>
                                 $, $
                                 <d-math id="spd_fst_x1_f"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Okay}}}($
+                                $)\quad=\quad u_{_{\mathrm{Okay}}}($
                                 <d-math id="dst_oky_x2_f"></d-math>
-                                $) \quad\times \quad\mu_{_{\mathrm{Fast}}}($
+                                $) \quad\times \quad u_{_{\mathrm{Fast}}}($
                                 <d-math id="spd_fst_x2_f"></d-math>
                                 $)\quad=\quad $
                                 <d-math id="dst_oky_y_f"></d-math>
@@ -647,9 +684,9 @@
                                 <d-math id="dst_far_x1_g"></d-math>
                                 $, $
                                 <d-math id="spd_slow_x1_g"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                $)\quad=\quad u_{_{\mathrm{Far}}}($
                                 <d-math id="dst_far_x2_g"></d-math>
-                                $)\quad \times \quad\mu_{_{\mathrm{Slow}}}($
+                                $)\quad \times \quad u_{_{\mathrm{Slow}}}($
                                 <d-math id="spd_slow_x2_g"></d-math>
                                 $)\quad=\quad $
                                 <d-math id="dst_far_y_g"></d-math>
@@ -663,9 +700,9 @@
                                 <d-math id="dst_far_x1_h"></d-math>
                                 $, $
                                 <d-math id="spd_okay_x1_h"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                $)\quad=\quad u_{_{\mathrm{Far}}}($
                                 <d-math id="dst_far_x2_h"></d-math>
-                                $)\quad \times\quad \mu_{_{\mathrm{Okay}}} ($
+                                $)\quad \times\quad u_{_{\mathrm{Okay}}} ($
                                 <d-math id="spd_okay_x2_h"></d-math>
                                 $)\quad= \quad$
                                 <d-math id="dst_far_y_h"></d-math>
@@ -679,9 +716,9 @@
                                 <d-math id="dst_far_x1_i"></d-math>
                                 $, $
                                 <d-math id="spd_fst_x1_i"></d-math>
-                                $)\quad=\quad\mu_{_{\mathrm{Far}}}($
+                                $)\quad=\quad u_{_{\mathrm{Far}}}($
                                 <d-math id="dst_far_x2_i"></d-math>
-                                $)\quad \times \quad \mu_{_{\mathrm{Fast}}}($
+                                $)\quad \times \quad u_{_{\mathrm{Fast}}}($
                                 <d-math id="spd_fst_x2_i"></d-math>
                                 $)\quad=\quad $
                                 <d-math id="dst_far_y_i"></d-math>
@@ -754,12 +791,17 @@
                     </div>
                     <div>
                         <p>The above nine rules are summarized in <a href="#tab1">Table $ 1$</a>.
-                            The corresponding input-output mapping is shown in <a href="#fig_T1_acc">Fig. $6$</a>,
+                            The corresponding input-output mapping is shown in <a href="#fig_T1_acc">Figure $6$</a>,
                             which can be changed by modifying the rule consequents in <a href="#tab1">Table $1$</a>.</p>
                         <div>
                             <a class="marker" href="#tab1"><span>rulebase</span></a>
                             <div class="caption" id="tab1">
-                                <b>Table 1:</b><br> Rulebase of the T1 TSK fuzzy system in the car following example. The numbers are rule consequents, i.e., acceleration (KM/h$^2$).<br><br>
+                                <b>Table 1:</b><br>
+                                Rulebase of the T1 TSK fuzzy system in the car following example.
+                                The numbers are rule consequents, i.e., acceleration (KM/h$^2$).
+                                The suggested range is [-10, 10]. For reasonableness, the number should increase as it
+                                moves from the top right to the bottom left, e.g., $y_2\leq y_4$, $y_3\leq y_5\leq y_7$, and $y_6\leq y_8$.
+                             <br><br>
                             </div>
                             <table style="margin: auto auto">
                                 <tr>
@@ -820,44 +862,44 @@
 
             </div>
 
-            <h3>D. T1 Fuzzy System Optimization</h3>
-            <a class="marker" href="#T1 opt"><span>Type-1 Fuzzy optimization</span></a>
-            <div id="T1 opt">
-                <div>
-                    <p>A T1 fuzzy system should be optimized for each specific task. For example, in the car following fuzzy controller,
-                        for fast and accurate response, the membership functions and/or the rule consequents may need to be tuned.
-                        A T1 fuzzy system should be optimized for each specific task.
-                        Generally, there are three different strategies <d-cite bibtex-key="drwuGD2020"></d-cite>:</p>
-                    <ol>
-                        <li>
-                            <p><i>Evolutionary computing</i> <d-cite bibtex-key="Ishibuchi1995"></d-cite>.</p>
-                            <p>The antecedent and consequent parameters are encoded as chromosomes in a population;
-                                genetic operators, e.g., selection, crossover, mutation, and reproduction,
-                                can then be used to generate the next (better) generation.
-                                The best chromosome in the final generation is selected as the best parameter set.</p>
-                        </li>
+<!--            <h3>D. T1 Fuzzy System Optimization</h3>-->
+<!--            <a class="marker" href="#T1 opt"><span>Type-1 Fuzzy optimization</span></a>-->
+<!--            <div id="T1 opt">-->
+<!--                <div>-->
+<!--                    <p>A T1 fuzzy system should be optimized for each specific task. For example, in the car following fuzzy controller,-->
+<!--                        for fast and accurate response, the membership functions and/or the rule consequents may need to be tuned.-->
+<!--                        A T1 fuzzy system should be optimized for each specific task.-->
+<!--                        Generally, there are three different strategies <d-cite bibtex-key="drwuGD2020"></d-cite>:</p>-->
+<!--                    <ol>-->
+<!--                        <li>-->
+<!--                            <p><i>Evolutionary computing</i> <d-cite bibtex-key="Ishibuchi1995"></d-cite>.</p>-->
+<!--                            <p>The antecedent and consequent parameters are encoded as chromosomes in a population;-->
+<!--                                genetic operators, e.g., selection, crossover, mutation, and reproduction,-->
+<!--                                can then be used to generate the next (better) generation.-->
+<!--                                The best chromosome in the final generation is selected as the best parameter set.</p>-->
+<!--                        </li>-->
 
-                        <li>
-                            <p><i>Gradient descent</i>.</p> <p>For example, back-propagation <d-cite bibtex-key="Rumelhart1986"></d-cite>
-                            can be used to iteratively find the optimal antecedent and consequent parameters.
-                            Recently, inspired by the equivalence/similarity between TSK fuzzy systems and
-                            neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective
-                            optimization techniques for the latter have been extended to fuzzy system
-                            optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>
-                        </li>
+<!--                        <li>-->
+<!--                            <p><i>Gradient descent</i>.</p> <p>For example, back-propagation <d-cite bibtex-key="Rumelhart1986"></d-cite>-->
+<!--                            can be used to iteratively find the optimal antecedent and consequent parameters.-->
+<!--                            Recently, inspired by the equivalence/similarity between TSK fuzzy systems and-->
+<!--                            neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective-->
+<!--                            optimization techniques for the latter have been extended to fuzzy system-->
+<!--                            optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>-->
+<!--                        </li>-->
 
-                        <li>
-                            <p><i>Gradient descent and least squares estimation</i>. </p>
-                            <p>For example,
-                                in adaptive-network-based fuzzy inference system (ANFIS) <d-cite bibtex-key="Jang1993"></d-cite>,
-                                the antecedent parameters are optimized by gradient descent, and the consequent
-                                parameters by least squares estimation.</p>
-                        </li>
-                    </ol>
+<!--                        <li>-->
+<!--                            <p><i>Gradient descent and least squares estimation</i>. </p>-->
+<!--                            <p>For example,-->
+<!--                                in adaptive-network-based fuzzy inference system (ANFIS) <d-cite bibtex-key="Jang1993"></d-cite>,-->
+<!--                                the antecedent parameters are optimized by gradient descent, and the consequent-->
+<!--                                parameters by least squares estimation.</p>-->
+<!--                        </li>-->
+<!--                    </ol>-->
 
-                </div>
+<!--                </div>-->
 
-            </div>
+<!--            </div>-->
         </div>
 
         <h2>Interval Type-2 (IT2) Fuzzy Sets and Fuzzy Systems</h2>
@@ -885,11 +927,11 @@
                 <h4>Definition 2 <d-cite bibtex-key="Mendel2017"></d-cite></h4> <a class="marker" href="#define2"><span>IT2 fuzzy set Definition 2</span></a>
                 <div id="define2">
                     <p>
-                        An IT2 fuzzy set $\tilde{X}$ is characterized by its MF $\mu_{\tilde{X}} (x,u)$, i.e.,</p>
+                        An IT2 fuzzy set $\tilde{X}$ is characterized by its MF $u_{\tilde{X}} (x,u)$, i.e.,</p>
                     <a class="marker" href="#eq5"><span>equation1</span></a>
 
                     <p></p><span id="eq5">
-                        $\widetilde{X}=\int\limits_{x\in D_{\tilde{X}}}\, \int\limits_{u\in [0,1]}\mu_{\tilde{X}} (x,u)/(x,u)
+                        $\widetilde{X}=\int\limits_{x\in D_{\tilde{X}}}\, \int\limits_{u\in [0,1]}u_{\tilde{X}} (x,u)/(x,u)
                     =\int\limits_{x\in D_{\tilde{X}}}\,\int\limits_{u\in [0,1]}1/(x,u)
                     =\int\limits_{x\in D_{\tilde{X}}}\left.\left[\int\limits_{u\in [0,1]}1/u\right]\right/x$
                     </span>
@@ -898,12 +940,12 @@
                     </span></p>
 
                     <p>where $x$, called the <i>primary variable</i>, has domain $D_{\tilde{X}}$;
-                        $u\in [0,1]$ is the <i>secondary variable</i>; and, the amplitude of $\mu_{\tilde{X}} (x,u)$,
+                        $u\in [0,1]$ is the <i>secondary variable</i>; and, the amplitude of $u_{\tilde{X}} (x,u)$,
                         called a <i>secondary grade</i> of $\tilde{X}$, equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. </p>
                 </div>
                 <div>
                     <p>
-                        An example of an IT2 fuzzy set $\tilde{X}$ is shown in <a href="#fig7k">Fig. $7$</a>.
+                        An example of an IT2 fuzzy set $\tilde{X}$ is shown in <a href="#fig7k">Figure $7$</a>.
                         Observe that unlike a T1 fuzzy set, whose membership for each $x$ is a number,
                         the membership of an IT2 fuzzy set is an interval. For example, the membership of $x=3$ is $[0.25, 1]$,
                         and the membership of $x=5$ is $[0.75, 1]$. A membership interval $[0.25, 1]$ means that
@@ -912,7 +954,7 @@
                         an IT2 fuzzy set can model inter-personal uncertainties, whereas a T1 fuzzy set cannot.
                     </p>
                     <p>
-                        <a href="#fig7k">Fig. $7$</a> shows that an IT2 fuzzy set is bounded from the above and below by two T1 fuzzy sets,
+                        <a href="#fig7k">Figure $7$</a> shows that an IT2 fuzzy set is bounded from the above and below by two T1 fuzzy sets,
                         which are called <i>upper MF</i> (UMF) and <i>lower MF</i> (LMF), respectively.
                         The area between the LMF and the UMF is the <i>footprint of uncertainty</i> (FOU).
                     </p>
@@ -930,7 +972,8 @@
                             </tr>
                         </table>
                         <div id="IT2FuzzyExp" style="width: 40%; margin: auto auto 10px;"></div>
-                        <div class="caption"><b>Figure 7:</b><br> Example of an IT2 fuzzy set. When the input x=4, the membership interval is [0.5,1],
+                        <div class="caption"><b>Figure 7:</b><br> Example of an IT2 fuzzy set. When the input x= <span id="x0"></span>,
+                            the membership interval is [<span id="lmf"></span>, <span id="umf"></span>],
                             represented by the red dashed line.</div>
                     </div>
                     <script type="module" src="Fuzzy_solve/IT2_Fuzzy_demo.js"></script>
@@ -943,7 +986,7 @@
             <a class="marker" href="#IT2 sys"><span>IT2 Fuzzy System</span></a>
             <div id="'IT2 sys">
                 <div>
-                    <p><a href="#fig8">Fig. $8$</a> shows the schematic diagram of an IT2 fuzzy system. It is similar to its T1 counterpart,
+                    <p><a href="#fig8">Figure $8$</a> shows the schematic diagram of an IT2 fuzzy system. It is similar to its T1 counterpart,
                         the major difference being that at least one of the fuzzy sets in the rulebase is an IT2 fuzzy set.
                         Hence, the outputs of the inference engine are IT2 fuzzy sets, and a type-reducer is usually needed
                         (it can be bypassed <d-cite bibtex-key="Nie2008"></d-cite> <d-cite bibtex-key="Mendel2017"></d-cite>, too)
@@ -982,7 +1025,7 @@
                         <li>
                             <p><i>Fuzzification</i>: </p>
                             <p>Compute the membership interval
-                                $[\mu_{\underline{X}_{k,i}}(x_i),\mu_{\overline{X}_{k,i}}(x_i)]$ of $x_i$ on each $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).</p>
+                                $[u_{\underline{X}_{k,i}}(x_i),u_{\overline{X}_{k,i}}(x_i)]$ of $x_i$ on each $X_{k,i}$ ($k=1,...,K$; $i=1,...,d$).</p>
                         </li>
                         <li id="inference2">
                             <p><i>Inference</i>:</p>
@@ -991,8 +1034,8 @@
                             <a class="marker" href="#eq6"><span>equation1</span></a>
                             <p>
                                 <span id="eq6">
-                                        $F_k (\mathbf{x}) = [\mu_{\underline{X}_{k,1}}(x_1)\times\cdots\times\mu_{\underline{X}_{k,d}}(x_d),
-                                \mu_{\overline{X}_{k,1}}(x_1)\times\cdots\times\mu_{\overline{X}_{k,d}}(x_d)] \equiv [\underline{f}_k,\,\overline{f}_k], \quad k=1,...,K$
+                                        $F_k (\mathbf{x}) = [u_{\underline{X}_{k,1}}(x_1)\times\cdots\times u_{\underline{X}_{k,d}}(x_d),
+                                u_{\overline{X}_{k,1}}(x_1)\times\cdots\times u_{\overline{X}_{k,d}}(x_d)] \equiv [\underline{f}_k,\,\overline{f}_k], \quad k=1,...,K$
                                 </span>
                                 <span style= "float:right; text-align: right">
                                     $(6)$
@@ -1109,7 +1152,28 @@
             <a class="marker" href="#Type-Reduction Explained"><span>Type-Reduction Explained</span></a>
             <div id="Type-Reduction Explained">
                 <div>
-                    <p>One of the most efficient type-reduction algorithm, EIASC <d-cite bibtex-key="drwuCCTFS2013"></d-cite>,
+                    <p>
+                        Essentially, $y_l$ is the minimum of $\frac{\sum_{k=1}^K f_k y_k}{\sum_{k=1}^K f_k}$,
+                        and $y_r$ is the maximum, when each $f_k$ and $y_k$ can assume value in an interval.
+                    </p>
+                    <p>
+                        Clearly, the minimum of $y_k$, $\underline{y}_k$, should be used in computing $y_l$;
+                        and, the maximum of $y_k$, $\overline{y}_k$, should be used in computing $y_r$,
+                        as $y_k$ only appears in the numerator of <a href="#eq6">$(6)$</a>.
+                    </p>
+                    <p>
+                        Intuitively, to compute $y_l$ (the minimum), a large $f_k$ ($\overline{f}_k$)
+                        should be used for a small $\underline{y}_k$, and a small $f_k$ ($\underline{f}_k$)
+                        should be used for a large $\underline{y}_k$. Assume $\{\underline{y}_k\}_{k=1}^K$
+                        have been sorted in ascending order. Then, the switch point, $l$, determines
+                        when we should switch from $\overline{f}_k$ to $\underline{f}_k$.
+                        $y_r$ (the maximum) is computed in a similar way, but the switch point $r$
+                        determines when we should switch from $\underline{f}_k$ to $\overline{f}_k$.
+
+                    </p>
+                    <p>The switch points $l$ and $r$, and the corresponding $y_l$ and $y_r$,
+                        do not have a closed-form solution. They are computed by the iterative type-reduction algorithms.
+                        One of the most efficient type-reduction algorithm, EIASC <d-cite bibtex-key="drwuCCTFS2013"></d-cite>,
                         is shown in <a href="#tab2">Table $2$</a>.</p>
                 </div>
 
@@ -1196,7 +1260,7 @@
                     <p><br>
                         The main idea of EIASC is to find the switch points for $y_l$ and $y_r$. Take $y_l$ for example.
                         $y_l$ is the minimum of <a href="#eq7"> $(7)$</a>.
-                        Since $\underline{y}_k$ increases from the left to the right along the horizontal axis of <a href="#fig9a">Fig. $9(a)$</a>,
+                        Since $\underline{y}_k$ increases from the left to the right along the horizontal axis of <a href="#fig9a">Figure $9(a)$</a>,
                         we should choose a large weight (upper membership grade) for $\underline{y}_k$ on the
                         left and a small weight (lower membership grade) for $\underline{y}_k$ on the right. EIASC
                         finds the switch point $L$. For $k\leq L$, the upper membership grades are used to
@@ -1212,9 +1276,13 @@
                         <img id="fig9b" src="myimg/Yr.svg" alt="Speed." style="margin: auto auto; width:30%; display: block"/>
                         <div style="text-align: center"><b>(b)</b></div>
 
-                        <div class="caption"><b>Figure 9:</b><br> Illustration of the switch points $L$ and $R$ in computing $y_l$ and $y_r$, respectively.
-                            (a) Computing $y_l$: switch from the upper firing level to the lower firing level;
-                            (b) computing $y_r$: switch from the lower firing level to the upper firing level.</div>
+                        <div class="caption"><b>Figure 9:</b><br>
+                                Illustration of the switch points $L$ and $R$ in computing $y_l$ and $y_r$, respectively.
+                            (a) Computing $y_l$: the used firing level in <a href="#eq9">$(9)$</a> switches from the
+                            upper firing level to the lower firing level, shown as the blue curve;
+                            (b) computing $y_r$: the used firing level in <a href="#eq10">$(10)$</a> switches from the
+                            lower firing level to the upper firing level, shown as the blue curve.
+                        </div>
                     </div>
 
                 </div>
@@ -1228,8 +1296,10 @@
                         This subsection uses the car following example again to illustrate the computations in an IT2 TSK fuzzy system.
                     </p>
                     <p>
-                        Assume the distance has three IT2 MFs, Close, Okay and Far, as depicted in <a href="#fig10a">Fig. $10(a)$</a>,
-                        and the relative speed also has three IT2 MFs, Slow, Okay and Fast, as depicted in <a href="#fig10b">Fig. $10(b)$</a>,.
+                        Assume the distance has three linguistic terms (modeled by IT2 fuzzy sets), Close, Okay and Far,
+                        as depicted in <a href="#fig10a">Figure $10(a)$</a>,
+                        and the relative speed also has three IT2 linguistic terms (modeled by IT2 fuzzy sets), Slow, Okay and Fast,
+                        as depicted in <a href="#fig10b">Figure $10(b)$</a>.
                         Note again that the word "Okay" for the distance and the relative speed has different IT2 fuzzy set representations.
                     </p>
                     <a class="marker" href="#fig10a"><span>Figure10(a)</span></a>
@@ -1242,7 +1312,8 @@
                         <img id="fig10b" src="myimg/SpeedT2.svg" alt="Diagram of a T1 fuzzy system." style="margin: auto auto; width:30%; display: block"/>
                         <div style="text-align: center"><b>(b)</b></div>
 
-                        <div class="caption"><b>Figure 10:</b><br> IT2 MFs for the distance and the relative speed, in the car following example.</div>
+                        <div class="caption"><b>Figure 10:</b><br> IT2 fuzzy sets for the distance and the relative speed, in the car following example.
+                        </div>
                     </div>
                 </div>
 
@@ -1283,31 +1354,31 @@
                             Assume the current distance to the front car is 47 meters, and the relative speed is 4 KM/h.
                             Let $\underline{\mathrm{Close}}$ and $\overline{\mathrm{Close}}$ be the LMF and UMF of $\mathrm{Close}$, respectively.
                             LMFs and UMFs of other words are denoted in a similar way.
-                            The membership grades on the corresponding LMFs and UMFs are shown in <a href="#fig11">Fig. $11$</a>:
+                            The membership grades on the corresponding LMFs and UMFs are shown in <a href="#fig11">Figure $11$</a>:
                         </p>
                         <p style="text-align: center">
 
-                            $\quad \mu_{_{\underline{\mathrm{Close}}}}($
+                            $\quad u_{_{\underline{\mathrm{Close}}}}($
                             <d-math id="dst_close_l_x1"></d-math>
-                            $),\mu_{_{\overline{\mathrm{Close}}}}($
+                            $),u_{_{\overline{\mathrm{Close}}}}($
                             <d-math id="dst_close_u_x1"></d-math>
                             $)]=[$
                             <d-math id="dst_close_y_l"></d-math>
                             $, $
                             <d-math id="dst_close_y_u"></d-math>
                             $]$
-                            $\quad \mu_{_{\underline{\mathrm{Okay}}}}($
+                            $\quad u_{_{\underline{\mathrm{Okay}}}}($
                             <d-math id="dst_close_l_x2"></d-math>
-                            $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                            $),u_{_{\overline{\mathrm{Okay}}}}($
                             <d-math id="dst_close_u_x2"></d-math>
                             $)]=[$
                             <d-math id="dst_oky_y_l"></d-math>
                             $, $
                             <d-math id="dst_oky_y_u"></d-math>
                             $]$
-                            $\quad \mu_{_{\underline{\mathrm{Far}}}}($
+                            $\quad u_{_{\underline{\mathrm{Far}}}}($
                             <d-math id="dst_close_l_x3"></d-math>
-                            $),\mu_{_{\overline{\mathrm{Far}}}}($
+                            $),u_{_{\overline{\mathrm{Far}}}}($
                             <d-math id="dst_close_u_x3"></d-math>
                             $)]=[$
                             <d-math id="dst_far_y_l"></d-math>
@@ -1316,27 +1387,27 @@
                             $]$
                         </p><br>
                         <p style="text-align: center">
-                            $\quad \mu_{_{\underline{\mathrm{Slow}}}}($
+                            $\quad u_{_{\underline{\mathrm{Slow}}}}($
                             <d-math id="spd_slow_l_x1"></d-math>
-                            $),\mu_{_{\overline{\mathrm{Slow}}}}($
+                            $),u_{_{\overline{\mathrm{Slow}}}}($
                             <d-math id="spd_slow_u_x1"></d-math>
                             $)]=[$
                             <d-math id="spd_slow_y_l"></d-math>
                             $, $
                             <d-math id="spd_slow_y_u"></d-math>
                             $]$
-                            $\quad \mu_{_{\underline{\mathrm{Okay}}}}($
+                            $\quad u_{_{\underline{\mathrm{Okay}}}}($
                             <d-math id="spd_slow_l_x2"></d-math>
-                            $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                            $),u_{_{\overline{\mathrm{Okay}}}}($
                             <d-math id="spd_slow_u_x2"></d-math>
                             $)]=[$
                             <d-math id="spd_okay_y_l"></d-math>
                             $, $
                             <d-math id="spd_okay_y_u"></d-math>
                             $]$
-                            $\quad \mu_{_{\underline{\mathrm{Fast}}}}($
+                            $\quad u_{_{\underline{\mathrm{Fast}}}}($
                             <d-math id="spd_slow_l_x3"></d-math>
-                            $),\mu_{_{\overline{\mathrm{Fast}}}}($
+                            $),u_{_{\overline{\mathrm{Fast}}}}($
                             <d-math id="spd_slow_u_x3"></d-math>
                             $)]=[$
                             <d-math id="spd_fast_y_l"></d-math>
@@ -1364,9 +1435,15 @@
                             <div id="T2FuzzyExp_b" style="width: 40%; margin: auto auto 10px;"></div>
                             <div style="text-align: center"><b>(b)</b></div>
                             <div class="caption"><b>Figure 11:</b><br>
-                                Membership intervals on the IT2 fuzzy sets.
-                                (a) Distance is 47 meters, the membership interval on Close is [0.2,0.6], on Okay is [0,0.67], and on Far is [0,0];
-                                (b) Relative speed is 4 KM/h, the membership interval on Slow is [0,0], on Okay is [0,0.43], and on Fast is [0.4,0.8].
+                                Membership intervals on the IT2 fuzzy sets. For each fuzzy set, the UMF is less saturated, and the LMF is more saturated.
+                                (a) Distance is <span id="dst_close_l_x4"></span> meters, the membership interval
+                                on Close is [<span id="dst_close_y_l2"></span>, <span id="dst_close_y_u2"></span>],
+                                on Okay is [<span id="dst_oky_y_l2"></span>, <span id="dst_oky_y_u2"></span>],
+                                and on Far is [<span id="dst_far_y_l2"></span>, <span id="dst_far_y_u2"></span>];
+                                (b) Relative speed is <span id="spd_slow_l_x4"></span> KM/h, the membership interval
+                                on Slow is [<span id="spd_slow_y_l2"></span>, <span id="spd_slow_y_u2"></span>],
+                                on Okay is [<span id="spd_okay_y_l2"></span>, <span id="spd_okay_y_u2"></span>],
+                                and on Fast is [<span id="spd_fast_y_l2"></span>, <span id="spd_fast_y_u2"></span>].
                             </div>
                             <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_dist_drag.js"></script>
                             <script type="module" src="Fuzzy_solve/T2_Fuzzy_exp_speed_drag.js"></script>
@@ -1389,13 +1466,13 @@
                             </tr>
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_1:$ </th>
-                                <th style="width: 45%; text-align: center">$[\underline{f}_1,\overline{f}_1]=[\mu_{_{\underline{\mathrm{Close}}}}($
+                                <th style="width: 45%; text-align: center">$[\underline{f}_1,\overline{f}_1]=[u_{_{\underline{\mathrm{Close}}}}($
                                     <d-math id="dst_close_l_x2_a"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Slow}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Slow}}}}($
                                     <d-math id="spd_slow_l_x2_a"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Close}}}}($
+                                    $),u_{_{\overline{\mathrm{Close}}}}($
                                     <d-math id="dst_close_u_x1_a"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Slow}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Slow}}}}($
                                     <d-math id="spd_slow_u_x1_a"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_close_l_y_a"></d-math>
@@ -1416,13 +1493,13 @@
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_2:$ </th>
                                 <th style="width: 45%; text-align: center">
-                                    $[\underline{f}_2,\overline{f}_2]=[\mu_{_{\underline{\mathrm{Close}}}}($
+                                    $[\underline{f}_2,\overline{f}_2]=[u_{_{\underline{\mathrm{Close}}}}($
                                     <d-math id="dst_close_l_x2_b"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Okay}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Okay}}}}($
                                     <d-math id="spd_okay_l_x2_b"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Close}}}}($
+                                    $),u_{_{\overline{\mathrm{Close}}}}($
                                     <d-math id="dst_close_u_x1_b"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Okay}}}}($
                                     <d-math id="spd_okay_u_x1_b"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_close_l_y_b"></d-math>
@@ -1446,13 +1523,13 @@
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_3:$ </th>
                                 <th style="width: 45%; text-align: center">
-                                    $[\underline{f}_3,\overline{f}_3]=[\mu_{_{\underline{\mathrm{Close}}}}($
+                                    $[\underline{f}_3,\overline{f}_3]=[u_{_{\underline{\mathrm{Close}}}}($
                                     <d-math id="dst_close_l_x2_c"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Fast}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Fast}}}}($
                                     <d-math id="spd_fast_l_x2_c"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Close}}}}($
+                                    $),u_{_{\overline{\mathrm{Close}}}}($
                                     <d-math id="dst_close_u_x1_c"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Fast}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Fast}}}}($
                                     <d-math id="spd_fast_u_x1_c"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_close_l_y_c"></d-math>
@@ -1476,13 +1553,13 @@
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_4:$ </th>
                                 <th style="width: 45%; text-align: center">
-                                    $[\underline{f}_4,\overline{f}_4]=[\mu_{_{\underline{\mathrm{Okay}}}}($
+                                    $[\underline{f}_4,\overline{f}_4]=[u_{_{\underline{\mathrm{Okay}}}}($
                                     <d-math id="dst_oky_l_x2_d"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Slow}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Slow}}}}($
                                     <d-math id="spd_slow_l_x2_d"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    $),u_{_{\overline{\mathrm{Okay}}}}($
                                     <d-math id="dst_oky_u_x1_d"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Slow}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Slow}}}}($
                                     <d-math id="spd_slow_u_x1_d"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_oky_l_y_d"></d-math>
@@ -1506,13 +1583,13 @@
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_5:$ </th>
                                 <th style="width: 45%; text-align: center">
-                                    $[\underline{f}_5,\overline{f}_5]=[\mu_{_{\underline{\mathrm{Okay}}}}($
+                                    $[\underline{f}_5,\overline{f}_5]=[u_{_{\underline{\mathrm{Okay}}}}($
                                     <d-math id="dst_oky_l_x2_e"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Okay}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Okay}}}}($
                                     <d-math id="spd_okay_l_x2_e"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    $),u_{_{\overline{\mathrm{Okay}}}}($
                                     <d-math id="dst_oky_u_x1_e"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Okay}}}}($
                                     <d-math id="spd_okay_u_x1_e"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_oky_l_y_e"></d-math>
@@ -1536,13 +1613,13 @@
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_6:$ </th>
                                 <th style="width: 45%; text-align: center">
-                                    $[\underline{f}_6,\overline{f}_6]=[\mu_{_{\underline{\mathrm{Okay}}}}($
+                                    $[\underline{f}_6,\overline{f}_6]=[u_{_{\underline{\mathrm{Okay}}}}($
                                     <d-math id="dst_oky_l_x2_f"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Fast}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Fast}}}}($
                                     <d-math id="spd_fast_l_x2_f"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    $),u_{_{\overline{\mathrm{Okay}}}}($
                                     <d-math id="dst_oky_u_x1_f"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Fast}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Fast}}}}($
                                     <d-math id="spd_fast_u_x1_f"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_oky_l_y_f"></d-math>
@@ -1567,13 +1644,13 @@
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_7:$ </th>
                                 <th style="width: 45%; text-align: center">
 
-                                    $[\underline{f}_7,\overline{f}_7]=[\mu_{_{\underline{\mathrm{Far}}}}($
+                                    $[\underline{f}_7,\overline{f}_7]=[u_{_{\underline{\mathrm{Far}}}}($
                                     <d-math id="dst_far_l_x2_g"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Slow}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Slow}}}}($
                                     <d-math id="spd_slow_l_x2_g"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Far}}}}($
+                                    $),u_{_{\overline{\mathrm{Far}}}}($
                                     <d-math id="dst_far_u_x1_g"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Slow}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Slow}}}}($
                                     <d-math id="spd_slow_u_x1_g"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_far_l_y_g"></d-math>
@@ -1598,13 +1675,13 @@
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;text-align: center">$\widetilde{R}_8:$ </th>
                                 <th style="width: 45%; text-align: center">
-                                    $[\underline{f}_8,\overline{f}_8]=[\mu_{_{\underline{\mathrm{Far}}}}($
+                                    $[\underline{f}_8,\overline{f}_8]=[u_{_{\underline{\mathrm{Far}}}}($
                                     <d-math id="dst_far_l_x2_h"></d-math>
-                                    $)\times \mu_{_{\underline{\mathrm{Okay}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Okay}}}}($
                                     <d-math id="spd_okay_l_x2_h"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Far}}}}($
+                                    $),u_{_{\overline{\mathrm{Far}}}}($
                                     <d-math id="dst_far_u_x1_h"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Okay}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Okay}}}}($
                                     <d-math id="spd_okay_u_x1_h"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_far_l_y_h"></d-math>
@@ -1627,13 +1704,13 @@
                             <tr>
                                 <th style="width: 10%; border-right: 1px solid black;border-bottom: 1px solid black;text-align: center">$\widetilde{R}_9:$ </th>
                                 <th style="width: 45%; border-bottom: 1px solid black;text-align: center">
-                                    $[\underline{f}_9,\overline{f}_9]\quad=\quad[\mu_{_{\underline{\mathrm{Far}}}}($
+                                    $[\underline{f}_9,\overline{f}_9]\quad=\quad[u_{_{\underline{\mathrm{Far}}}}($
                                     <d-math id="dst_far_l_x2_i"></d-math>
-                                    $)\times\mu_{_{\underline{\mathrm{Fast}}}}($
+                                    $)\times u_{_{\underline{\mathrm{Fast}}}}($
                                     <d-math id="spd_fast_l_x2_i"></d-math>
-                                    $),\mu_{_{\overline{\mathrm{Far}}}}($
+                                    $),u_{_{\overline{\mathrm{Far}}}}($
                                     <d-math id="dst_far_u_x1_i"></d-math>
-                                    $)\times\mu_{_{\overline{\mathrm{Fast}}}}($
+                                    $)\times u_{_{\overline{\mathrm{Fast}}}}($
                                     <d-math id="spd_fast_u_x1_i"></d-math>
                                     $)]$<br>$\quad\quad\quad\quad=[$
                                     <d-math id="dst_far_l_y_i"></d-math>
@@ -1710,19 +1787,31 @@
                             is included in the output interval of the IT2 fuzzy system, $Y(47,4)$ above.</p>
                         <p>
                             For clarity, the nine rules are also summarized in <a href="#tab3">Table $3$</a>.
-                            The corresponding input-output mapping is shown in <a href="#fig12a">Fig. $12(a)$</a>,
+                            The corresponding input-output mapping is shown in <a href="#fig12a">Figure $12(a)$</a>,
                             which can be changed by modifying the rule consequents in <a href="#tab3">Table $3$</a>.
-                            The input-output mapping of the IT2 fuzzy system is more complex than its T1 counterpart in <a href="#fig6">Fig. $6$</a>,
-                            as evidenced by the difference between their input-output mappings in <a href="#fig12b">Fig. $12(b)$</a>.
-                            Observe also that <a href="#fig12b">Fig. $12(b)$</a> looks smoother than <a href="#fig6">Fig. $6$</a>,
+                            The input-output mapping of the IT2 fuzzy system is more complex than its T1 counterpart in <a href="#fig6">Figure $6$</a>,
+                            as evidenced by the difference between their input-output mappings in <a href="#fig12b">Figure $12(b)$</a>.
+                            Observe also that <a href="#fig12b">Figure $12(b)$</a> looks smoother than <a href="#fig6">Figure $6$</a>,
                             suggesting that the IT2 controller will provide a smoother ride.</p>
                     </div>
 
                     <div>
                         <a class="marker" href="#tab3"><span>rulebase2</span></a>
                         <div class="caption" id="tab3">
-                            <b>Table 3:</b><br> Rulebase of the IT2 TSK fuzzy system in the car following example.
-                            The intervals are rule consequents, i.e., acceleration (KM/h$^2$).<br><br>
+                            <b>Table 3:</b><br>
+                            Rulebase of the IT2 TSK fuzzy system in the car following example.
+                            The intervals are rule consequents, i.e., acceleration (KM/h$^2$).
+                            The suggested range of each number is [-10, 10]. For each interval,
+                            the left number should be smaller than or equal to the right one.
+                            For reasonableness, the number should increase as it moves from the
+                            top right to the bottom left,
+                            e.g., $\underline{y}_2\leq \underline{y}_4$,
+                            $\underline{y}_3\leq \underline{y}_5\leq \underline{y}_7$,
+                            $\underline{y}_6\leq \underline{y}_8$,
+                            $\overline{y}_2\leq \overline{y}_4$,
+                            $\overline{y}_3\leq \overline{y}_5\leq \overline{y}_7$,
+                            and $\overline{y}_6\leq \overline{y}_8$.
+                            <br><br>
                         </div>
                         <table style="margin: auto auto">
                             <tr>
@@ -1834,8 +1923,48 @@
             <h3>E. IT2 Fuzzy System Optimization</h3>
             <a class="marker" href="#IT2opt"><span>IT2 Fuzzy System Optimization</span></a>
             <div id="IT2opt">
-                <p>Similar to its T1 counterpart, an IT2 fuzzy system should also be optimized for each specific task.
-                    There are generally two different strategies:</p>
+                <p>A fuzzy system should be optimized for each specific task.
+                    For example, in the car following fuzzy controller,
+                    for fast and accurate response, the input membership functions
+                    and/or the rule consequents may need to be tuned.
+                </p>
+                <p>
+                    Generally, there are three different strategies <d-cite bibtex-key="drwuGD2020"></d-cite>
+                    for optimizing a T1 fuzzy system:
+                </p>
+                <p>
+                    <ol>
+                        <li>
+                            <p><i>Evolutionary computing</i> <d-cite bibtex-key="Ishibuchi1995"></d-cite>.</p>
+                            <p>The antecedent and consequent parameters are encoded as chromosomes in a population;
+                                genetic operators, e.g., selection, crossover, mutation, and reproduction,
+                                can then be used to generate the next (better) generation.
+                                The best chromosome in the final generation is selected as the best parameter set.</p>
+                        </li>
+
+                        <li>
+                            <p><i>Gradient descent</i>.</p> <p>For example, back-propagation <d-cite bibtex-key="Rumelhart1986"></d-cite>
+                            can be used to iteratively find the optimal antecedent and consequent parameters.
+                            Recently, inspired by the equivalence/similarity between TSK fuzzy systems and
+                            neural networks and mixture of expert models <d-cite bibtex-key="drwuTSK2020"></d-cite>, effective
+                            optimization techniques for the latter have been extended to fuzzy system
+                            optimization <d-cite bibtex-key="drwuGD2020"></d-cite> <d-cite bibtex-key="drwuBN2020"></d-cite> <d-cite bibtex-key="drwuLN2022"></d-cite>.</p>
+                        </li>
+
+                        <li>
+                            <p><i>Gradient descent and least squares estimation</i>. </p>
+                            <p>For example,
+                                in adaptive-network-based fuzzy inference system (ANFIS) <d-cite bibtex-key="Jang1993"></d-cite>,
+                                the antecedent parameters are optimized by gradient descent, and the consequent
+                                parameters by least squares estimation.</p>
+                        </li>
+                    </ol>
+
+                </p>
+
+                <p>
+                    There are generally two different strategies for optimizing an IT2 fuzzy system:
+                </p>
                 <p>
                 <ol>
                     <li><p><i>Evolutionary computing</i> <d-cite bibtex-key="Oh2011"></d-cite>
@@ -1864,41 +1993,66 @@
                     the differences are clear, we can better understand the advantages of IT2 fuzzy systems and hence better
                     make use of them. In the literature there has been considerable effort on answering this challenging and
                     fundamental question. Some important arguments are <d-cite bibtex-key="drwuFundamental2012"></d-cite>:</p>
+
                 <p>
                 <ol>
-                    <li><p><i>An IT2 fuzzy set can model inter-personal uncertainties</i>,
-                        which are intrinsic to human language, because its membership is an interval,
-                        instead of a crisp number in a T1 fuzzy set.</p>
+                    <li>
+<!--                        <p><i>An IT2 fuzzy set can model inter-personal uncertainties</i>,-->
+<!--                        which are intrinsic to human language, because its membership is an interval,-->
+<!--                        instead of a crisp number in a T1 fuzzy set.</p>-->
+                        <p>
+                            <i>An IT2 fuzzy set can model inter-personal uncertainties</i>,
+                            which are intrinsic to human language, because its membership is an interval,
+                            instead of a crisp number in a T1 fuzzy set. For example,
+                            different people may have different understandings of the linguistic terms
+                            (Close, Okay, Far, Slow, Okay, Fast) in the car following example,
+                            and hence they may provide different T1 fuzzy sets for each word.
+                            An IT2 fuzzy set can be used to aggregate the T1 fuzzy sets from different people.
+                        </p>
+
                     </li>
 
-                    <li><p><i>IT2 fuzzy sets reduce the rulebase size</i> <d-cite bibtex-key="Mendel2017"></d-cite> <d-cite bibtex-key="Hagras2007"></d-cite>,
-                        as each IT2 fuzzy set models more uncertainties than a T1 fuzzy set, so that the
-                        input/output domains can be covered by fewer fuzzy sets.</p>
+                    <li>
+                        <p>
+                            <i>IT2 fuzzy sets reduce the rulebase size</i> <d-cite bibtex-key="Mendel2017"></d-cite> <d-cite bibtex-key="Hagras2007"></d-cite>,
+                            as each IT2 fuzzy set models more uncertainties than a T1 fuzzy set,
+                            so that the input/output domains can be covered by fewer fuzzy sets.
+                        </p>
                     </li>
 
-                    <li><p><i>An IT2 fuzzy controller gives a smoother control surface than its T1 counterpart, especially in the region around the steady state</i>
-                        (i.e., when both the error and the change of error approach 0) <d-cite bibtex-key="drwuISA2006"></d-cite> <d-cite bibtex-key="Jammeh2009"></d-cite>.
-                        The Proportional-Integral (PI) gains of the IT2 fuzzy controller also change with the inputs,
-                        which cannot be achieved by the baseline T1 fuzzy controller.</p>
+                    <li>
+<!--                        <p><i>An IT2 fuzzy controller gives a smoother control surface than its T1 counterpart, especially in the region around the steady state</i>-->
+<!--                        (i.e., when both the error and the change of error approach 0) <d-cite bibtex-key="drwuISA2006"></d-cite> <d-cite bibtex-key="Jammeh2009"></d-cite>.-->
+<!--                        The Proportional-Integral (PI) gains of the IT2 fuzzy controller also change with the inputs,-->
+<!--                        which cannot be achieved by the baseline T1 fuzzy controller.</p>-->
+                        <p>
+                            <i>An IT2 fuzzy controller gives a smoother control surface than its T1 counterpart,
+                                especially in the region around the steady state</i>
+                            (e.g., when both the distance and the relative speed approach 0, in the car following example)
+                            <d-cite bibtex-key="drwuISA2006"></d-cite> <d-cite bibtex-key="Jammeh2009"></d-cite>.
+                            The Proportional-Integral (PI) gains of the IT2 fuzzy controller also change with the inputs,
+                            which cannot be achieved by the baseline T1 fuzzy controller.
+                        </p>
                     </li>
-                    <li><p>Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> also explained two fundamental differences between IT2 and T1 fuzzy systems, i.e., adaptiveness and novelty.
+            </ol></p>
+                    <p>Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> also explained two fundamental differences between IT2 and T1 fuzzy systems, i.e., adaptiveness and novelty.
                         Since explaining them requires deeper understanding of IT2 fuzzy sets and systems, which is beyond the scope of this tutorial,
                         we suggest interested readers to refer to <d-cite bibtex-key="drwuFundamental2012"></d-cite> for details.</p>
-                    </li>
-                    <!--                    <li>-->
-                    <!--                        <p><i>IT2 fuzzy controllers are more adaptive.</i>-->
-                    <!--                            They can realize more complex input-output relationships which cannot be achieved by T1 fuzzy controllers <d-cite bibtex-key="Mendel2018"></d-cite>.</p>-->
-                    <!--                    </li>-->
 
-                    <!--                    <li><p><i>IT2 fuzzy controller have a novelty that does not exist in traditional T1 fuzzy controllers.</i>-->
-                    <!--                        Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> showed that in an-->
-                    <!--                        IT2 fuzzy controller <i>different</i> membership grades from the same IT2 fuzzy set can be used in different rules,-->
-                    <!--                        whereas for traditional T1 fuzzy controller the <i>same</i> membership grade from the same T1 fuzzy set is always-->
-                    <!--                        used in different rules. This again implies that an IT2 fuzzy controller is more complex than a T1 fuzzy controller-->
-                    <!--                        and it cannot be implemented by a T1 fuzzy controller using the same rulebase.</p>-->
-                    <!--                    </li>-->
+<!--                    <li>-->
+<!--                        <p><i>IT2 fuzzy controllers are more adaptive.</i>-->
+<!--                            They can realize more complex input-output relationships which cannot be achieved by T1 fuzzy controllers <d-cite bibtex-key="Mendel2018"></d-cite>.</p>-->
+<!--                    </li>-->
 
-                </ol></p>
+<!--                    <li><p><i>IT2 fuzzy controller have a novelty that does not exist in traditional T1 fuzzy controllers.</i>-->
+<!--                        Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> showed that in an-->
+<!--                        IT2 fuzzy controller <i>different</i> membership grades from the same IT2 fuzzy set can be used in different rules,-->
+<!--                        whereas for traditional T1 fuzzy controller the <i>same</i> membership grade from the same T1 fuzzy set is always-->
+<!--                        used in different rules. This again implies that an IT2 fuzzy controller is more complex than a T1 fuzzy controller-->
+<!--                        and it cannot be implemented by a T1 fuzzy controller using the same rulebase.</p>-->
+<!--                    </li>-->
+
+
 
             </div>
 
