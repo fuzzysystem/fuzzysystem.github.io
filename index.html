@@ -246,7 +246,7 @@
                 How would you transform the above knowledge (rules) into mathematical formulas, so that the controller
                 can calculate the appropriate acceleration based on the distance and speed?
             </p>
-            <p>Fuzzy systems are very suitable tools. Next, we will introduce how they can be used to solve this problem.</p>
+            <p>Fuzzy systems are in this regard very suitable tools. Next, we will introduce how they can be used to solve this problem.</p>
         </div>
 
         <h2>Type-1 Fuzzy Sets and Fuzzy Systems</h2>
@@ -263,7 +263,7 @@
                     finance <d-cite bibtex-key="Bojadziev2007"></d-cite>, medicine <d-cite bibtex-key="Phuong2001"></d-cite>,
                     energy <d-cite bibtex-key="Suganthi2015"></d-cite>, brain-computer interfaces <d-cite bibtex-key="drwuSF2018"></d-cite>,
                     etc.</p>
-                    
+
 
                 <h4>Definition 1</h4>
                 <a class="marker" href="#define1"><span>Type-1 Fuzzy Sets Definition 1</span></a>
@@ -326,10 +326,10 @@
                         represented as $\{0/1, 0.5/2, 1/3, 1/4, 0.5/5, 0/6\}$, where $0/1$ means
                         that $x=1$ has a membership grade of 0 in Moderate, and $0.5/2$ means $x=2$ has a
                         membership grade of $1$ in Moderate. <a href="#fig2">Figure $2$</a> shows that there
-                        is complete agreement (certainty) for $x\in[0,1]\cup[3,4]\cup[6,+\infty)$,
-                        and partial agreement for $x\in(1,3)\cup(4,6)$. In contrast, for a crisp set,
+                        is a complete agreement (certainty) for $x\in[0,1]\cup[3,4]\cup[6,+\infty)$,
+                        and a partial agreement for $x\in(1,3)\cup(4,6)$. In contrast, for a crisp set,
                         the membership grade of each element in it is either 0 or 1;
-                        there is no value (e.g., 0.3) in between, i.e., a crisp set cannot model partial agreement.
+                        there is no value (e.g., 0.3) in between, i.e., a crisp set cannot model a partial agreement.
                     </p>
                     <a class="marker" href="#fig2"><span>Figure 2</span></a>
                     <div  id="fig2" class="l-interactive" style="margin-bottom: 20px">
@@ -368,8 +368,8 @@
                         There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are
                         words modeled by T1 fuzzy sets <d-cite bibtex-key="Chang1972"></d-cite>,
                         and Takagi-Sugeno-Kang (TSK), in which rule consequents are mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.
-                        The latter is popular, due to their simplicity and flexibility. </p>
-                        
+                        The latter is popular due to their simplicity and flexibility. </p>
+
                         <p>T1 TSK rules are:                 </p>
 <!--                    <p>There are two kinds of rules for fuzzy systems, Zadeh (Mamdani), in which rule consequents are words <d-cite bibtex-key="Chang1972"></d-cite>,-->
 <!--                        and Takagi-Sugeno-Kang (TSK), in which rule consequents ar mathematical formulas <d-cite bibtex-key="Takagi1985"></d-cite>.-->
@@ -797,9 +797,7 @@
                             <div class="caption" id="tab1">
                                 <b>Table 1:</b><br>
                                 Rulebase of the T1 TSK fuzzy system in the car following example.
-                                The numbers are rule consequents, i.e., acceleration (KM/h$^2$).
-                                The suggested range is [-10, 10]. For reasonableness, the number should increase as it
-                                moves from the top right to the bottom left, e.g., $y_2\leq y_4$, $y_3\leq y_5\leq y_7$, and $y_6\leq y_8$.
+                                The numbers are rule consequents, i.e., acceleration (KM/h$^2$). Any numbers can be used for rule consequents, and the T1 TSK fuzzy system can always give an output. However,                            the suggested range is [-10, 10]. For reasonableness, the rule consequents in the same row should increase from the left to the right, e.g., when Distance is Close, as Relative Speed increases, Acceleration should become more negative, i.e., $y_1\leq y_2\leq y_3$. The rule consequents in the same column should increase from the top to the bottom, e.g., when Relative Speed is Slow, as Distance increases, Acceleration should also increase, i.e., $y_1\leq y_4\leq y_7$.
                              <br><br>
                             </div>
                             <table style="margin: auto auto">
@@ -910,7 +908,7 @@
                     research has shown that there are limitations in the ability of T1 fuzzy sets to model
                     and minimize the effect of uncertainties <d-cite bibtex-key="Mendel2017"></d-cite> <d-cite bibtex-key="Hagras2007"></d-cite>.
                     This is because a T1 fuzzy set is certain in the sense that its membership grades are crisp values.</p>
-                    
+
                     <p>For example, different drivers may have different understanding of the linguistic term Far in the motivating example,
                     and hence may provide different T1 fuzzy sets for it.
                     Type-2 fuzzy sets <d-cite bibtex-key="Zadeh1975"></d-cite> can be used to incorporate these inter-personal uncertainties.</p>
@@ -934,7 +932,7 @@
                         $(5)$
                     </span></p>
 
-                    <p>where $x$, called the <i>primary variable</i>, has domain $D_{\tilde{X}}$;
+                    <p>where $x$, called the <i>primary variable</i>, is in domain $D_{\tilde{X}}$;
                         $u\in [0,1]$ is the <i>secondary variable</i>; and, the <i>secondary grade</i> of $\tilde{X}$ equals 1 for $\forall x\in D_{\tilde{X}}$ and $\forall u\in [0,1]$. </p>
                 </div>
                 <div>
@@ -949,7 +947,7 @@
                     </p>
                     <p>
                         <a href="#fig7k">Figure $7$</a> shows that an IT2 fuzzy set is bounded from the above and below by two T1 fuzzy sets,
-                        which are called <i>upper MF</i> (UMF) and <i>lower MF</i> (LMF), respectively.
+                        which are called <i>upper MF</i> (UMF) and <i>lower MF</i> (LMF).
                         The area between the LMF and the UMF is the <i>footprint of uncertainty</i> (FOU).
                     </p>
                 </div>
@@ -980,7 +978,7 @@
             <a class="marker" href="#IT2 sys"><span>IT2 Fuzzy System</span></a>
             <div id="'IT2 sys">
                 <div>
-                    <p><a href="#fig8">Figure $8$</a> shows the schematic diagram of an IT2 fuzzy system. It is similar to its T1 counterpart,
+                    <p><a href="#fig8">Figure $8$</a> shows the schematic diagram of an IT2 fuzzy system. It is similar to its T1 counterpart, with
                         the major difference being that at least one of the fuzzy sets in the rulebase is an IT2 fuzzy set.
                         Hence, the outputs of the inference engine are IT2 fuzzy sets, and a type-reducer is usually needed
                         (it can be bypassed <d-cite bibtex-key="Nie2008"></d-cite> <d-cite bibtex-key="Mendel2017"></d-cite>, too)
@@ -1055,7 +1053,7 @@
                         </li>
                         <li>
                             <p><i>Type-reduction</i>:</p>
-                            <p>Many different approaches <d-cite bibtex-key="Mendel2017"></d-cite> can be used to compute the <a href="#eq7">$(7)$</a>.
+                            <p>Many different approaches <d-cite bibtex-key="Mendel2017"></d-cite> can be used to compute <a href="#eq7">$(7)$</a>.
                                 When the popular center-of-sets type-reducer <d-cite bibtex-key="Mendel2017"></d-cite> is used, the type-reduced output is:</p>
                             <a class="marker" href="#eq8"></a>
                             <p>
@@ -1117,7 +1115,7 @@
 
 
                             <p>and $\{\underline{y}_k\}_{k=1}^K$ and $\{\overline{y}_k\}_{k=1}^K$ have been sorted in ascending order,
-                                respectively.</p>
+                                separately.</p>
                             <p>
                                 $y_l$ and $y_r$ can be computed using the original Karnik-Mendel algorithms <d-cite bibtex-key="Mendel2017"></d-cite>,
                                 the enhanced Karnik-Mendel algorithms <d-cite bibtex-key="drwuEKM2009"></d-cite>, the iterative algorithm with stop condition (IASC),
@@ -1159,7 +1157,7 @@
                         Intuitively, to compute $y_l$ (the minimum), a large $f_k$ ($\overline{f}_k$)
                         should be used for a small $\underline{y}_k$, and a small $f_k$ ($\underline{f}_k$)
                         should be used for a large $\underline{y}_k$. Assume $\{\underline{y}_k\}_{k=1}^K$
-                        have been sorted in ascending order. Then, the switch point, $l$, determines
+                        has been sorted in ascending order. Then, the switch point, $l$, determines
                         when we should switch from $\overline{f}_k$ to $\underline{f}_k$.
                         $y_r$ (the maximum) is computed in a similar way, but the switch point $r$
                         determines when we should switch from $\underline{f}_k$ to $\overline{f}_k$.
@@ -1175,7 +1173,7 @@
                     <a class="marker" href="#tab2"><span>rulebase</span></a>
                     <div class="caption" id="tab2">
                         <b>Table 2:</b><br> The EIASC <d-cite bibtex-key="drwuCCTFS2013"></d-cite>. Note that $\{\underline{y}_k\}_{k=1}^K$ and
-                        $\{\overline{y}_k\}_{k=1}^K$ have been sorted in ascending order, respectively.<br><br>
+                        $\{\overline{y}_k\}_{k=1}^K$ have been sorted in ascending order.<br><br>
                     </div>
                     <table style="margin: auto auto">
                         <tr>
@@ -1252,7 +1250,7 @@
 
                 <div>
                     <p><br>
-                        The main idea of EIASC is to find the switch points for $y_l$ and $y_r$. Take $y_l$ for example.
+                        The main idea of EIASC is to find the switch points for $y_l$ and $y_r$. Take $y_l$ for examples,
                         $y_l$ is the minimum of <a href="#eq7"> $(7)$</a>.
                         Since $\underline{y}_k$ increases from the left to the right along the horizontal axis of <a href="#fig9a">Figure $9(a)$</a>,
                         we should choose a large weight (upper membership grade) for $\underline{y}_k$ on the
@@ -1794,17 +1792,9 @@
                         <div class="caption" id="tab3">
                             <b>Table 3:</b><br>
                             Rulebase of the IT2 TSK fuzzy system in the car following example.
-                            The intervals are rule consequents, i.e., acceleration (KM/h$^2$).
-                            The suggested range of each number is [-10, 10]. For each interval,
-                            the left number should be smaller than or equal to the right one.
-                            For reasonableness, the number should increase as it moves from the
-                            top right to the bottom left,
-                            e.g., $\underline{y}_2\leq \underline{y}_4$,
-                            $\underline{y}_3\leq \underline{y}_5\leq \underline{y}_7$,
-                            $\underline{y}_6\leq \underline{y}_8$,
-                            $\overline{y}_2\leq \overline{y}_4$,
-                            $\overline{y}_3\leq \overline{y}_5\leq \overline{y}_7$,
-                            and $\overline{y}_6\leq \overline{y}_8$.
+                            The intervals are rule consequents, i.e., acceleration (KM/h$^2$). Any interval, as long as the left end-point is smaller than or equal to the right end-point ($\underline{y}_i\leq \overline{y}_i$), can be used for rule consequent, and the IT2 TSK fuzzy system can always give an output. However,
+                            The suggested range of each end-point is [-10, 10].
+                            For reasonableness, the rule consequents in the same row should increase from the left to the right, e.g., when Distance is Close, as Relative Speed increases, Acceleration should become more negative, i.e., $\underline{y}_1\leq \underline{y}_2\leq \underline{y}_3$ and $\overline{y}_1\leq \overline{y}_2\leq \overline{y}_3$. The rule consequents in the same column should increase from the top to the bottom, e.g., when Relative Speed is Slow, as Distance increases, Acceleration should also increase, i.e., $\underline{y}_1\leq \underline{y}_4\leq \underline{y}_7$ and $\overline{y}_1\leq \overline{y}_4\leq \overline{y}_7$.
                             <br><br>
                         </div>
                         <table style="margin: auto auto">
@@ -1961,8 +1951,7 @@
                     <li><p><i>Evolutionary computing</i> <d-cite bibtex-key="Oh2011"></d-cite>
                         <br>For example,
                         genetic algorithms <d-cite bibtex-key="Hidalgo2009"></d-cite>,
-                        particle swarm optimization <d-cite bibtex-key="Wang2019b"></d-cite>, a
-                        nd their combination <d-cite bibtex-key="Martinez-Soto2014"></d-cite>,
+                        particle swarm optimization <d-cite bibtex-key="Wang2019b"></d-cite>,                         and their combination <d-cite bibtex-key="Martinez-Soto2014"></d-cite>,
                         have been used.</p>
                     </li>
 
@@ -1982,7 +1971,7 @@
             <div id="difference">
                 <p>A challenging question is: <i>What are the main differences between IT2 and T1 fuzzy systems?</i> Once
                     the differences are clear, we can better understand the advantages of IT2 fuzzy systems and hence better
-                    make use of them. In the literature there has been considerable effort on answering this challenging and
+                    make use of them. In the literature there has been considerable efforts devoted to answering this challenging and
                     fundamental question. Some important arguments are <d-cite bibtex-key="drwuFundamental2012"></d-cite>:</p>
 
                 <p>
@@ -2028,7 +2017,7 @@
             </ol></p>
                     <p>Wu <d-cite bibtex-key="drwuFundamental2012"></d-cite> also explained two fundamental differences between IT2 and T1 fuzzy systems, i.e., adaptiveness and novelty.
                         Since explaining them requires deeper understanding of IT2 fuzzy sets and systems, which is beyond the scope of this tutorial,
-                        we suggest interested readers to refer to <d-cite bibtex-key="drwuFundamental2012"></d-cite> for details.</p>
+                        we suggest that interested readers refer to <d-cite bibtex-key="drwuFundamental2012"></d-cite> for details.</p>
 
 <!--                    <li>-->
 <!--                        <p><i>IT2 fuzzy controllers are more adaptive.</i>-->
